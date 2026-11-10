@@ -197,7 +197,7 @@ export default function PixelReveal({
       className="relative w-full max-w-[480px] sm:max-w-[540px] md:max-w-[600px] aspect-[800/1050] mx-auto select-none cursor-crosshair overflow-visible"
     >
       {/* Layer 1 (Bottom): Blue Shirt Photo (Revealed Layer) */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none translate-y-[15px]">
         <Image
           src={blueshirtSrc}
           alt={`${alt} : Potret santri Khadimul Ilmi berbusana kemeja biru Lirboyo`}
@@ -231,11 +231,6 @@ export default function PixelReveal({
         className="absolute inset-0 w-full h-full pointer-events-auto"
         style={{ touchAction: "none" }}
       />
-
-      {/* Subtle indicator prompt for visitors */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-stone-900/80 text-emerald-300 border border-emerald-500/30 text-[11px] font-medium tracking-wide pointer-events-none backdrop-blur-sm shadow-md">
-        Arahkan kursor atau sentuh foto untuk efek senter piksel
-      </div>
     </div>
   );
 }

@@ -4,11 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import { GalleryItem } from "@/types/database";
-import { ChevronLeft, ChevronRight, Sparkles, Image as ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, Image as ImageIcon } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 interface GallerySectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function GallerySection({ lang = "ID" }: GallerySectionProps) {
@@ -55,18 +55,6 @@ export default function GallerySection({ lang = "ID" }: GallerySectionProps) {
               id: "4",
               title: "Portal Undangan Digital Interaktif Wali Santri",
               image_url: "/images/projects/undangan-digital.png",
-              created_at: new Date().toISOString(),
-            },
-            {
-              id: "5",
-              title: "Ahmad Chamdan Yuwafin (Khadimul Ilmi)",
-              image_url: "/images/hero/jacket.png",
-              created_at: new Date().toISOString(),
-            },
-            {
-              id: "6",
-              title: "Dokumentasi Kepengurusan & Majelis Lirboyo",
-              image_url: "/images/hero/blueshirt.png",
               created_at: new Date().toISOString(),
             },
           ]);
@@ -134,10 +122,6 @@ export default function GallerySection({ lang = "ID" }: GallerySectionProps) {
         {/* Section Header */}
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>{lang === "ID" ? "Galeri 3D Interaktif" : "Interactive 3D Gallery"}</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
               {lang === "ID" ? "Jejak Rekam & Arsip Visual" : "Visual Archive & Milestones"}
             </h2>

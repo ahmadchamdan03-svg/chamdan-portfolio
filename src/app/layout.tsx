@@ -1,26 +1,41 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, Amiri } from "next/font/google";
+import {
+  Instrument_Serif,
+  Plus_Jakarta_Sans,
+  JetBrains_Mono,
+  Amiri,
+} from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
 const amiri = Amiri({
   variable: "--font-amiri",
-  subsets: ["arabic"],
+  subsets: ["arabic", "latin"],
   weight: ["400", "700"],
   display: "swap",
 });
@@ -36,7 +51,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.chamdan.site"),
   title: "Ahmad Chamdan Yuwafin : Khadimul Ilmi & AI-Driven Web Developer",
   description:
-    "Portofolio resmi Ahmad Chamdan Yuwafin (Chamdan). Santri Lirboyo, Khadimul Ilmi, dan AI-Driven Full-Stack Web Developer. Jembatan antara tradisi turats kitab salaf dan rekayasa teknologi modern.",
+    "Portofolio resmi Ahmad Chamdan Yuwafin (Chamdan). Seorang Santri, Khadimul Ilmi, dan AI-Driven Full-Stack Web Developer. Jembatan antara tradisi turats kitab salaf dan rekayasa teknologi modern.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -50,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ahmad Chamdan Yuwafin : Khadimul Ilmi & AI-Driven Web Developer",
     description:
-      "Santri Lirboyo dan Mahasantri Ma'had Aly Lirboyo yang merajut ketelitian khazanah turats Islam dengan rekayasa web modern Next.js 16, Supabase, dan otomasi cerdas.",
+      "Seorang Santri dan Mahasantri Ma'had Aly Lirboyo yang merajut ketelitian khazanah turats Islam dengan rekayasa web modern Next.js 16, Supabase, dan otomasi cerdas.",
     url: "https://www.chamdan.site",
     siteName: "Ahmad Chamdan Yuwafin",
     locale: "id_ID",
@@ -60,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ahmad Chamdan Yuwafin : Khadimul Ilmi & AI-Driven Web Developer",
     description:
-      "Santri Lirboyo dan Mahasantri Ma'had Aly Lirboyo yang merajut khazanah turats Islam dengan rekayasa web modern dan otomasi AI.",
+      "Seorang Santri dan Mahasantri Ma'had Aly Lirboyo yang merajut khazanah turats Islam dengan rekayasa web modern dan otomasi AI.",
   },
 };
 
@@ -107,7 +122,7 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${inter.variable} ${playfair.variable} ${amiri.variable} scroll-smooth`}
+      className={`${plusJakarta.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${amiri.variable} scroll-smooth`}
     >
       <head>
         {/* Preload Hero LCP Images for ultra-fast first contentful paint */}

@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export const alt =
-  "Ahmad Chamdan Yuwafin - Santri Lirboyo, Khadimul Ilmi & AI-Driven Full-Stack Web Developer";
+  "Ahmad Chamdan Yuwafin - Seorang Santri, Khadimul Ilmi & AI-Driven Full-Stack Web Developer";
 export const size = {
   width: 1200,
   height: 630,
@@ -113,7 +113,7 @@ export default async function Image() {
                 gap: "8px",
               }}
             >
-              <span>Santri Lirboyo</span>
+              <span>Seorang Santri</span>
               <span style={{ color: "#34d399" }}>•</span>
               <span>AI-Driven Full-Stack Web Developer</span>
             </div>

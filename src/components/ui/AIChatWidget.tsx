@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Bot, X, Send, Sparkles, Loader2, Mic, MicOff } from "lucide-react";
+import Image from "next/image";
+import { Bot, X, Send, Loader2, Mic, MicOff } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -105,15 +106,20 @@ export default function AIChatWidget() {
       {/* Floating Trigger Button (Bottom-Left) */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 z-40 group flex items-center gap-2.5 px-4 py-3 rounded-full bg-stone-900/90 hover:bg-stone-900 text-stone-100 shadow-xl shadow-stone-950/40 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 border border-amber-500/30 cursor-pointer"
+        className="fixed bottom-6 left-6 z-40 group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-stone-900 shadow-2xl shadow-stone-950/60 transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-emerald-500 hover:border-amber-400 cursor-pointer overflow-hidden p-0.5"
         aria-label="Tanya Khadim AI"
+        title="Tanya Khadim AI"
       >
-        <div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400">
-          <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: "6s" }} />
+        <div className="relative w-full h-full rounded-full overflow-hidden">
+          <Image
+            src="/images/avatar.png"
+            alt="Khadim AI - Ahmad Chamdan Yuwafin"
+            fill
+            sizes="64px"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <span className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-stone-900" />
         </div>
-        <span className="text-xs font-semibold tracking-wide hidden sm:inline-block">
-          Tanya Khadim AI
-        </span>
       </button>
 
       {/* Chat Window Dialog */}
@@ -122,8 +128,13 @@ export default function AIChatWidget() {
           {/* Header */}
           <div className="p-4 bg-emerald-950/90 border-b border-emerald-500/20 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-amber-300 font-bold text-xs border border-emerald-500/40">
-                <Bot className="w-4 h-4" />
+              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-emerald-500/40">
+                <Image
+                  src="/images/avatar.png"
+                  alt="Khadim AI Avatar"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="font-serif font-bold text-white text-xs sm:text-sm">

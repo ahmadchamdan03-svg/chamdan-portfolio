@@ -5,12 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { Project } from "@/types/database";
-import { ArrowUpRight, FolderGit2, AlertCircle } from "lucide-react";
+import { ArrowUpRight, AlertCircle } from "lucide-react";
 import Skeleton from "@/components/ui/Skeleton";
 import Reveal from "@/components/ui/Reveal";
 
 interface ProjectsSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 function parseTechStack(techStack: unknown): string[] {
@@ -76,20 +76,8 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 border-b border-stone-200 pb-6">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
-                <FolderGit2 className="w-4 h-4 text-amber-600" />
-                <span>{lang === "ID" ? "Portofolio Pilihan" : "Featured Case Studies"}</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight">
-                {lang === "ID" ? (
-                  <>
-                    Karya &amp; <span className="text-[#064e3b] italic">Sistem Digital</span>
-                  </>
-                ) : (
-                  <>
-                    Selected <span className="text-[#064e3b] italic">Works &amp; Systems</span>
-                  </>
-                )}
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight italic">
+                {lang === "ID" ? "Karya" : "Works"}
               </h2>
             </div>
 
@@ -169,10 +157,6 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
                         [PREVIEW IMAGE]
                       </div>
                     )}
-
-                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-stone-900/80 backdrop-blur-md text-[#fbbf24] text-[11px] font-mono tracking-wider font-semibold border border-white/10">
-                      PROYEK 0{idx + 1}
-                    </div>
                   </div>
 
                   {/* Content */}

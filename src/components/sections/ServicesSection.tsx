@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   CheckCircle2,
   Calendar,
-  Sparkles,
   ArrowRight,
   MessageSquare,
   Clock,
@@ -15,7 +14,7 @@ import {
 import Reveal from "@/components/ui/Reveal";
 
 interface ServicesSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 interface ServicePackage {
@@ -47,116 +46,131 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
   const packages: ServicePackage[] = [
     {
-      id: "consultation",
-      titleID: "Konsultasi Arsitektur Digital & Pesantren",
-      titleEN: "Digital Systems & Islamic Tech Advisory",
-      badge: "Sesi Eksklusif 1-on-1",
-      badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+      id: "paket-menengah",
+      titleID: "Paket Menengah",
+      titleEN: "Moderate Advisory",
+      badge: "Sesi 1-on-1",
+      badgeColor: "bg-stone-800/80 text-stone-300 border-stone-700/60",
       priceRangeID: "Rp 250.000",
       priceRangeEN: "$20",
-      periodID: "per sesi (45 Menit)",
-      periodEN: "per 45-min session",
+      periodID: "45 Menit",
+      periodEN: "45 Minutes",
       descID:
-        "Diskusi privat via Google Meet / Zoom untuk membedah arsitektur sistem pesantren Anda, audit alur kerja manual, dan roadmap otomasi hemat biaya.",
+        "Sesi evaluasi teknis dasar untuk meninjau sistem atau alur kerja operasional lembaga Anda.",
       descEN:
-        "Private advisory session via Google Meet / Zoom analyzing your institution's digital workflow, manual bottleneck audit, and cost-effective automation roadmap.",
+        "Basic technical evaluation session reviewing institutional workflow and systems.",
       featuresID: [
-        "Audit alur data & persuratan pesantren saat ini",
-        "Rekomendasi stack teknologi (Web, DB, Bot WA)",
-        "Estimasi anggaran & mitigasi biaya server",
-        "Dokumen ringkasan rekomendasi teknis pasca sesi",
+        "Audit alur data & persuratan",
+        "Rekomendasi tech stack dasar",
+        "Dokumen ringkasan rekomendasi",
       ],
       featuresEN: [
-        "Audit of current institutional workflows & paperwork",
-        "Tailored technology stack recommendations",
-        "Budget estimation and cloud cost minimization",
-        "Post-session executive summary report",
+        "Audit alur data & persuratan",
+        "Rekomendasi tech stack dasar",
+        "Dokumen ringkasan rekomendasi",
       ],
     },
     {
-      id: "web-pesantren",
-      titleID: "Website Profil Lembaga & PPDB Terpadu",
-      titleEN: "Institutional Portal & Online Admission",
+      id: "paket-agak-mahal",
+      titleID: "Paket Agak Mahal",
+      titleEN: "Strategic Advisory",
+      badge: "Skala Menengah",
+      badgeColor: "bg-stone-800/80 text-stone-300 border-stone-700/60",
+      priceRangeID: "Rp 500.000",
+      priceRangeEN: "$35",
+      periodID: "60 Menit",
+      periodEN: "60 Minutes",
+      descID:
+        "Analisis komprehensif alur kerja dengan fokus efisiensi otomasi dan estimasi anggaran server.",
+      descEN:
+        "Comprehensive workflow analysis focusing on automation efficiency and server budget.",
+      featuresID: [
+        "Semua di Paket Menengah",
+        "Analisis roadmap otomasi",
+        "Estimasi anggaran server",
+      ],
+      featuresEN: [
+        "Semua di Paket Menengah",
+        "Analisis roadmap otomasi",
+        "Estimasi anggaran server",
+      ],
+    },
+    {
+      id: "paket-lumayan-mahal",
+      titleID: "Paket Lumayan Mahal",
+      titleEN: "Architecture & Automation",
       badge: "Paling Populer",
-      badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
       highlight: true,
-      priceRangeID: "Rp 3.500.000 - Rp 6.000.000",
-      priceRangeEN: "$250 - $400",
-      periodID: "proyek siap pakai",
-      periodEN: "turnkey project",
+      priceRangeID: "Rp 1.000.000",
+      priceRangeEN: "$70",
+      periodID: "90 Menit",
+      periodEN: "90 Minutes",
       descID:
-        "Portal website modern berkinerja tinggi berbasis Next.js 16 dengan CMS admin mandiri untuk berita, galeri, formulir PPDB online, dan SEO Google optimal.",
+        "Sesi arsitektur mendalam dengan desain basis data relasional dan panduan integrasi Fonnte / AI.",
       descEN:
-        "High-performance modern institution website built on Next.js 16 with custom CMS for announcements, media gallery, online admissions, and search engine optimization.",
+        "Deep architecture session with relational database design and Fonnte / AI integration roadmap.",
       featuresID: [
-        "Desain kustom responsif mobile-first & dark/light mode",
-        "CMS Admin intuitif (tambah berita & santri tanpa koding)",
-        "Formulir pendaftaran PPDB terhubung Google Sheets / DB",
-        "Domain kustom, SSL aman, & hosting cloud gratis selamanya",
-        "Garansi pemeliharaan & pelatihan operasional admin",
+        "Semua di Paket Agak Mahal",
+        "Desain arsitektur database (ERD)",
+        "Panduan implementasi Fonnte/AI",
       ],
       featuresEN: [
-        "Mobile-first responsive design with dark/light themes",
-        "Intuitive CMS dashboard (update news without coding)",
-        "Admissions form integrated with cloud database / sheets",
-        "Custom domain setup, SSL security, and high uptime",
-        "Maintenance warranty and admin training included",
+        "Semua di Paket Agak Mahal",
+        "Desain arsitektur database (ERD)",
+        "Panduan implementasi Fonnte/AI",
       ],
     },
     {
-      id: "haflah-absensi",
-      titleID: "Sistem Absensi Santri & Otomasi WhatsApp",
-      titleEN: "Attendance Scanner & WhatsApp Automation",
-      badge: "Skalabilitas Tinggi",
-      badgeColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-      priceRangeID: "Rp 5.500.000 - Rp 9.500.000",
-      priceRangeEN: "$380 - $650",
-      periodID: "solusi komprehensif",
-      periodEN: "comprehensive solution",
+      id: "paket-mahal",
+      titleID: "Paket Mahal",
+      titleEN: "Intensive Pair Setup",
+      badge: "Hands-on Setup",
+      badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+      priceRangeID: "Rp 2.500.000",
+      priceRangeEN: "$175",
+      periodID: "2 Sesi (2x90 Menit)",
+      periodEN: "2 Sessions (2x90 Min)",
       descID:
-        "Sistem cerdas scan QR / barcode kartu santri untuk absensi kajian/madrasah yang seketika mengirim notifikasi otomatis ke WhatsApp wali santri.",
+        "Pendampingan langsung setup server cloud production dan evaluasi menyeluruh terhadap kode aplikasi.",
       descEN:
-        "Smart QR / barcode attendance platform that immediately sends automated WhatsApp status notifications to parents upon scan.",
+        "Direct production cloud setup assistance and comprehensive codebase review.",
       featuresID: [
-        "Aplikasi web scanner cepat (mendukung HP & scanner USB)",
-        "Integrasi Gateway WhatsApp resmi (notifikasi instan ke ortu)",
-        "Rekap kehadiran real-time, grafik statistik, & ekspor Excel",
-        "Arsitektur anti-lemot saat scan massal ribuan santri",
-        "Hak akses bertingkat: Panitia, Wali Kelas, dan Wali Santri",
+        "Semua di Paket Lumayan Mahal",
+        "Pendampingan setup server Vercel/Supabase",
+        "Review kode (Code Review)",
       ],
       featuresEN: [
-        "Rapid web scanner app (supports smartphones & USB scanners)",
-        "Automated WhatsApp notification engine for parents",
-        "Real-time attendance ledger, analytics, & Excel export",
-        "High-concurrency architecture handling thousands of students",
-        "Role-based access: administrators, teachers, and guardians",
+        "Semua di Paket Lumayan Mahal",
+        "Pendampingan setup server Vercel/Supabase",
+        "Review kode (Code Review)",
       ],
     },
     {
-      id: "custom-ai",
-      titleID: "Custom Full-Stack & AI Agent Solution",
-      titleEN: "Bespoke SaaS & Generative AI Agents",
-      badge: "Enterprise & Kustom",
-      badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-      priceRangeID: "Mulai Rp 10.000.000+",
-      priceRangeEN: "Starting at $700+",
-      periodID: "sesuai lingkup kebutuhan",
-      periodEN: "based on scope",
+      id: "paket-sangat-mahal",
+      titleID: "Paket Sangat Mahal",
+      titleEN: "Dedicated System Build",
+      badge: "Enterprise Kustom",
+      badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
+      priceRangeID: "Rp 5.000.000+",
+      priceRangeEN: "$350+",
+      periodID: "Kustom (Bulanan)",
+      periodEN: "Custom (Monthly)",
       descID:
-        "Pengembangan platform SaaS enterprise khusus: sistem kepanitiaan wisuda akbar (Haflah), AI Chatbot RAG terlatih dokumen internal, dan payment gateway.",
+        "Kemitraan teknis intensif sebulan penuh membangun sistem enterprise dari nol dengan garansi pemeliharaan.",
       descEN:
-        "Custom enterprise web application: large-scale graduation management systems, internal RAG AI chatbots trained on your documents, and payment gateway integration.",
+        "Full-month intensive technical partnership building enterprise systems from scratch with maintenance warranty.",
       featuresID: [
-        "Arsitektur mikroservis atau serverless Next.js + PostgreSQL",
-        "Khadim AI Bot terlatih dokumen internal pesantren / bisnis",
-        "Integrasi Payment Gateway QRIS / Virtual Account (Midtrans)",
-        "SLA ketersediaan tinggi dan dukungan teknis prioritas",
+        "Konsultasi intensif 1 bulan",
+        "Akses prioritas via WhatsApp",
+        "Membangun sistem dari nol (End-to-End)",
+        "Garansi maintenance 1 bulan",
       ],
       featuresEN: [
-        "Serverless Next.js + PostgreSQL high-availability architecture",
-        "Custom AI Copilot trained on internal manuals / knowledge base",
-        "Integrated QRIS & Virtual Account payment processing",
-        "High-availability SLA and priority technical support",
+        "Konsultasi intensif 1 bulan",
+        "Akses prioritas via WhatsApp",
+        "Membangun sistem dari nol (End-to-End)",
+        "Garansi maintenance 1 bulan",
       ],
     },
   ];
@@ -199,15 +213,6 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono tracking-wider uppercase mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>
-                {lang === "ID" ? "Layanan & Estimasi Investasi" : "Services & Rate Card"}
-              </span>
-            </div>
-          </Reveal>
-
           <Reveal delay={100}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
               {lang === "ID"
@@ -225,20 +230,20 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
           </Reveal>
         </div>
 
-        {/* Pricing & Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Pricing & Services Grid (1 col mobile, 2 col tablet, 3 col desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((pkg, idx) => (
             <Reveal key={pkg.id} delay={idx * 100}>
               <div
                 className={`relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 h-full ${
                   pkg.highlight
-                    ? "bg-stone-950 border-2 border-emerald-500/60 shadow-xl shadow-emerald-950/40"
-                    : "bg-stone-950/70 border border-stone-800 hover:border-stone-700"
+                    ? "bg-stone-950/90 border-2 border-emerald-500/80 shadow-2xl shadow-emerald-950/50 ring-1 ring-emerald-500/30"
+                    : "bg-stone-950/70 backdrop-blur-xl border border-stone-800 hover:border-stone-700"
                 }`}
               >
                 {pkg.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-stone-950 text-[11px] font-bold uppercase tracking-wider">
-                    Recommended
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-stone-950 text-[11px] font-bold uppercase tracking-wider shadow-md">
+                    Paling Populer
                   </div>
                 )}
 
@@ -251,7 +256,7 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
                   </span>
 
                   {/* Title */}
-                  <h3 className="text-lg font-serif font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-xl font-serif font-bold text-white mb-2 leading-snug">
                     {lang === "ID" ? pkg.titleID : pkg.titleEN}
                   </h3>
 
@@ -262,10 +267,10 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
                   {/* Price Range */}
                   <div className="mb-6 pt-4 border-t border-stone-800/80">
-                    <div className="text-xl sm:text-2xl font-bold font-serif text-white tracking-tight">
+                    <div className="text-2xl font-bold font-sans text-white tracking-tight">
                       {lang === "ID" ? pkg.priceRangeID : pkg.priceRangeEN}
                     </div>
-                    <div className="text-[11px] font-mono text-stone-500 mt-0.5">
+                    <div className="text-xs font-mono text-stone-400 mt-0.5">
                       {lang === "ID" ? pkg.periodID : pkg.periodEN}
                     </div>
                   </div>
@@ -292,22 +297,14 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
                 {/* Booking Trigger Button */}
                 <button
                   onClick={() => handleOpenBooking(pkg)}
-                  className={`w-full py-3 px-4 rounded-xl text-xs font-medium flex items-center justify-center gap-2 transition-all ${
+                  className={`w-full py-3 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                     pkg.highlight
                       ? "bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-bold shadow-md shadow-emerald-500/20"
                       : "bg-stone-800 hover:bg-stone-700 text-white"
                   }`}
                 >
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>
-                    {pkg.id === "consultation"
-                      ? lang === "ID"
-                        ? "Jadwalkan Konsultasi"
-                        : "Book Advisory Slot"
-                      : lang === "ID"
-                      ? "Pilih Paket Ini"
-                      : "Choose Package"}
-                  </span>
+                  <span>Jadwalkan Konsultasi</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-auto" />
                 </button>
               </div>

@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Mail } from "lucide-react";
 
 interface FooterProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function Footer({ lang = "ID" }: FooterProps) {

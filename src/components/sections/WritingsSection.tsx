@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { Writing } from "@/types/database";
-import { BookOpen, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Skeleton from "@/components/ui/Skeleton";
 
 interface WritingsSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function WritingsSection({ lang = "ID" }: WritingsSectionProps) {
@@ -79,18 +79,9 @@ export default function WritingsSection({ lang = "ID" }: WritingsSectionProps) {
         <Reveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
-                <BookOpen className="w-3.5 h-3.5 text-amber-400" />
-                <span>{lang === "ID" ? "Risalah Digital" : "Scholarly Treatises"}</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
                 {lang === "ID" ? "Karya Tulis & Pemikiran" : "Publications & Essays"}
               </h2>
-              <p className="mt-4 text-sm sm:text-base text-stone-400">
-                {lang === "ID"
-                  ? "Arsip pemikiran ilmiah, telaah ushul fikih, dan eksplorasi dialektika teknologi dari bilik Ma'had Aly Lirboyo."
-                  : "Academic essays exploring the intersection of Islamic legal jurisprudence, traditional turats, and modern AI software systems."}
-              </p>
             </div>
           </div>
         </Reveal>

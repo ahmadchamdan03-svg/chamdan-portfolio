@@ -14,11 +14,11 @@
     "search": "Cari (Cmd+K)"
   },
   "hero": {
-    "tagline1": "Santri Lirboyo",
+    "tagline1": "Seorang Santri",
     "tagline2": "Khadimul Ilmi",
-    "tagline3": "yang merajut khazanah turats dengan rekayasa",
+    "tagline3": "yang merajut khazanah dari turats hingga rekayasa",
     "tagline4": "AI-Driven Web",
-    "desc": "Dari kajian Fikih & Ushul Fikih hingga arsitektur aplikasi Next.js, Supabase, dan otomasi cerdas.",
+    "desc": "Dari kajian Fikih & Ushul Fikih hingga otomasi sistem.",
     "viewProjects": "Lihat Portofolio",
     "downloadCv": "Unduh CV",
     "exploreHint": "Sorot foto untuk efek senter pixel"
@@ -27,26 +27,26 @@
     "titlePrefix": "I am Chamdan,",
     "viewProjects": "Lihat Proyek",
     "contactMe": "Hubungi Saya",
-    "role": "Santri Lirboyo & AI-Driven Web Developer",
+    "role": "Seorang Santri & AI-Driven Web Developer",
     "location": "Kediri, Indonesia",
     "status": "Terbuka untuk Proyek",
     "focus": "Web & Otomasi AI"
   },
   "skills": {
     "badge": "Kompetensi Utama",
-    "title": "Keahlian & Bidang Ilmu",
-    "subtitle": "Harmonisasi antara metodologi pengkajian kitab salaf dan disiplin rekayasa teknologi modern."
+    "title": "Skills",
+    "subtitle": "Dari tradisi kajian kitab kuning klasik (Turats) hingga rekayasa perangkat lunak modern."
   },
   "projects": {
     "badge": "Portofolio Pilihan",
-    "title": "Karya & Sistem Digital",
+    "title": "Karya",
     "subtitle": "Implementasi nyata arsitektur full-stack, tata kelola akses pesantren, dan otomatisasi operasional.",
     "detail": "Studi Kasus Lengkap"
   },
   "gallery": {
     "badge": "Dokumentasi Visual 3D",
     "title": "Galeri Lengkung Interaktif",
-    "subtitle": "Geser atau gulir untuk memutar dokumentasi kegiatan, wisuda akbar, dan majelis ilmiah santri Lirboyo.",
+    "subtitle": "Geser atau gulir untuk memutar dokumentasi kegiatan, wisuda akbar, dan majelis ilmiah santri.",
     "dragHint": "Drag atau sentuh layar untuk memutar silinder galeri 3D"
   },
   "experience": {
@@ -66,7 +66,7 @@
   },
   "testimonials": {
     "badge": "Bukti Sosial & Rekomendasi",
-    "title": "Testimoni & Kepercayaan Mitra",
+    "title": "Kata Mereka",
     "subtitle": "Apresiasi dari dewan asatidz, pimpinan kepanitiaan, dan mitra kolaborasi teknologi."
   },
   "contact": {

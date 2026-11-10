@@ -6,7 +6,7 @@ import { Download, FileText, CheckCircle2, Sparkles, X, Gift, Shield } from "luc
 interface LeadMagnetModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function LeadMagnetModal({

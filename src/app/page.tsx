@@ -44,12 +44,12 @@ const CommandPalette = dynamic(() => import("@/components/ui/CommandPalette"), {
 });
 
 export default function Home() {
-  const [lang, setLang] = useState<"ID" | "EN">("ID");
+  const [lang, setLang] = useState<"ID" | "EN" | "AR">("ID");
   const [searchOpen, setSearchOpen] = useState(false);
   const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
 
   const toggleLang = () => {
-    setLang((prev) => (prev === "ID" ? "EN" : "ID"));
+    setLang((prev) => (prev === "ID" ? "EN" : prev === "EN" ? "AR" : "ID"));
   };
 
   return (
@@ -82,6 +82,7 @@ export default function Home() {
       {/* Fixed Navbar with Glassmorphism */}
       <Navbar
         currentLang={lang}
+        onSelectLang={setLang}
         onToggleLang={toggleLang}
         onOpenSearch={() => setSearchOpen(true)}
       />
@@ -91,7 +92,7 @@ export default function Home() {
         {/* 1. Hero Section with Canvas Pixel Reveal & Text Blend Mode */}
         <HeroSection
           name="CHAMDAN"
-          tagline="Santri Lirboyo, Khadimul Ilmi dan AI-Driven Web Developer"
+          tagline="Seorang Santri, Khadimul Ilmi yang merajut khazanah dari turats hingga rekayasa AI-Driven Web."
           lang={lang}
           onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         />

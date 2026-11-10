@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { Experience } from "@/types/database";
-import { Briefcase, Calendar, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Calendar, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface ExperienceSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 function TimelineCard({
@@ -96,14 +96,26 @@ export default function ExperienceSection({ lang = "ID" }: ExperienceSectionProp
         const { data, error: err } = await supabase
           .from("experience")
           .select("*")
-          .order("created_at", { ascending: true });
+          .order("sort_order", { ascending: true });
 
         if (err) {
           throw err;
         }
 
         if (data) {
-          setExperiences(data);
+          // Chronological sort ensuring newest to oldest
+          const sorted = [...data].sort((a, b) => {
+            if (a.sort_order !== undefined && b.sort_order !== undefined && a.sort_order !== null && b.sort_order !== null) {
+              return a.sort_order - b.sort_order;
+            }
+            const getYear = (p: string) => {
+              if (p.includes("Sekarang") || p.includes("Present")) return 2099;
+              const matches = p.match(/\d{4}/g);
+              return matches ? parseInt(matches[matches.length - 1], 10) : 0;
+            };
+            return getYear(b.period) - getYear(a.period);
+          });
+          setExperiences(sorted);
         }
       } catch (err: unknown) {
         const message = err instanceof Error ? err.message : "Gagal memuat data pengalaman dari Supabase";
@@ -130,10 +142,6 @@ export default function ExperienceSection({ lang = "ID" }: ExperienceSectionProp
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 border-b border-stone-800/80 pb-8">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-2">
-              <Briefcase className="w-4 h-4 text-[#fbbf24]" />
-              <span>{lang === "ID" ? "Jejak Rekam & Kepemimpinan" : "Career & Leadership Journey"}</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
               {lang === "ID" ? (
                 <>
@@ -146,12 +154,6 @@ export default function ExperienceSection({ lang = "ID" }: ExperienceSectionProp
               )}
             </h2>
           </div>
-
-          <p className="mt-4 sm:mt-0 text-sm text-stone-400 max-w-md">
-            {lang === "ID"
-              ? "Dedikasi khidmah santri dalam tata kelola pondok pesantren, kepanitiaan akbar, dan rekayasa otomatisasi operasional."
-              : "Santri leadership track in pesantrens, major event committees, and operational workflow automation."}
-          </p>
         </div>
 
         {/* State: Loading */}

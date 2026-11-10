@@ -147,7 +147,7 @@ export default function CVDocument({
         <View style={styles.header}>
           <Text style={styles.name}>AHMAD CHAMDAN YUWAFIN</Text>
           <Text style={styles.title}>
-            Santri Lirboyo, Khadimul Ilmi &amp; AI-Driven Full-Stack Web Developer
+            Seorang Santri, Khadimul Ilmi &amp; AI-Driven Full-Stack Web Developer
           </Text>
           <View style={styles.contactRow}>
             <Text>Kediri, Jawa Timur, Indonesia</Text>

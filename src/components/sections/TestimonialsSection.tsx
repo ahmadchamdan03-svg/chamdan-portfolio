@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import { Testimonial } from "@/types/database";
-import { Quote, Star, ShieldCheck } from "lucide-react";
+import { Quote, ShieldCheck } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Skeleton from "@/components/ui/Skeleton";
 
 interface TestimonialsSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 const TRUST_PARTNERS = [
@@ -103,20 +103,11 @@ export default function TestimonialsSection({
         {/* Section Header */}
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-500/30 text-emerald-800 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span>{lang === "ID" ? "Apresiasi & Testimoni" : "Endorsements & Trust"}</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight">
               {lang === "ID"
-                ? "Kepercayaan Para Guru & Mitra"
-                : "Trusted by Mentors & Collaborators"}
+                ? "Kata Mereka"
+                : "What They Say"}
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-stone-600 dark:text-stone-400">
-              {lang === "ID"
-                ? "Integritas kerja, adab keilmuan, dan keandalan sistem yang telah teruji di lingkungan majelis pesantren dan ekosistem digital."
-                : "Proven reliability, scholarly integrity, and high-impact engineering acknowledged across pesantren leadership and developers."}
-            </p>
           </div>
         </Reveal>
 

@@ -7,7 +7,7 @@ import { Education } from "@/types/database";
 import { GraduationCap, Calendar, BookOpen, Award, AlertCircle, Loader2, ShieldCheck, ArrowRight } from "lucide-react";
 
 interface EducationSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function EducationSection({ lang = "ID" }: EducationSectionProps) {

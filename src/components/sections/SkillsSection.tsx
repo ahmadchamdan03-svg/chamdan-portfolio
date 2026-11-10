@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Skill } from "@/types/database";
-import { Wrench, BookOpen, Cpu, ShieldCheck, Zap, Users, Loader2, Sparkles } from "lucide-react";
+import { Wrench, BookOpen, Cpu, ShieldCheck, Zap, Users, Loader2 } from "lucide-react";
 
 interface SkillsSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 // Icon mapper for aesthetic authentic representation
@@ -73,19 +73,15 @@ export default function SkillsSection({ lang = "ID" }: SkillsSectionProps) {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 border-b border-stone-200 pb-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-800 mb-2">
-              <Sparkles className="w-4 h-4 text-amber-600" />
-              <span>{lang === "ID" ? "Matriks Keahlian" : "Competence Matrix"}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight">
-              Skills &amp; <span className="text-[#064e3b] italic">Expertise</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-900 tracking-tight italic">
+              Skills
             </h2>
           </div>
 
           <p className="mt-3 sm:mt-0 text-sm text-stone-600 max-w-md">
             {lang === "ID"
-              ? "Perpaduan unik tradisi kajian kitab kuning klasik (Turats) dan spesialisasi rekayasa perangkat lunak modern."
-              : "A unique synthesis of classical Islamic scholarship (Turats) and modern software engineering specialization."}
+              ? "Dari tradisi kajian kitab kuning klasik (Turats) hingga rekayasa perangkat lunak modern."
+              : "From classical Islamic scholarship (Turats) to modern software engineering."}
           </p>
         </div>
 

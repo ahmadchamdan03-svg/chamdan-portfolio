@@ -5,8 +5,8 @@
 INSERT INTO public.profile (name, tagline, about)
 VALUES (
   'Ahmad Chamdan Yuwafin',
-  'Santri Lirboyo, Khadimul Ilmi dan AI-Driven Web Developer',
-  'Membawa tradisi keilmuan pesantren ke dalam rekayasa teknologi modern. Berpengalaman dalam kepemimpinan organisasi, kesekretariatan, pengajaran kitab salaf, dan perancangan aplikasi web full-stack terintegrasi AI.'
+  'Seorang Santri, Khadimul Ilmi yang merajut khazanah dari turats hingga rekayasa AI-Driven Web.',
+  'Membawa tradisi keilmuan pesantren ke dalam teknologi modern. Berpengalaman dalam kepemimpinan organisasi, kesekretariatan, pengajaran kitab salaf, dan perancangan aplikasi web full-stack terintegrasi AI.'
 ) ON CONFLICT DO NOTHING;
 
 -- 2. Projects (4 Case Studies)
@@ -183,61 +183,52 @@ VALUES
   ]
 ) ON CONFLICT DO NOTHING;
 
--- 5. Skills (6 Kategori Keahlian Lengkap)
+-- 5. Skills (7 Kategori Keahlian Lengkap)
 INSERT INTO public.skills (category, items)
 VALUES
 (
-  'Teknologi (Web & Software Engineering)',
+  'Keilmuan Turats & Pesantren',
   ARRAY[
-    'Next.js 14 / 15 / 16 (App Router)',
-    'React 19 & TypeScript',
-    'Tailwind CSS v4 & Glassmorphism',
-    'HTML Canvas & Dither Shaders',
-    'Framer Motion & Animation',
-    'RESTful API & Server Actions'
+    'Fikih & Ushul Fikih',
+    'Metode Usmani, Metode Amtsilati',
+    'Ilmu Arudl',
+    'Ilmu Waris',
+    'Kitab-kitab salaf'
   ]
 ),
 (
-  'Data (Database, Backend & Security)',
+  'Modern Web & Frontend Engineering',
+  ARRAY[
+    'Next.js',
+    'Tailwind CSS & Glassmorphism',
+    'Framer Motion & Animation',
+    'Fonnte'
+  ]
+),
+(
+  'Backend, Database & Security',
   ARRAY[
     'Supabase (PostgreSQL)',
     'Row Level Security (RLS)',
-    'Relational Schema Design & Indexing',
-    'Database Triggers & SQL Functions',
-    'Role-Based Access Control (RBAC)',
-    'Vercel Edge Network'
+    'Vercel Cloud Infrastructure'
   ]
 ),
 (
-  'Desain (UI/UX & Visual Experience)',
+  'AI Integration & Workflow Automation',
   ARRAY[
-    'Figma UI/UX Prototyping',
-    'Design Systems & Token Architecture',
-    'Micro-Interactions & Shaders',
-    '3D Curved Gallery (WebGL/Three.js)',
-    'Responsive Mobile-First Ergonomics',
-    'WCAG AA Accessibility Compliance'
+    'Google Sheets & Forms Automation',
+    'Google Apps Script (GAS)',
+    'Fonnte WhatsApp API Notifier'
   ]
 ),
 (
-  'Keagamaan (Turats & Sanad Keilmuan)',
+  'Kepemimpinan & Manajemen Pesantren',
   ARRAY[
-    'Fikih Madzhab Syafi''i & Ushul Fikih',
-    'Kaidah Fikih Kebangsaan & Kontemporer',
-    'Metodologi Bahtsul Masail',
-    'Alfiyah Ibnu Malik & Balaghah',
-    'Sanad Al-Qur''anul Karim (Metode Usmani)',
-    'Ilmu Falakiyah & Astronomi Hisab'
-  ]
-),
-(
-  'Kepemimpinan (Manajemen & Organisasi Pesantren)',
-  ARRAY[
-    'Rois Am (Pimpinan Tertinggi Ketertiban Pondok)',
-    'Ketua Umum BMKG Santri Lirboyo',
-    'Biro Kesekretariatan & Tata Persuratan',
-    'Manajemen Kepanitiaan Akbar & 1.490+ Tamu',
-    'Manajemen Alur Kerja Shift & Koordinasi Tim'
+    'Rois Am',
+    'Kesekretariatan',
+    'Ketua Bahtsul Masail',
+    'Manajemen Haflah',
+    'Musyawarah Ilmiah'
   ]
 ),
 (
@@ -245,8 +236,17 @@ VALUES
   ARRAY[
     'Perencanaan Tata Ruang & Sarana Prasarana',
     'Pengawasan Teknis Perawatan Bangunan Pesantren',
-    'Instalasi Jaringan Listrik & Tata Suara Majelis',
     'Logistik Fasilitas & Pengadaan Inventaris Akbar',
     'Estimasi Kebutuhan Material & Manajemen Pembangunan'
+  ]
+),
+(
+  'Desain (UI/UX & Visual Experience)',
+  ARRAY[
+    'Figma UI/UX',
+    'Design Systems',
+    'Micro-Interactions',
+    'Canva',
+    'CorelDRAW'
   ]
 ) ON CONFLICT DO NOTHING;

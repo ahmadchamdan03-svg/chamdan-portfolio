@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Profile } from "@/types/database";
-import { ArrowUpRight, ArrowDownRight, Compass, Sparkles, Loader2 } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, Loader2 } from "lucide-react";
 
 interface AboutSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
@@ -54,12 +54,6 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
       <div className="absolute bottom-1/4 right-1/10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Pill Kicker */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/20 text-[#fbbf24] text-xs font-mono tracking-wider uppercase mb-8">
-          <Compass className="w-3.5 h-3.5 text-emerald-400" />
-          <span>{lang === "ID" ? "Tentang Saya" : "About Me"}</span>
-        </div>
-
         {/* State: Loading Skeleton */}
         {loading && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
@@ -90,19 +84,19 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
                 I am Chamdan,{" "}
                 <span className="italic text-emerald-400 font-serif">
                   {profile?.tagline ||
-                    "Santri Lirboyo, Khadimul Ilmi dan AI-Driven Web Developer."}
+                    "Seorang Santri, Khadimul Ilmi yang merajut khazanah dari turats hingga rekayasa AI-Driven Web."}
                 </span>
               </h2>
 
               <p className="text-base sm:text-lg text-stone-300 font-normal leading-relaxed mb-6">
                 {profile?.about ||
-                  "Membawa tradisi keilmuan pesantren ke dalam rekayasa teknologi modern. Berpengalaman dalam kepemimpinan organisasi, kesekretariatan, pengajaran kitab salaf, dan perancangan aplikasi web full-stack terintegrasi AI."}
+                  "Membawa tradisi keilmuan pesantren ke dalam teknologi modern. Berpengalaman dalam kepemimpinan organisasi, kesekretariatan, pengajaran kitab salaf, dan perancangan aplikasi web full-stack terintegrasi AI."}
               </p>
 
               <p className="text-sm text-stone-400 leading-relaxed mb-10 max-w-xl">
                 {lang === "ID"
-                  ? "Menghubungkan ketelitian telaah teks fikih dan kaidah ushuliyah dengan disiplin arsitektur perangkat lunak modern. Menghadirkan solusi digital yang tidak hanya mutakhir secara teknis, namun berakar pada integritas dan adab."
-                  : "Bridging the meticulous analytical discipline of classical jurisprudence with modern software engineering. Delivering digital solutions that are technically cutting-edge, yet firmly grounded in ethics and integrity."}
+                  ? "Menghadirkan solusi digital yang tidak hanya mutakhir secara teknis, namun berakar pada integritas, adab, dan standar pesantren."
+                  : "Delivering digital solutions that are technically cutting-edge, yet firmly grounded in ethics, integrity, and pesantren tradition."}
               </p>
 
               {/* Action Buttons */}
@@ -136,7 +130,6 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
                       Profil Ringkas
                     </span>
                   </div>
-                  <Sparkles className="w-4 h-4 text-[#fbbf24]" />
                 </div>
 
                 {/* 4 Info Rows */}
@@ -147,7 +140,7 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
                       ROLE
                     </dt>
                     <dd className="font-medium text-stone-100 text-right sm:max-w-[65%]">
-                      Santri Lirboyo &amp; AI-Driven Web Developer
+                      Seorang Santri &amp; AI-Driven Web Developer
                     </dd>
                   </div>
 

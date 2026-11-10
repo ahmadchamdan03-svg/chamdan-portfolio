@@ -5,7 +5,7 @@ import { Mail, ArrowUp, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle 
 import Reveal from "@/components/ui/Reveal";
 
 interface ContactSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 export default function ContactSection({ lang = "ID" }: ContactSectionProps) {

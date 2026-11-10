@@ -20,6 +20,7 @@ export interface Experience {
   organization: string;
   period: string;
   roles: string[];
+  sort_order?: number | null;
   created_at: string;
 }
 

@@ -14,7 +14,7 @@ import {
 import Reveal from "@/components/ui/Reveal";
 
 interface JadwalKajianSectionProps {
-  lang?: "ID" | "EN";
+  lang?: "ID" | "EN" | "AR";
 }
 
 interface KajianItem {

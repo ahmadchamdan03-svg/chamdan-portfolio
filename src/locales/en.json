@@ -14,11 +14,11 @@
     "search": "Search (Cmd+K)"
   },
   "hero": {
-    "tagline1": "Santri Lirboyo",
+    "tagline1": "A Santri Scholar",
     "tagline2": "Khadimul Ilmi",
-    "tagline3": "bridging classical turats with modern engineering:",
+    "tagline3": "bridging classical turats to modern engineering:",
     "tagline4": "AI-Driven Web",
-    "desc": "From classical jurisprudence & logic to full-stack Next.js, Supabase architecture, and smart automation.",
+    "desc": "From Islamic jurisprudence (Fikih) to system automation.",
     "viewProjects": "View Projects",
     "downloadCv": "Download CV",
     "exploreHint": "Hover over photo for flashlight pixel effect"
@@ -27,19 +27,19 @@
     "titlePrefix": "I am Chamdan,",
     "viewProjects": "View Projects",
     "contactMe": "Contact Me",
-    "role": "Santri Lirboyo & AI-Driven Web Developer",
+    "role": "A Santri Scholar & AI-Driven Web Developer",
     "location": "Kediri, Indonesia",
     "status": "Open for Projects",
     "focus": "Web & AI Automation"
   },
   "skills": {
     "badge": "Core Competencies",
-    "title": "Skills & Expertise",
-    "subtitle": "Harmonizing classical Islamic jurisprudence methodologies with modern software engineering."
+    "title": "Skills",
+    "subtitle": "From classical Islamic scholarship (Turats) to modern software engineering."
   },
   "projects": {
     "badge": "Featured Case Studies",
-    "title": "Selected Works & Systems",
+    "title": "Karya",
     "subtitle": "Real-world implementations of full-stack web architecture, event gate governance, and operational automation.",
     "detail": "Full Case Study"
   },
@@ -66,7 +66,7 @@
   },
   "testimonials": {
     "badge": "Social Proof & Endorsements",
-    "title": "Testimonials & Partner Trust",
+    "title": "What They Say",
     "subtitle": "Appreciations from senior scholars, committee leads, and engineering collaborators."
   },
   "contact": {
