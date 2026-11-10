@@ -16,6 +16,7 @@ import Footer from "@/components/layout/Footer";
 import CursorTrail from "@/components/ui/CursorTrail";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import IntroLoader from "@/components/ui/IntroLoader";
+import EasterEgg from "@/components/ui/EasterEgg";
 
 // Lazy load below-the-fold and heavy interactive components
 const GallerySection = dynamic(
@@ -63,6 +64,9 @@ export default function Home() {
 
       {/* Universal Search Command Palette (Cmd + K, Lazy Loaded) */}
       <CommandPalette isOpen={searchOpen} setIsOpen={setSearchOpen} />
+
+      {/* Secret Developer Easter Egg (Konami Code) */}
+      <EasterEgg />
 
       {/* Fixed Navbar with Glassmorphism */}
       <Navbar

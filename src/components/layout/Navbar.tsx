@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X, Globe, Search, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import AmbientAudio from "@/components/ui/AmbientAudio";
 
 interface NavbarProps {
   currentLang?: "ID" | "EN";
@@ -126,19 +127,22 @@ export default function Navbar({
 
           {/* Theme Toggle Button */}
           {mounted && (
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="flex items-center justify-center w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-emerald-600 transition-colors shadow-md"
-              aria-label="Ganti Tema Gelap / Terang"
-              title="Ganti Tema Gelap / Terang"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-3.5 h-3.5 text-amber-400" />
-              ) : (
-                <Moon className="w-3.5 h-3.5 text-stone-700" />
-              )}
-            </button>
+            <>
+              <AmbientAudio />
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-emerald-600 transition-colors shadow-md"
+                aria-label="Ganti Tema Gelap / Terang"
+                title="Ganti Tema Gelap / Terang"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-3.5 h-3.5 text-amber-400" />
+                ) : (
+                  <Moon className="w-3.5 h-3.5 text-stone-700" />
+                )}
+              </button>
+            </>
           )}
 
           {/* Lang Toggle */}
