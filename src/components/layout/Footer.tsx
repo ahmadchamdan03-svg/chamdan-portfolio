@@ -253,9 +253,20 @@ export default function Footer({ lang = "ID" }: FooterProps) {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright */}
+        {/* Bottom Bar: Copyright, Legal Links & Engine */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
-          <p>© 2026 Ahmad Chamdan Yuwafin. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <p>© 2026 Ahmad Chamdan Yuwafin. All rights reserved.</p>
+            <div className="flex items-center gap-3 text-stone-400">
+              <a href="/privacy" className="hover:text-emerald-400 transition-colors">
+                {lang === "ID" ? "Kebijakan Privasi" : "Privacy Policy"}
+              </a>
+              <span>&bull;</span>
+              <a href="/terms" className="hover:text-emerald-400 transition-colors">
+                {lang === "ID" ? "Syarat & Ketentuan" : "Terms of Service"}
+              </a>
+            </div>
+          </div>
           <p className="font-mono text-stone-500">
             Next.js 16 &bull; Supabase &bull; Tailwind CSS &bull; Vercel
           </p>
