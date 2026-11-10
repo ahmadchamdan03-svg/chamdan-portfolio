@@ -32,8 +32,9 @@ export default function Navbar({
     { id: "about", labelID: "Profil", labelEN: "About" },
     { id: "skills", labelID: "Keahlian", labelEN: "Skills" },
     { id: "projects", labelID: "Proyek", labelEN: "Projects" },
-    { id: "experience", labelID: "Pengalaman", labelEN: "Experience" },
-    { id: "education", labelID: "Pendidikan", labelEN: "Education" },
+    { id: "services", labelID: "Layanan", labelEN: "Services" },
+    { id: "schedule", labelID: "Jadwal", labelEN: "Schedule" },
+    { id: "education", labelID: "Sanad", labelEN: "Sanad" },
   ];
 
   useEffect(() => {

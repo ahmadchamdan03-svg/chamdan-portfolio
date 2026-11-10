@@ -8,6 +8,8 @@ import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import WritingsSection from "@/components/sections/WritingsSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import JadwalKajianSection from "@/components/sections/JadwalKajianSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
@@ -17,6 +19,7 @@ import CursorTrail from "@/components/ui/CursorTrail";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import IntroLoader from "@/components/ui/IntroLoader";
 import EasterEgg from "@/components/ui/EasterEgg";
+import LeadMagnetModal from "@/components/ui/LeadMagnetModal";
 
 // Lazy load below-the-fold and heavy interactive components
 const GallerySection = dynamic(
@@ -43,6 +46,7 @@ const CommandPalette = dynamic(() => import("@/components/ui/CommandPalette"), {
 export default function Home() {
   const [lang, setLang] = useState<"ID" | "EN">("ID");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
 
   const toggleLang = () => {
     setLang((prev) => (prev === "ID" ? "EN" : "ID"));
@@ -68,6 +72,13 @@ export default function Home() {
       {/* Secret Developer Easter Egg (Konami Code) */}
       <EasterEgg />
 
+      {/* Lead Magnet E-Book Download Modal */}
+      <LeadMagnetModal
+        isOpen={leadMagnetOpen}
+        onClose={() => setLeadMagnetOpen(false)}
+        lang={lang}
+      />
+
       {/* Fixed Navbar with Glassmorphism */}
       <Navbar
         currentLang={lang}
@@ -82,6 +93,7 @@ export default function Home() {
           name="CHAMDAN"
           tagline="Santri Lirboyo, Khadimul Ilmi dan AI-Driven Web Developer"
           lang={lang}
+          onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         />
 
         {/* 2. About Section (Dark Background, Narrative & Info Card) */}
@@ -93,22 +105,28 @@ export default function Home() {
         {/* 4. Projects Section (Featured Case Studies from Supabase) */}
         <ProjectsSection lang={lang} />
 
-        {/* 5. 3D Curved Gallery Section (Interactive Photo Cylinder, Lazy Loaded) */}
+        {/* 5. Services & Pricing Section (Layanan, Rate Card & Booking Konsultasi) */}
+        <ServicesSection lang={lang} />
+
+        {/* 6. 3D Curved Gallery Section (Interactive Photo Cylinder, Lazy Loaded) */}
         <GallerySection lang={lang} />
 
-        {/* 6. Writings Section (Risalah Digital & Academic Articles) */}
+        {/* 7. Writings Section (Risalah Digital & Academic Articles) */}
         <WritingsSection lang={lang} />
 
-        {/* 7. Testimonials & Trust Signals Marquee */}
+        {/* 8. Testimonials & Trust Signals Marquee */}
         <TestimonialsSection lang={lang} />
 
-        {/* 8. Experience Section (Dark Background, Glowing Timeline from Supabase) */}
+        {/* 9. Experience Section (Dark Background, Glowing Timeline from Supabase) */}
         <ExperienceSection lang={lang} />
 
-        {/* 9. Education Section (Light Background, Sanad & Academic Grid from Supabase) */}
+        {/* 10. Education Section (Light Background, Sanad & Academic Grid from Supabase) */}
         <EducationSection lang={lang} />
 
-        {/* 10. Contact Section (Dark Glassmorphism, Interactive Form & Socials) */}
+        {/* 11. Jadwal Kajian & Halaqah Santri (Ma'had Aly, Tahfidz & Tech Lab) */}
+        <JadwalKajianSection lang={lang} />
+
+        {/* 12. Contact Section (Dark Glassmorphism, Interactive Form & Socials) */}
         <ContactSection lang={lang} />
       </main>
 

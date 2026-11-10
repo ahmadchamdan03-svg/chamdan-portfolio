@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Mail } from "lucide-react";
 
@@ -166,9 +167,24 @@ export default function Footer({ lang = "ID" }: FooterProps) {
                 </a>
               </li>
               <li>
+                <a href="#services" className="hover:text-emerald-400 transition-colors">
+                  {lang === "ID" ? "Layanan & Harga (Services)" : "Services & Pricing"}
+                </a>
+              </li>
+              <li>
+                <a href="#schedule" className="hover:text-emerald-400 transition-colors">
+                  {lang === "ID" ? "Jadwal Kajian (Schedule)" : "Teaching Schedule"}
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="hover:text-emerald-400 transition-colors">
                   {lang === "ID" ? "Kontak & Diskusi" : "Contact"}
                 </a>
+              </li>
+              <li>
+                <Link href="/verify-sanad" className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+                  {lang === "ID" ? "Verifikasi Sanad (SHA-256) 🛡️" : "Verify Sanad (SHA-256) 🛡️"}
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { Education } from "@/types/database";
-import { GraduationCap, Calendar, BookOpen, Award, AlertCircle, Loader2 } from "lucide-react";
+import { GraduationCap, Calendar, BookOpen, Award, AlertCircle, Loader2, ShieldCheck, ArrowRight } from "lucide-react";
 
 interface EducationSectionProps {
   lang?: "ID" | "EN";
@@ -66,11 +67,21 @@ export default function EducationSection({ lang = "ID" }: EducationSectionProps)
             </h2>
           </div>
 
-          <p className="mt-3 sm:mt-0 text-sm text-stone-500 max-w-md">
-            {lang === "ID"
-              ? "Fondasi keilmuan Islam klasik (Turats) yang muttashil, dipadukan dengan ijazah sanad resmi Al-Qur'an dan kitab salaf."
-              : "Continuous classical Islamic scholarship (Turats), coupled with verified sanad credentials in Quranic recitation and jurisprudence."}
-          </p>
+          <div className="mt-4 sm:mt-0 flex flex-col sm:items-end gap-3">
+            <p className="text-sm text-stone-500 max-w-md">
+              {lang === "ID"
+                ? "Fondasi keilmuan Islam klasik (Turats) yang muttashil, dipadukan dengan ijazah sanad resmi Al-Qur'an dan kitab salaf."
+                : "Continuous classical Islamic scholarship (Turats), coupled with verified sanad credentials in Quranic recitation and jurisprudence."}
+            </p>
+            <Link
+              href="/verify-sanad"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/30 text-emerald-300 text-xs font-mono transition-all group"
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>{lang === "ID" ? "Verifikasi Otentisitas Sanad (SHA-256)" : "Verify Sanad Authenticity (SHA-256)"}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
 
         {/* State: Loading */}

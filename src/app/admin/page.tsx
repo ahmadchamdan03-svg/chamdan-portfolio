@@ -153,28 +153,60 @@ export default function AdminOverviewPage() {
           </div>
         ) : (
           <div className="divide-y divide-stone-800/80">
-            {recentMessages.map((msg) => (
-              <div key={msg.id} className="py-4 first:pt-0 last:pb-0 space-y-1">
-                <div className="flex items-center justify-between">
-                  <div className="font-semibold text-sm text-stone-200">
-                    {msg.name}{" "}
-                    <span className="text-xs text-stone-400 font-normal">
-                      (&lt;{msg.email}&gt;)
+            {recentMessages.map((msg) => {
+              // Parse sentiment if present
+              let sentimentLabel = "SILATURAHMI";
+              let badgeColor = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+              let cleanMessage = msg.message;
+
+              if (msg.message.startsWith("[HOT_LEAD]")) {
+                sentimentLabel = "PROSPEK (HOT LEAD)";
+                badgeColor = "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+                cleanMessage = msg.message.replace("[HOT_LEAD]", "").trim();
+              } else if (msg.message.startsWith("[INQUIRY]")) {
+                sentimentLabel = "PERTANYAAN (INQUIRY)";
+                badgeColor = "bg-sky-500/10 text-sky-400 border-sky-500/30";
+                cleanMessage = msg.message.replace("[INQUIRY]", "").trim();
+              } else if (msg.message.startsWith("[SPAM]")) {
+                sentimentLabel = "TERINDIKASI SPAM";
+                badgeColor = "bg-rose-500/10 text-rose-400 border-rose-500/30";
+                cleanMessage = msg.message.replace("[SPAM]", "").trim();
+              } else if (msg.message.startsWith("[GENERAL]")) {
+                sentimentLabel = "SILATURAHMI";
+                badgeColor = "bg-stone-500/10 text-stone-300 border-stone-500/20";
+                cleanMessage = msg.message.replace("[GENERAL]", "").trim();
+              }
+
+              return (
+                <div key={msg.id} className="py-4 first:pt-0 last:pb-0 space-y-1.5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-sm text-stone-200">
+                        {msg.name}
+                      </span>
+                      <span className="text-xs text-stone-400 font-normal">
+                        (&lt;{msg.email}&gt;)
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded border ${badgeColor}`}
+                      >
+                        {sentimentLabel}
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-stone-500 font-mono">
+                      {new Date(msg.created_at).toLocaleDateString("id-ID", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
                     </span>
                   </div>
-                  <span className="text-[11px] text-stone-500 font-mono">
-                    {new Date(msg.created_at).toLocaleDateString("id-ID", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </span>
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    {cleanMessage}
+                  </p>
                 </div>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  {msg.message}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

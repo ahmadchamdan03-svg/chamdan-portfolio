@@ -7,11 +7,13 @@ interface HeroSectionProps {
   name?: string;
   tagline?: string;
   lang?: "ID" | "EN";
+  onOpenLeadMagnet?: () => void;
 }
 
 export default function HeroSection({
   name = "CHAMDAN",
   lang = "ID",
+  onOpenLeadMagnet,
 }: HeroSectionProps) {
   return (
     <section
@@ -58,6 +60,16 @@ export default function HeroSection({
               <Download className="w-3.5 h-3.5" />
               <span>{lang === "ID" ? "Unduh CV Resmi" : "Download CV (PDF)"}</span>
             </a>
+
+            {onOpenLeadMagnet && (
+              <button
+                type="button"
+                onClick={onOpenLeadMagnet}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 text-xs font-semibold border border-amber-500/30 transition-all cursor-pointer"
+              >
+                <span>🎁 {lang === "ID" ? "E-Book Otomasi" : "Free E-Book"}</span>
+              </button>
+            )}
 
             <a
               href="#about"

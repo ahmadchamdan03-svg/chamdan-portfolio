@@ -1,16 +1,18 @@
 {
-  "name": "Ahmad Chamdan Yuwafin - Portfolio",
+  "name": "Ahmad Chamdan Yuwafin - Official Portfolio & Digital Systems",
   "short_name": "Chamdan",
-  "description": "Portofolio Santri Lirboyo, Khadimul Ilmi & AI-Driven Full-Stack Web Developer",
+  "description": "Portofolio resmi Ahmad Chamdan Yuwafin - Santri Lirboyo, Khadimul Ilmi, dan AI-Driven Full-Stack Web Developer.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#064e3b",
-  "theme_color": "#064e3b",
+  "background_color": "#0a100d",
+  "theme_color": "#0a100d",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
-  ]
+  ],
+  "categories": ["education", "portfolio", "productivity"]
 }
