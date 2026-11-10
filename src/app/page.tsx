@@ -17,6 +17,7 @@ import CursorTrail from "@/components/ui/CursorTrail";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import AIChatWidget from "@/components/ui/AIChatWidget";
 import CommandPalette from "@/components/ui/CommandPalette";
+import IntroLoader from "@/components/ui/IntroLoader";
 
 export default function Home() {
   const [lang, setLang] = useState<"ID" | "EN">("ID");
@@ -27,7 +28,10 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#fafaf9] text-[#1c1917]">
+    <div className="relative min-h-screen flex flex-col bg-[#fafaf9] dark:bg-stone-950 text-[#1c1917] dark:text-stone-100 transition-colors">
+      {/* Intro Animated Opening Badge (Runs once per session) */}
+      <IntroLoader />
+
       {/* Subtle Desktop Cursor Glow Trail */}
       <CursorTrail />
 

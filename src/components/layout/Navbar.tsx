@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X, Globe, Search } from "lucide-react";
+import { ArrowUpRight, Menu, X, Globe, Search, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface NavbarProps {
   currentLang?: "ID" | "EN";
@@ -18,6 +19,12 @@ export default function Navbar({
   const [activeSection, setActiveSection] = useState<string>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { id: "home", labelID: "Beranda", labelEN: "Home" },
@@ -53,7 +60,6 @@ export default function Navbar({
     if (onOpenSearch) {
       onOpenSearch();
     } else {
-      // Dispatch keydown event for Cmd+K
       const event = new KeyboardEvent("keydown", {
         key: "k",
         metaKey: true,
@@ -61,6 +67,10 @@ export default function Navbar({
       });
       document.dispatchEvent(event);
     }
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -98,30 +108,47 @@ export default function Navbar({
           })}
         </nav>
 
-        {/* Right: Search, Language toggle & Contact CTA */}
+        {/* Right: Search, Theme, Language toggle & Contact CTA */}
         <div className="flex items-center gap-2">
           {/* Universal Search trigger */}
           <button
             type="button"
             onClick={triggerSearch}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-stone-300 text-xs font-semibold text-stone-700 hover:border-emerald-600 hover:text-emerald-700 transition-colors shadow-md"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border border-stone-300 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-emerald-600 hover:text-emerald-700 transition-colors shadow-md"
             aria-label="Cari Cepat (Cmd + K)"
             title="Cari Cepat (Cmd + K)"
           >
-            <Search className="w-3.5 h-3.5 text-emerald-700" />
-            <span className="hidden sm:inline-block font-mono text-[10px] text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200">
+            <Search className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
+            <span className="hidden sm:inline-block font-mono text-[10px] text-stone-500 bg-stone-100 dark:bg-stone-800 px-1.5 py-0.5 rounded border border-stone-200 dark:border-stone-700">
               Cmd K
             </span>
           </button>
+
+          {/* Theme Toggle Button */}
+          {mounted && (
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-8 h-8 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-emerald-600 transition-colors shadow-md"
+              aria-label="Ganti Tema Gelap / Terang"
+              title="Ganti Tema Gelap / Terang"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-3.5 h-3.5 text-amber-400" />
+              ) : (
+                <Moon className="w-3.5 h-3.5 text-stone-700" />
+              )}
+            </button>
+          )}
 
           {/* Lang Toggle */}
           <button
             type="button"
             onClick={onToggleLang}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-stone-300 text-xs font-semibold text-stone-800 hover:border-emerald-600 transition-colors shadow-md"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border border-stone-300 dark:border-stone-700 text-xs font-semibold text-stone-800 dark:text-stone-200 hover:border-emerald-600 transition-colors shadow-md"
             aria-label="Ganti Bahasa"
           >
-            <Globe className="w-3.5 h-3.5 text-emerald-700" />
+            <Globe className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>{currentLang}</span>
           </button>
 

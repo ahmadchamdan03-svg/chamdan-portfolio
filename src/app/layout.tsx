@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display, Amiri } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${amiri.variable} scroll-smooth`}
     >
       <head>
@@ -98,8 +100,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
         />
       </head>
-      <body className="min-h-screen bg-[#fafaf9] text-[#1c1917] font-sans antialiased selection:bg-[#064e3b] selection:text-[#fef08a]">
-        <SmoothScroll>{children}</SmoothScroll>
+      <body className="min-h-screen bg-[#fafaf9] dark:bg-stone-950 text-[#1c1917] dark:text-stone-100 font-sans antialiased selection:bg-[#064e3b] selection:text-[#fef08a] transition-colors">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <SmoothScroll>{children}</SmoothScroll>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
