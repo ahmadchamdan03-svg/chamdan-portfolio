@@ -29,15 +29,30 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
     setErrorMessage(null);
 
     try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      // Kirim ke email (Resend & Supabase) serta WhatsApp (Fonnte API) secara paralel
+      const results = await Promise.allSettled([
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }),
+        fetch("/api/send-wa", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }),
+      ]);
 
-      const json = await res.json();
-      if (!res.ok) {
-        throw new Error(json.error || "Gagal mengirim pesan.");
+      const emailResult = results[0];
+      if (emailResult.status === "rejected") {
+        throw new Error("Gagal mengirimkan pesan ke server.");
+      }
+
+      const emailRes = emailResult.value;
+      const emailJson = await emailRes.json().catch(() => null);
+
+      if (!emailRes.ok) {
+        throw new Error(emailJson?.error || "Gagal mengirim pesan.");
       }
 
       setSuccess(true);
