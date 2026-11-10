@@ -89,5 +89,30 @@
     "newsletterPlaceholder": "Masukkan email Anda",
     "subscribeBtn": "Langganan",
     "subscribed": "Terima kasih telah berlangganan!"
+  },
+  "common": {
+    "backToHome": "Kembali ke Beranda",
+    "backToProjects": "Kembali ke Daftar Proyek",
+    "backToWritings": "Kembali ke Risalah",
+    "share": "Bagikan",
+    "shareCopied": "Tautan disalin ke papan klip!",
+    "loading": "Memuat data...",
+    "error": "Terjadi kendala saat memuat data."
+  },
+  "projectDetail": {
+    "badge": "Studi Kasus Arsitektur",
+    "background": "Latar Belakang & Tantangan",
+    "architecture": "Arsitektur & Solusi Teknis",
+    "features": "Fitur & Kapabilitas Kunci",
+    "impact": "Dampak & Hasil Nyata",
+    "techStack": "Tumpukan Teknologi",
+    "visitProject": "Kunjungi Aplikasi Langsung",
+    "viewCode": "Kode Repositori GitHub"
+  },
+  "writingDetail": {
+    "badge": "Risalah Digital Turats & AI",
+    "publishedOn": "Diterbitkan pada",
+    "readTime": "menit baca",
+    "shareTreatise": "Bagikan Risalah Ini"
   }
 }

@@ -89,5 +89,30 @@
     "newsletterPlaceholder": "Enter your email",
     "subscribeBtn": "Subscribe",
     "subscribed": "Thank you for subscribing!"
+  },
+  "common": {
+    "backToHome": "Back to Home",
+    "backToProjects": "Back to Projects",
+    "backToWritings": "Back to Treatises",
+    "share": "Share",
+    "shareCopied": "Link copied to clipboard!",
+    "loading": "Loading data...",
+    "error": "Error loading requested data."
+  },
+  "projectDetail": {
+    "badge": "Architecture Case Study",
+    "background": "Background & Engineering Challenge",
+    "architecture": "Architecture & Technical Solution",
+    "features": "Key Capabilities & Features",
+    "impact": "Real-world Impact & Results",
+    "techStack": "Technology Stack",
+    "visitProject": "Visit Live Application",
+    "viewCode": "View GitHub Repository"
+  },
+  "writingDetail": {
+    "badge": "Digital Treatise: Turats & AI",
+    "publishedOn": "Published on",
+    "readTime": "min read",
+    "shareTreatise": "Share This Treatise"
   }
 }
