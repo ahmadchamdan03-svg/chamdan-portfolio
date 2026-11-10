@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "gallery": "Gallery",
+    "writings": "Writings",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "contactBtn": "Contact Me",
+    "search": "Search (Cmd+K)"
+  },
+  "hero": {
+    "tagline1": "Santri Lirboyo",
+    "tagline2": "Khadimul Ilmi",
+    "tagline3": "bridging classical turats with modern engineering:",
+    "tagline4": "AI-Driven Web",
+    "desc": "From classical jurisprudence & logic to full-stack Next.js, Supabase architecture, and smart automation.",
+    "viewProjects": "View Projects",
+    "downloadCv": "Download CV",
+    "exploreHint": "Hover over photo for flashlight pixel effect"
+  },
+  "about": {
+    "titlePrefix": "I am Chamdan,",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me",
+    "role": "Santri Lirboyo & AI-Driven Web Developer",
+    "location": "Kediri, Indonesia",
+    "status": "Open for Projects",
+    "focus": "Web & AI Automation"
+  },
+  "skills": {
+    "badge": "Core Competencies",
+    "title": "Skills & Expertise",
+    "subtitle": "Harmonizing classical Islamic jurisprudence methodologies with modern software engineering."
+  },
+  "projects": {
+    "badge": "Featured Case Studies",
+    "title": "Selected Works & Systems",
+    "subtitle": "Real-world implementations of full-stack web architecture, event gate governance, and operational automation.",
+    "detail": "Full Case Study"
+  },
+  "gallery": {
+    "badge": "3D Visual Documentation",
+    "title": "Interactive Curved Gallery",
+    "subtitle": "Drag or scroll to rotate documented activities, grand graduation ceremonies, and scholarly majlis.",
+    "dragHint": "Drag or touch to rotate the 3D cylinder gallery"
+  },
+  "experience": {
+    "badge": "Career & Leadership Journey",
+    "title": "Experience & Dedication",
+    "subtitle": "Santri leadership track in pesantrens, major event committees, and operational workflow automation."
+  },
+  "education": {
+    "badge": "Sanad & Academic Credentials",
+    "title": "Education & Scientific Sanad",
+    "subtitle": "Continuous classical Islamic scholarship (Turats), coupled with verified sanad credentials in Quranic recitation and jurisprudence."
+  },
+  "writings": {
+    "badge": "Writings & Treatises",
+    "title": "Essays & Scientific Papers",
+    "subtitle": "Documentation on contemporary jurisprudence dialectics, bahtsul masail methodologies, and tech ethics."
+  },
+  "testimonials": {
+    "badge": "Social Proof & Endorsements",
+    "title": "Testimonials & Partner Trust",
+    "subtitle": "Appreciations from senior scholars, committee leads, and engineering collaborators."
+  },
+  "contact": {
+    "badge": "Open for projects",
+    "title1": "Have a project in mind?",
+    "title2": "Let's talk.",
+    "desc": "Available for pesantren institutional digitalization, full-stack web applications, AI automation, or custom tech inquiries.",
+    "backToTop": "Back to top",
+    "formTitle": "Send a Direct Message",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Tell me about your project or inquiry...",
+    "sendBtn": "Send Message",
+    "sending": "Sending...",
+    "success": "Your message has been received! I will reply to you shortly."
+  },
+  "footer": {
+    "rights": "© 2026 Ahmad Chamdan Yuwafin. All rights reserved.",
+    "newsletterTitle": "Subscribe to Santri & Tech Newsletter",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribeBtn": "Subscribe",
+    "subscribed": "Thank you for subscribing!"
+  }
+}

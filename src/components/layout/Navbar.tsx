@@ -2,14 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X, Globe } from "lucide-react";
+import { ArrowUpRight, Menu, X, Globe, Search } from "lucide-react";
 
 interface NavbarProps {
   currentLang?: "ID" | "EN";
   onToggleLang?: () => void;
+  onOpenSearch?: () => void;
 }
 
-export default function Navbar({ currentLang = "ID", onToggleLang }: NavbarProps) {
+export default function Navbar({
+  currentLang = "ID",
+  onToggleLang,
+  onOpenSearch,
+}: NavbarProps) {
   const [activeSection, setActiveSection] = useState<string>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,6 +48,20 @@ export default function Navbar({ currentLang = "ID", onToggleLang }: NavbarProps
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const triggerSearch = () => {
+    if (onOpenSearch) {
+      onOpenSearch();
+    } else {
+      // Dispatch keydown event for Cmd+K
+      const event = new KeyboardEvent("keydown", {
+        key: "k",
+        metaKey: true,
+        bubbles: true,
+      });
+      document.dispatchEvent(event);
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 pt-4 sm:pt-6 pointer-events-none transition-all duration-300">
@@ -79,8 +98,22 @@ export default function Navbar({ currentLang = "ID", onToggleLang }: NavbarProps
           })}
         </nav>
 
-        {/* Right: Language toggle & Contact CTA */}
+        {/* Right: Search, Language toggle & Contact CTA */}
         <div className="flex items-center gap-2">
+          {/* Universal Search trigger */}
+          <button
+            type="button"
+            onClick={triggerSearch}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-stone-300 text-xs font-semibold text-stone-700 hover:border-emerald-600 hover:text-emerald-700 transition-colors shadow-md"
+            aria-label="Cari Cepat (Cmd + K)"
+            title="Cari Cepat (Cmd + K)"
+          >
+            <Search className="w-3.5 h-3.5 text-emerald-700" />
+            <span className="hidden sm:inline-block font-mono text-[10px] text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200">
+              Cmd K
+            </span>
+          </button>
+
           {/* Lang Toggle */}
           <button
             type="button"

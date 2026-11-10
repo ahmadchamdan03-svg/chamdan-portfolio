@@ -6,13 +6,21 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import GallerySection from "@/components/sections/GallerySection";
+import WritingsSection from "@/components/sections/WritingsSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
+import CursorTrail from "@/components/ui/CursorTrail";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import AIChatWidget from "@/components/ui/AIChatWidget";
+import CommandPalette from "@/components/ui/CommandPalette";
 
 export default function Home() {
   const [lang, setLang] = useState<"ID" | "EN">("ID");
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const toggleLang = () => {
     setLang((prev) => (prev === "ID" ? "EN" : "ID"));
@@ -20,8 +28,24 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#fafaf9] text-[#1c1917]">
+      {/* Subtle Desktop Cursor Glow Trail */}
+      <CursorTrail />
+
+      {/* Floating Direct WhatsApp Action Button (Bottom Right) */}
+      <WhatsAppButton />
+
+      {/* Floating Khadim AI Chat Assistant (Bottom Left) */}
+      <AIChatWidget />
+
+      {/* Universal Search Command Palette (Cmd + K) */}
+      <CommandPalette isOpen={searchOpen} setIsOpen={setSearchOpen} />
+
       {/* Fixed Navbar with Glassmorphism */}
-      <Navbar currentLang={lang} onToggleLang={toggleLang} />
+      <Navbar
+        currentLang={lang}
+        onToggleLang={toggleLang}
+        onOpenSearch={() => setSearchOpen(true)}
+      />
 
       {/* Main Content Sections */}
       <main className="flex-grow">
@@ -41,17 +65,26 @@ export default function Home() {
         {/* 4. Projects Section (Featured Case Studies from Supabase) */}
         <ProjectsSection lang={lang} />
 
-        {/* 5. Experience Section (Dark Background, Glowing Timeline from Supabase) */}
+        {/* 5. 3D Curved Gallery Section (Interactive Photo Cylinder) */}
+        <GallerySection lang={lang} />
+
+        {/* 6. Writings Section (Risalah Digital & Academic Articles) */}
+        <WritingsSection lang={lang} />
+
+        {/* 7. Testimonials & Trust Signals Marquee */}
+        <TestimonialsSection lang={lang} />
+
+        {/* 8. Experience Section (Dark Background, Glowing Timeline from Supabase) */}
         <ExperienceSection lang={lang} />
 
-        {/* 6. Education Section (Light Background, Sanad & Academic Grid from Supabase) */}
+        {/* 9. Education Section (Light Background, Sanad & Academic Grid from Supabase) */}
         <EducationSection lang={lang} />
 
-        {/* 7. Contact Section (Dark Glassmorphism, CTA & Socials) */}
+        {/* 10. Contact Section (Dark Glassmorphism, Interactive Form & Socials) */}
         <ContactSection lang={lang} />
       </main>
 
-      {/* Footer with 3-Column Grid & Massive Typography */}
+      {/* Footer with Newsletter Strip, 3-Column Grid & Massive Typography */}
       <Footer lang={lang} />
     </div>
   );

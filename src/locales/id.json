@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Profil",
+    "skills": "Keahlian",
+    "projects": "Proyek",
+    "experience": "Pengalaman",
+    "education": "Pendidikan",
+    "gallery": "Galeri",
+    "writings": "Karya",
+    "testimonials": "Testimoni",
+    "contact": "Kontak",
+    "contactBtn": "Hubungi Saya",
+    "search": "Cari (Cmd+K)"
+  },
+  "hero": {
+    "tagline1": "Santri Lirboyo",
+    "tagline2": "Khadimul Ilmi",
+    "tagline3": "yang merajut khazanah turats dengan rekayasa",
+    "tagline4": "AI-Driven Web",
+    "desc": "Dari kajian Fikih & Ushul Fikih hingga arsitektur aplikasi Next.js, Supabase, dan otomasi cerdas.",
+    "viewProjects": "Lihat Portofolio",
+    "downloadCv": "Unduh CV",
+    "exploreHint": "Sorot foto untuk efek senter pixel"
+  },
+  "about": {
+    "titlePrefix": "I am Chamdan,",
+    "viewProjects": "Lihat Proyek",
+    "contactMe": "Hubungi Saya",
+    "role": "Santri Lirboyo & AI-Driven Web Developer",
+    "location": "Kediri, Indonesia",
+    "status": "Terbuka untuk Proyek",
+    "focus": "Web & Otomasi AI"
+  },
+  "skills": {
+    "badge": "Kompetensi Utama",
+    "title": "Keahlian & Bidang Ilmu",
+    "subtitle": "Harmonisasi antara metodologi pengkajian kitab salaf dan disiplin rekayasa teknologi modern."
+  },
+  "projects": {
+    "badge": "Portofolio Pilihan",
+    "title": "Karya & Sistem Digital",
+    "subtitle": "Implementasi nyata arsitektur full-stack, tata kelola akses pesantren, dan otomatisasi operasional.",
+    "detail": "Studi Kasus Lengkap"
+  },
+  "gallery": {
+    "badge": "Dokumentasi Visual 3D",
+    "title": "Galeri Lengkung Interaktif",
+    "subtitle": "Geser atau gulir untuk memutar dokumentasi kegiatan, wisuda akbar, dan majelis ilmiah santri Lirboyo.",
+    "dragHint": "Drag atau sentuh layar untuk memutar silinder galeri 3D"
+  },
+  "experience": {
+    "badge": "Jejak Rekam & Kepemimpinan",
+    "title": "Pengalaman & Pengabdian",
+    "subtitle": "Dedikasi khidmah santri dalam tata kelola pondok pesantren, kepanitiaan akbar, dan rekayasa otomatisasi operasional."
+  },
+  "education": {
+    "badge": "Sanad & Akademis",
+    "title": "Pendidikan & Sanad Ilmiah",
+    "subtitle": "Fondasi keilmuan Islam klasik (Turats) yang muttashil, dipadukan dengan ijazah sanad resmi Al-Qur'an dan kitab salaf."
+  },
+  "writings": {
+    "badge": "Karya Tulis & Risalah",
+    "title": "Karya Ilmiah & Pemikiran",
+    "subtitle": "Dokumentasi dialektika fikih kontemporer, metodologi bahtsul masail, dan tinjauan etika teknologi santri."
+  },
+  "testimonials": {
+    "badge": "Bukti Sosial & Rekomendasi",
+    "title": "Testimoni & Kepercayaan Mitra",
+    "subtitle": "Apresiasi dari dewan asatidz, pimpinan kepanitiaan, dan mitra kolaborasi teknologi."
+  },
+  "contact": {
+    "badge": "Open for projects",
+    "title1": "Ada rencana proyek?",
+    "title2": "Mari berdiskusi.",
+    "desc": "Terbuka untuk kolaborasi digitalisasi pesantren, pembuatan sistem full-stack, otomasi AI, maupun konsultasi proyek teknologi.",
+    "backToTop": "Ke Atas",
+    "formTitle": "Kirim Pesan Langsung",
+    "namePlaceholder": "Nama Anda",
+    "emailPlaceholder": "Alamat Email",
+    "messagePlaceholder": "Tuliskan rencana proyek atau pesan Anda...",
+    "sendBtn": "Kirim Pesan",
+    "sending": "Mengirim...",
+    "success": "Pesan Anda berhasil dikirim! Kami akan menghubungi Anda segera."
+  },
+  "footer": {
+    "rights": "© 2026 Ahmad Chamdan Yuwafin. Seluruh hak cipta dilindungi.",
+    "newsletterTitle": "Berlangganan Warta Santri & Teknologi",
+    "newsletterPlaceholder": "Masukkan email Anda",
+    "subscribeBtn": "Langganan",
+    "subscribed": "Terima kasih telah berlangganan!"
+  }
+}

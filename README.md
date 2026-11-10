@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ahmad Chamdan Yuwafin : Official Portfolio
+**Santri Lirboyo, Khadimul Ilmi & AI-Driven Full-Stack Web Developer**
 
-## Getting Started
+Official Production URL: [https://www.chamdan.site](https://www.chamdan.site)  
+Vercel Mirror: [https://chamdan.vercel.app](https://chamdan.vercel.app)
 
-First, run the development server:
+---
+
+## Ringkasan Proyek
+
+Website portofolio resmi Ahmad Chamdan Yuwafin (Chamdan), Mahasantri Ma'had Aly Lirboyo Kediri (Takhassus Fiqh wa Ushuluh). Menyatukan ketelitian tradisi turats klasik Islam dengan rekayasa web mutakhir (Next.js 16, Supabase RLS, AI Automation, dan Three.js).
+
+## Fitur Utama
+
+- **Hero & Kaligrafi**: Canvas PixelReveal interaktif, kaligrafi Arab vertical *Khadimul Ilmi* (خادم العلم), dan blend-mode typography "CHAMDAN".
+- **Bento Grid Keahlian**: Integrasi dual-core antara keilmuan ushul fikih/sanad kitab salaf dan keahlian full-stack Next.js/Supabase/AI.
+- **Portofolio & Studi Kasus Dinamis**: Menampilkan sistem nyata (Presensi Haflah 3.500+ tamu, Portal A'lawna, Bazar Stan Muktamar NU, Undangan Digital) dengan detail page di `/projects/[id]`.
+- **Galeri 3D Interaktif**: Silinder foto 3D melingkar yang dapat diputar dengan mouse drag maupun sentuhan mobile.
+- **Risalah Digital (Markdown Reader)**: Pembaca naskah pemikiran ilmiah dan fatwa kontemporer di `/writings/[slug]` didukung Tailwind Typography.
+- **Dynamic PDF CV Generator**: Unduh CV resmi yang dihasilkan secara dinamis dari database Supabase melalui endpoint `/api/cv`.
+- **Universal Search (Command Palette)**: Akses cepat keyboard shortcut `Cmd + K` atau `Ctrl + K` berbasis `cmdk`.
+- **Khadim AI Assistant**: Asisten virtual bertenaga Gemini API untuk konsultasi profil dan proyek.
+- **Admin Dashboard (CMS)**: Portal administrasi terlindungi di `/admin` untuk manajemen proyek, tulisan, galeri, testimoni, pelanggan newsletter, dan analitik data.
+- **Formulir Kontak & Broadcast**: Proteksi spam honeypot, integrasi email Resend, dan broadcast newsletter email ke pelanggan.
+
+## Teknologi
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Runtime & Library**: React 19, TypeScript 5
+- **Styling**: Tailwind CSS v4, Glassmorphism, CSS 3D
+- **Database**: Supabase PostgreSQL 15 dengan Row Level Security
+- **Animasi**: Framer Motion, Lenis Smooth Scroll
+- **Visualisasi**: Recharts & Three.js
+- **Dokumen**: @react-pdf/renderer
+- **Hosting**: Vercel Edge Network (Team `ular`, Project `chamdan`)
+
+## Menjalankan Proyek Lokal
 
 ```bash
+# Instal dependensi
+npm install
+
+# Jalankan server pengembangan
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Jalankan build produksi
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dokumentasi Terkait
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Panduan Admin Dashboard (CMS)](./PANDUAN_ADMIN.md)
+- [Checklist Peluncuran Produksi](./LAUNCH_CHECKLIST.md)
+- [Arsitektur Sistem Menyeluruh](./ARSITEKTUR_SISTEM.md)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+&copy; 2026 Ahmad Chamdan Yuwafin. All rights reserved.

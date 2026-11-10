@@ -1,6 +1,7 @@
 "use client";
 
 import PixelReveal from "./PixelReveal";
+import { Download, ArrowDown } from "lucide-react";
 
 interface HeroSectionProps {
   name?: string;
@@ -15,18 +16,13 @@ export default function HeroSection({
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex flex-col justify-between pt-24 sm:pt-28 pb-8 px-4 sm:px-8 overflow-hidden bg-gradient-to-b from-[#fafaf9] via-[#f5f5f4] to-[#f4f7f5]"
+      className="relative w-full min-h-screen flex flex-col justify-between pt-28 sm:pt-32 pb-4 px-4 sm:px-8 overflow-hidden bg-[#fafaf9]"
     >
-      {/* Background Subtle Accent Grids & Gold Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Top Header Row: Left Tagline & Right Arabic Vertical Text */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-6 md:gap-8">
-        {/* Left Column: Authentic Tagline */}
-        <div className="w-full md:max-w-md text-left">
-          <div className="w-10 h-0.5 bg-[#064e3b] mb-4" />
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-stone-900 leading-snug">
+      {/* Top Layer: Editorial Header Layout */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4">
+        {/* Left Column: Authentic Title Narrative */}
+        <div className="max-w-md sm:max-w-lg">
+          <h1 className="font-sans text-xl sm:text-2xl md:text-3xl leading-snug tracking-tight text-stone-900 font-medium">
             <span className="font-serif font-bold text-[#064e3b]">
               Santri Lirboyo
             </span>
@@ -50,6 +46,27 @@ export default function HeroSection({
               ? "Dari kajian Fikih & Ushul Fikih hingga arsitektur aplikasi Next.js, Supabase, dan otomasi cerdas."
               : "From classical jurisprudence & logic to full-stack Next.js, Supabase architecture, and smart automation."}
           </p>
+
+          {/* Action CTAs: Download CV & Explore */}
+          <div className="mt-5 flex items-center gap-3">
+            <a
+              href="/api/cv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#064e3b] text-[#fbbf24] hover:bg-[#022c22] text-xs font-semibold shadow-md transition-all border border-emerald-600/40"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>{lang === "ID" ? "Unduh CV Resmi" : "Download CV (PDF)"}</span>
+            </a>
+
+            <a
+              href="#about"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-200/80 hover:bg-stone-300 text-stone-700 text-xs font-medium transition-all"
+            >
+              <span>{lang === "ID" ? "Jelajahi" : "Explore"}</span>
+              <ArrowDown className="w-3.5 h-3.5 text-stone-500" />
+            </a>
+          </div>
         </div>
 
         {/* Center Space reserved for Photo on desktop */}
