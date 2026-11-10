@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Mail } from "lucide-react";
 
@@ -246,9 +247,21 @@ export default function Footer({ lang = "ID" }: FooterProps) {
 
           {/* Column 3: Contact / Afiliasi */}
           <div>
-            <h4 className="font-semibold text-xs tracking-wider uppercase text-emerald-400 mb-4 font-mono">
-              {lang === "ID" ? "03 / Afiliasi & Domisili" : "03 / Contact & Location"}
-            </h4>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/images/logo.png"
+                width={40}
+                height={40}
+                alt="Logo Chamdan"
+                className="w-10 h-10 rounded-full border border-emerald-500/40 bg-stone-900 shadow-md object-cover"
+              />
+              <div>
+                <h4 className="font-semibold text-xs tracking-wider uppercase text-emerald-400 font-mono">
+                  {lang === "ID" ? "03 / Afiliasi & Domisili" : "03 / Contact & Location"}
+                </h4>
+                <span className="text-[11px] font-serif text-stone-400">ذوو العلى &bull; Lirboyo</span>
+              </div>
+            </div>
             <div className="space-y-3 text-stone-300">
               <p className="font-medium text-white">Ahmad Chamdan Yuwafin (Chamdan)</p>
               <p className="text-sm leading-relaxed text-stone-400">

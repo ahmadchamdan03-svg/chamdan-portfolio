@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Menu, X, Globe, Search, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import AmbientAudio from "@/components/ui/AmbientAudio";
@@ -78,13 +79,20 @@ export default function Navbar({
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 pt-4 sm:pt-6 pointer-events-none transition-all duration-300">
       <div className="w-full max-w-5xl flex items-center justify-between pointer-events-auto">
-        {/* Left: Brand Inisial "C" */}
+        {/* Left: Brand Logo Emblem */}
         <Link
           href="#home"
-          className="group flex items-center justify-center w-11 h-11 rounded-full bg-[#064e3b] text-[#fbbf24] font-serif font-bold text-lg shadow-lg hover:scale-105 transition-all duration-200 border border-emerald-600/50"
+          className="group flex items-center justify-center w-11 h-11 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-all duration-200 border-2 border-emerald-600/50 bg-stone-900"
           aria-label="Ahmad Chamdan Yuwafin : Kembali ke Beranda"
         >
-          <span>C</span>
+          <Image
+            src="/images/logo.png"
+            width={40}
+            height={40}
+            alt="Logo Chamdan"
+            className="w-full h-full object-cover rounded-full"
+            priority
+          />
         </Link>
 
         {/* Center: Desktop Navigation Pills */}
