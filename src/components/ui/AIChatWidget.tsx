@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Bot, X, Send, Sparkles, Loader2 } from "lucide-react";
+import { Bot, X, Send, Sparkles, Loader2, Mic, MicOff } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -19,7 +19,38 @@ export default function AIChatWidget() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const startVoiceInput = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Browser Anda belum mendukung input suara (Web Speech API).");
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = "id-ID";
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => setIsListening(false);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        if (transcript) {
+          setInput(transcript);
+        }
+      };
+      recognition.onerror = () => setIsListening(false);
+      recognition.start();
+    } catch {
+      setIsListening(false);
+    }
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -167,11 +198,23 @@ export default function AIChatWidget() {
             <input
               type="text"
               aria-label="Tulis pertanyaan untuk asisten AI"
-              placeholder="Tanyakan sesuatu..."
+              placeholder={isListening ? "Mendengarkan suara Anda..." : "Tanyakan sesuatu..."}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="flex-grow px-3.5 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500"
             />
+            <button
+              type="button"
+              onClick={startVoiceInput}
+              aria-label={isListening ? "Sedang mendengarkan suara" : "Gunakan input suara mikrofon"}
+              className={`p-2 rounded-xl transition-colors shrink-0 ${
+                isListening
+                  ? "bg-red-600 text-white animate-pulse"
+                  : "bg-stone-800 text-stone-300 hover:text-white hover:bg-stone-700"
+              }`}
+            >
+              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+            </button>
             <button
               type="submit"
               disabled={loading || !input.trim()}

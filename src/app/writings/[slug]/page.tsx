@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { Suspense } from "react";
 import Skeleton from "@/components/ui/Skeleton";
+import VoiceReader from "@/components/ui/VoiceReader";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -73,15 +74,19 @@ async function WritingContent({ slug }: { slug: string }) {
 
       {/* Article Header */}
       <header className="mb-12 pb-8 border-b border-stone-200 dark:border-stone-800">
-        <div className="flex flex-wrap items-center gap-3 mb-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-400 border border-emerald-500/30">
-            <Tag className="w-3.5 h-3.5" />
-            {writing.category}
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400">
-            <Calendar className="w-3.5 h-3.5" />
-            {writing.date}
-          </span>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-400 border border-emerald-500/30">
+              <Tag className="w-3.5 h-3.5" />
+              {writing.category}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400">
+              <Calendar className="w-3.5 h-3.5" />
+              {writing.date}
+            </span>
+          </div>
+
+          <VoiceReader text={writing.content} title={writing.title} />
         </div>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-950 dark:text-stone-50 tracking-tight leading-tight mb-6">

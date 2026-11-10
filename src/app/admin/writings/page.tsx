@@ -13,6 +13,7 @@ import {
   Loader2,
   X,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 import Skeleton from "@/components/ui/Skeleton";
 
@@ -32,6 +33,39 @@ export default function AdminWritingsPage() {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [link, setLink] = useState("");
+  const [generatingAI, setGeneratingAI] = useState(false);
+
+  const handleAIGenerate = async () => {
+    if (!title.trim()) {
+      alert("Silakan ketik Judul Risalah terlebih dahulu!");
+      return;
+    }
+    setGeneratingAI(true);
+    try {
+      const res = await fetch("/api/admin/ai-generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, type: "writing" }),
+      });
+      const data = await res.json();
+      if (data.category) setCategory(data.category);
+      if (data.summary) setDescription(data.summary);
+      if (data.content) setContent(data.content);
+      if (!slug) {
+        setSlug(
+          title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)+/g, "")
+        );
+      }
+      setStatusMsg({ type: "success", text: "Draf risalah dan analisis ilmiah berhasil di-generate oleh Gemini AI!" });
+    } catch {
+      setStatusMsg({ type: "error", text: "Gagal memanggil generator AI." });
+    } finally {
+      setGeneratingAI(false);
+    }
+  };
 
   useEffect(() => {
     fetchWritings();
@@ -205,9 +239,29 @@ export default function AdminWritingsPage() {
           <form onSubmit={handleSave} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-stone-300 mb-1">
-                  Judul Risalah *
-                </label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-semibold text-stone-300">
+                    Judul Risalah *
+                  </label>
+                  <button
+                    type="button"
+                    onClick={handleAIGenerate}
+                    disabled={generatingAI || !title.trim()}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-semibold transition-all cursor-pointer disabled:opacity-40"
+                  >
+                    {generatingAI ? (
+                      <>
+                        <Loader2 className="w-3 h-3 animate-spin text-amber-400" />
+                        <span>Generating...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-3 h-3 text-amber-400" />
+                        <span>Auto-Fill AI ✨</span>
+                      </>
+                    )}
+                  </button>
+                </div>
                 <input
                   type="text"
                   required

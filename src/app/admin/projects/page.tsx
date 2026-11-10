@@ -14,6 +14,7 @@ import {
   AlertCircle,
   Loader2,
   X,
+  Sparkles,
 } from "lucide-react";
 import Skeleton from "@/components/ui/Skeleton";
 
@@ -37,6 +38,31 @@ export default function AdminProjectsPage() {
   const [impactInput, setImpactInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [generatingAI, setGeneratingAI] = useState(false);
+
+  const handleAIGenerate = async () => {
+    if (!title.trim()) {
+      alert("Silakan ketik Judul Proyek terlebih dahulu!");
+      return;
+    }
+    setGeneratingAI(true);
+    try {
+      const res = await fetch("/api/admin/ai-generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, type: "project" }),
+      });
+      const data = await res.json();
+      if (data.description) setDescription(data.description);
+      if (data.long_description) setLongDescription(data.long_description);
+      if (data.tech_stack) setTechStackInput(Array.isArray(data.tech_stack) ? data.tech_stack.join(", ") : data.tech_stack);
+      setStatusMsg({ type: "success", text: "Konten deskripsi dan tumpukan teknologi berhasil di-generate oleh Gemini AI!" });
+    } catch {
+      setStatusMsg({ type: "error", text: "Gagal memanggil generator AI." });
+    } finally {
+      setGeneratingAI(false);
+    }
+  };
 
   useEffect(() => {
     fetchProjects();
@@ -254,9 +280,29 @@ export default function AdminProjectsPage() {
           <form onSubmit={handleSave} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-stone-300 mb-1">
-                  Judul Proyek *
-                </label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-semibold text-stone-300">
+                    Judul Proyek *
+                  </label>
+                  <button
+                    type="button"
+                    onClick={handleAIGenerate}
+                    disabled={generatingAI || !title.trim()}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-semibold transition-all cursor-pointer disabled:opacity-40"
+                  >
+                    {generatingAI ? (
+                      <>
+                        <Loader2 className="w-3 h-3 animate-spin text-amber-400" />
+                        <span>Generating...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-3 h-3 text-amber-400" />
+                        <span>Auto-Fill AI ✨</span>
+                      </>
+                    )}
+                  </button>
+                </div>
                 <input
                   type="text"
                   required

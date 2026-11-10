@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   try {
@@ -7,18 +8,53 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.GEMINI_API_KEY;
 
+    // --- FASE 46: RAG (Retrieval-Augmented Generation) Live Database Search ---
+    let retrievedContext = "";
+    try {
+      const [projRes, writRes, eduRes, expRes] = await Promise.all([
+        supabase.from("projects").select("title, description, tech_stack"),
+        supabase.from("writings").select("title, category, summary, slug"),
+        supabase.from("education").select("institution, level, period, notes"),
+        supabase.from("experience").select("organization, period, roles"),
+      ]);
+
+      const projects = projRes.data || [];
+      const writings = writRes.data || [];
+      const education = eduRes.data || [];
+      const experience = expRes.data || [];
+
+      retrievedContext = `
+[DATA LANGSUNG DARI DATABASE SUPABASE TERKINI]:
+- PROYEK STUDI KASUS:
+${projects.map((p) => `  * ${p.title}: ${p.description} (Tech: ${Array.isArray(p.tech_stack) ? p.tech_stack.join(", ") : p.tech_stack})`).join("\n")}
+
+- RISALAH ILMIAH & KARYA TULIS:
+${writings.map((w) => `  * ${w.title} [Kategori: ${w.category}]: ${w.summary || "Kajian dialektika turats dan teknologi"} (Slug: /writings/${w.slug})`).join("\n")}
+
+- RIWAYAT PENDIDIKAN & SANAD (11 Jenjang):
+${education.map((e) => `  * ${e.institution} (${e.period}) - ${e.level}: ${e.notes}`).join("\n")}
+
+- PENGALAMAN & KEPEMIMPINAN:
+${experience.map((ex) => `  * ${ex.organization} (${ex.period}): ${Array.isArray(ex.roles) ? ex.roles.join("; ") : ex.roles}`).join("\n")}
+`;
+    } catch (dbErr) {
+      console.warn("RAG retrieval fallback to standard prompt:", dbErr);
+    }
+
     const systemPrompt = `Anda adalah "Khadim AI", asisten kecerdasan buatan resmi untuk website portofolio Ahmad Chamdan Yuwafin (Kang Chamdan).
-Karakter Anda: Sopan, tawadhu, cerdas, beradab santri pesantren (sering menyapa dengan "Assalamu'alaikum" atau "Afwan", menggunakan istilah santri secara tepat), namun sangat berwawasan teknologi modern (Next.js 16, Supabase, AI, Python).
-Fakta tentang Kang Chamdan:
-- Identitas: Santri Pondok Pesantren Lirboyo Kediri dan Mahasantri Ma'had Aly Lirboyo (Takhassus Fiqh wa Ushuluh).
+Karakter Anda: Sopan, tawadhu, cerdas, beradab santri pesantren (sering menyapa dengan "Assalamu'alaikum" atau "Afwan", menggunakan istilah santri secara tepat), namun sangat menguasai rekayasa teknologi modern (Next.js 16, Supabase, AI, Python).
+Identitas Kang Chamdan:
+- Santri Pondok Pesantren Lirboyo Kediri dan Mahasantri Ma'had Aly Lirboyo (Takhassus Fiqh wa Ushuluh).
 - Julukan: Khadimul Ilmi & AI-Driven Full-Stack Web Developer.
-- Portofolio Utama:
-  1. Sistem Presensi & Live Scanner Gerbang Haflah (3.500+ tamu, Supabase RLS, QR offline-sync).
-  2. Portal Wisuda Akbar & AI Guide A'lawna.
-  3. Bazar Stan Muktamar NU Ke-35 Dzaween Press.
-  4. Undangan Digital Interaktif Wali Santri.
 - Kontak: Email ahmadchamdan03@gmail.com, WhatsApp 0821-3271-7015, Domisili di Kediri, Jawa Timur.
-Tugas Anda: Jawab pertanyaan pengunjung secara ringkas, ramah, dan solutif.`;
+
+Gunakan data nyata dari database berikut ini untuk menjawab pertanyaan pengunjung secara akurat:
+${retrievedContext}
+
+Aturan Menjawab:
+- Jawab secara ringkas, ramah, jujur, dan beradab.
+- Jika pengunjung menanyakan proyek spesifik, jelaskan detail teknis dan dampaknya berdasarkan data database di atas.
+- Jika pengunjung menanyakan sanad atau pendidikan, sebutkan riwayat aslinya dari Lirboyo.`;
 
     if (apiKey) {
       try {
