@@ -107,6 +107,7 @@ export default function AIChatWidget() {
 
             <button
               onClick={() => setOpen(false)}
+              aria-label="Tutup dialog Khadim AI"
               className="p-1.5 rounded-lg text-stone-400 hover:text-white hover:bg-emerald-900/40 transition-colors"
             >
               <X className="w-4 h-4" />
@@ -165,6 +166,7 @@ export default function AIChatWidget() {
           >
             <input
               type="text"
+              aria-label="Tulis pertanyaan untuk asisten AI"
               placeholder="Tanyakan sesuatu..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -173,6 +175,7 @@ export default function AIChatWidget() {
             <button
               type="submit"
               disabled={loading || !input.trim()}
+              aria-label="Kirim pesan pertanyaan ke asisten AI"
               className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white transition-colors shrink-0"
             >
               <Send className="w-4 h-4" />

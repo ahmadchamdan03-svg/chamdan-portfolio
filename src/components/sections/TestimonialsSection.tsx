@@ -160,7 +160,7 @@ export default function TestimonialsSection({
                     <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-600/30 shrink-0 bg-stone-200 dark:bg-stone-800">
                       <Image
                         src={item.avatar_url || "/images/hero/jacket.png"}
-                        alt={item.name}
+                        alt={`Foto profil rekomendasi: ${item.name}, ${item.role}`}
                         fill
                         className="object-cover"
                         sizes="48px"

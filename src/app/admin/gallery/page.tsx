@@ -255,7 +255,7 @@ export default function AdminGalleryPage() {
               <div className="relative w-full aspect-[4/3] bg-stone-950">
                 <Image
                   src={item.image_url}
-                  alt={item.title}
+                  alt={`Preview foto galeri: ${item.title}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 640px) 100vw, 33vw"
@@ -268,6 +268,7 @@ export default function AdminGalleryPage() {
                 </h3>
                 <button
                   onClick={() => handleDelete(item.id)}
+                  aria-label={`Hapus foto ${item.title}`}
                   className="p-1.5 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-200 transition-colors shrink-0"
                   title="Hapus"
                 >

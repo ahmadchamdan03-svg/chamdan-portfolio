@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
       href={waUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Hubungi via WhatsApp"
+      aria-label="Hubungi Ahmad Chamdan Yuwafin via WhatsApp"
       className="fixed bottom-6 right-6 z-40 group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl shadow-emerald-900/20 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-400/30"
     >
       <MessageCircle className="w-5 h-5 text-white animate-pulse" />

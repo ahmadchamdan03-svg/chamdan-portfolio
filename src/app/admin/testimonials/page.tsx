@@ -343,7 +343,7 @@ export default function AdminTestimonialsPage() {
                   <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 bg-stone-800 border border-stone-700">
                     <Image
                       src={t.avatar_url || "/images/hero/jacket.png"}
-                      alt={t.name}
+                      alt={`Foto profil: ${t.name}`}
                       fill
                       className="object-cover"
                       sizes="48px"
@@ -366,6 +366,7 @@ export default function AdminTestimonialsPage() {
                 <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                   <button
                     onClick={() => handleEdit(t)}
+                    aria-label={`Sunting testimoni dari ${t.name}`}
                     className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition-colors"
                     title="Sunting"
                   >
@@ -373,6 +374,7 @@ export default function AdminTestimonialsPage() {
                   </button>
                   <button
                     onClick={() => handleDelete(t.id)}
+                    aria-label={`Hapus testimoni dari ${t.name}`}
                     className="p-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-200 transition-colors"
                     title="Hapus"
                   >

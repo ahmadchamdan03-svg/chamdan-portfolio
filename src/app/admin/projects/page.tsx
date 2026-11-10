@@ -452,7 +452,7 @@ export default function AdminProjectsPage() {
                     <div className="relative w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-stone-800 border border-stone-700">
                       <Image
                         src={p.image_url}
-                        alt={p.title}
+                        alt={`Thumbnail proyek: ${p.title}`}
                         fill
                         className="object-cover"
                         sizes="64px"
@@ -487,6 +487,7 @@ export default function AdminProjectsPage() {
                 <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                   <button
                     onClick={() => handleEdit(p)}
+                    aria-label={`Sunting proyek ${p.title}`}
                     className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition-colors"
                     title="Sunting"
                   >
@@ -494,6 +495,7 @@ export default function AdminProjectsPage() {
                   </button>
                   <button
                     onClick={() => handleDelete(p.id)}
+                    aria-label={`Hapus proyek ${p.title}`}
                     className="p-2 rounded-lg bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-200 transition-colors"
                     title="Hapus"
                   >

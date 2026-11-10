@@ -132,7 +132,6 @@ export default function PixelReveal({
               // Center is 100% transparent cutout, edge has smaller pixel dots (dither effect)
               let dotSize = gridSize;
               if (norm > 0.45) {
-                // Diminish dot size as we reach edge
                 dotSize = gridSize * (1 - (norm - 0.45) / 0.55);
               }
 
@@ -201,7 +200,23 @@ export default function PixelReveal({
       <div className="absolute inset-0 pointer-events-none">
         <Image
           src={blueshirtSrc}
-          alt={`${alt} — Baju Biru`}
+          alt={`${alt} : Potret santri Khadimul Ilmi berbusana kemeja biru Lirboyo`}
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 600px"
+          className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(4,120,87,0.15)]"
+        />
+      </div>
+
+      {/* Immediate LCP Base Layer (Jacket Photo): Ensures 0 CLS and immediate LCP before canvas is ready */}
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${
+          isReady ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <Image
+          src={jacketSrc}
+          alt={`${alt} : Potret santri Khadimul Ilmi berbusana jas almamater resmi`}
           fill
           priority
           sizes="(max-width: 768px) 100vw, 600px"
@@ -212,13 +227,14 @@ export default function PixelReveal({
       {/* Layer 2 (Top): HTML Canvas with Jacket & Real-time Dither Cutout */}
       <canvas
         ref={canvasRef}
+        aria-label={`${alt} : Kanvas interaktif senter piksel potret almamater dan santri`}
         className="absolute inset-0 w-full h-full pointer-events-auto"
         style={{ touchAction: "none" }}
       />
 
       {/* Subtle indicator prompt for visitors */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-stone-900/75 text-emerald-300 border border-emerald-500/20 text-[11px] font-medium tracking-wide pointer-events-none backdrop-blur-sm opacity-80 sm:opacity-90">
-        Sorot foto untuk efek senter pixel
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-stone-900/80 text-emerald-300 border border-emerald-500/30 text-[11px] font-medium tracking-wide pointer-events-none backdrop-blur-sm shadow-md">
+        Arahkan kursor atau sentuh foto untuk efek senter piksel
       </div>
     </div>
   );

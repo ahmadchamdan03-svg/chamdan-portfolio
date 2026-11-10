@@ -115,7 +115,7 @@ async function ProjectContent({ id }: { id: string }) {
         <div className="relative w-full aspect-video sm:aspect-[21/9] rounded-3xl overflow-hidden mb-12 border border-stone-200 dark:border-stone-800 shadow-2xl bg-stone-900 group">
           <Image
             src={project.image_url}
-            alt={project.title}
+            alt={`Tangkapan layar resolusi tinggi dan antarmuka sistem: ${project.title}`}
             fill
             priority
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

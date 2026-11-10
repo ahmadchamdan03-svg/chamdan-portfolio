@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, Amiri } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
@@ -24,6 +24,13 @@ const amiri = Amiri({
   weight: ["400", "700"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#064e3b",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.chamdan.site"),
@@ -95,6 +102,19 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${amiri.variable} scroll-smooth`}
     >
       <head>
+        {/* Preload Hero LCP Images for ultra-fast first contentful paint */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero/jacket.png"
+          type="image/png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero/blueshirt.png"
+          type="image/png"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}

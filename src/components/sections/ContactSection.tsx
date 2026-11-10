@@ -92,7 +92,7 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   )}
                 </h2>
 
-                <p className="text-stone-400 text-sm sm:text-base leading-relaxed max-w-lg">
+                <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-lg">
                   {lang === "ID"
                     ? "Terbuka untuk kolaborasi digitalisasi pesantren, arsitektur web modern, integrasi AI, maupun riset ilmiah seputar turats Islam."
                     : "Available for institutional pesantren digitalization, full-stack web applications, AI automation, or academic research."}
@@ -101,6 +101,7 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                 <div className="pt-4 flex flex-wrap items-center gap-4">
                   <a
                     href="mailto:ahmadchamdan03@gmail.com"
+                    aria-label="Kirim email langsung ke ahmadchamdan03@gmail.com"
                     className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-stone-950 hover:bg-[#fbbf24] font-semibold text-xs sm:text-sm transition-all duration-300 shadow-xl"
                   >
                     <Mail className="w-4 h-4 text-emerald-800" />
@@ -110,8 +111,8 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   <button
                     type="button"
                     onClick={scrollToTop}
-                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium border border-stone-700 hover:border-emerald-500/50 transition-all shadow-md"
-                    aria-label="Kembali ke atas"
+                    aria-label={lang === "ID" ? "Kembali ke atas halaman" : "Back to top of page"}
+                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium border border-stone-700 hover:border-emerald-500/50 transition-all shadow-md cursor-pointer"
                   >
                     <span>{lang === "ID" ? "Ke Atas" : "Back to top"}</span>
                     <ArrowUp className="w-4 h-4 text-emerald-400" />
@@ -129,6 +130,8 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   <input
                     type="text"
                     name="website"
+                    id="contact-website-bot"
+                    aria-hidden="true"
                     value={formData.website}
                     onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                     className="hidden"
@@ -160,50 +163,69 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   )}
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1.5">
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-1.5"
+                    >
                       {lang === "ID" ? "Nama Lengkap" : "Full Name"}
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
                       placeholder="Contoh: Gus Hilmy / John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1.5">
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-1.5"
+                    >
                       {lang === "ID" ? "Alamat Email" : "Email Address"}
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       placeholder="nama@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1.5">
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-1.5"
+                    >
                       {lang === "ID" ? "Pesan / Rencana Proyek" : "Message / Project Inquiry"}
                     </label>
                     <textarea
+                      id="contact-message"
                       required
                       rows={4}
                       placeholder="Tuliskan ide, kebutuhan teknis, atau pertanyaan Anda di sini..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-600 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={submitting}
+                    aria-label={
+                      submitting
+                        ? "Sedang mengirimkan pesan..."
+                        : lang === "ID"
+                        ? "Kirim pesan sekarang"
+                        : "Send message now"
+                    }
                     className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-950/40 border border-emerald-400/30 cursor-pointer"
                   >
                     {submitting ? (
@@ -224,7 +246,7 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
 
             {/* Social Media Link Bar */}
             <div className="mt-14 pt-8 border-t border-stone-800/80 flex flex-wrap items-center justify-between gap-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-stone-400">
+              <span className="text-xs font-mono uppercase tracking-widest text-stone-300">
                 {lang === "ID" ? "Terhubung di Jejaring Digital:" : "Connect on Social Channels:"}
               </span>
 
@@ -234,9 +256,10 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   href="https://github.com/ahmadchamdan03-svg"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Kunjungi profil GitHub Ahmad Chamdan Yuwafin"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-800/60 hover:bg-stone-800 border border-stone-700/60 hover:border-emerald-500/40 text-stone-300 hover:text-white text-xs font-medium transition-all"
                 >
-                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"
@@ -251,9 +274,10 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Kunjungi profil LinkedIn Ahmad Chamdan Yuwafin"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-800/60 hover:bg-stone-800 border border-stone-700/60 hover:border-emerald-500/40 text-stone-300 hover:text-white text-xs font-medium transition-all"
                 >
-                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
                   </svg>
                   <span>LinkedIn</span>
@@ -264,9 +288,10 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Kunjungi profil Instagram Ahmad Chamdan Yuwafin"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-800/60 hover:bg-stone-800 border border-stone-700/60 hover:border-emerald-500/40 text-stone-300 hover:text-white text-xs font-medium transition-all"
                 >
-                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current text-emerald-400" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                   <span>Instagram</span>

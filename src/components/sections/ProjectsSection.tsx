@@ -151,6 +151,7 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
               <Reveal key={item.id} delay={idx * 0.1}>
                 <Link
                   href={`/projects/${item.id}`}
+                  aria-label={`Lihat studi kasus lengkap proyek: ${item.title}`}
                   className="group relative flex flex-col justify-between rounded-3xl overflow-hidden bg-white border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-emerald-700/30 transition-all duration-300 block h-full"
                 >
                   {/* Image Preview Container */}
@@ -158,7 +159,7 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
                     {item.image_url ? (
                       <Image
                         src={item.image_url}
-                        alt={item.title}
+                        alt={`Tangkapan layar dan antarmuka sistem studi kasus: ${item.title}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
