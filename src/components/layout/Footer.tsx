@@ -268,7 +268,24 @@ export default function Footer({ lang = "ID" }: FooterProps) {
                 Pondok Pesantren Lirboyo, Kota Kediri, Jawa Timur, Indonesia.
               </p>
               <p className="text-xs font-mono text-emerald-300">
-                Email: ahmadchamdan03@gmail.com
+                Email:{" "}
+                <a
+                  href="mailto:ahmadchamdan03@gmail.com"
+                  className="hover:underline hover:text-emerald-200"
+                >
+                  ahmadchamdan03@gmail.com
+                </a>
+              </p>
+              <p className="text-xs font-mono text-emerald-300">
+                WhatsApp / Telp:{" "}
+                <a
+                  href="https://wa.me/6285899151685"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:text-emerald-200"
+                >
+                  085899151685
+                </a>
               </p>
               <div className="pt-2">
                 <a

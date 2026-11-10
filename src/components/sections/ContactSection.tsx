@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowUp, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, ArrowUp, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 interface ContactSectionProps {
@@ -98,24 +98,35 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                     : "Available for institutional pesantren digitalization, full-stack web applications, AI automation, or academic research."}
                 </p>
 
-                <div className="pt-4 flex flex-wrap items-center gap-4">
+                <div className="pt-4 flex flex-wrap items-center gap-3">
                   <a
                     href="mailto:ahmadchamdan03@gmail.com"
                     aria-label="Kirim email langsung ke ahmadchamdan03@gmail.com"
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-stone-950 hover:bg-[#fbbf24] font-semibold text-xs sm:text-sm transition-all duration-300 shadow-xl"
+                    className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white text-stone-950 hover:bg-[#fbbf24] font-semibold text-xs sm:text-sm transition-all duration-300 shadow-xl"
                   >
                     <Mail className="w-4 h-4 text-emerald-800" />
                     <span>ahmadchamdan03@gmail.com</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/6285899151685?text=Halo%20Chamdan,%20saya%20melihat%20portofolio%20Anda%20dan%20ingin%20berdiskusi."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Hubungi via WhatsApp"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-all duration-300 shadow-xl border border-emerald-400/30"
+                  >
+                    <MessageCircle className="w-4 h-4 text-white" />
+                    <span>WhatsApp: 0858-9915-1685</span>
                   </a>
 
                   <button
                     type="button"
                     onClick={scrollToTop}
                     aria-label={lang === "ID" ? "Kembali ke atas halaman" : "Back to top of page"}
-                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium border border-stone-700 hover:border-emerald-500/50 transition-all shadow-md cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-3 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium border border-stone-700 hover:border-emerald-500/50 transition-all shadow-md cursor-pointer"
                   >
                     <span>{lang === "ID" ? "Ke Atas" : "Back to top"}</span>
-                    <ArrowUp className="w-4 h-4 text-emerald-400" />
+                    <ArrowUp className="w-3.5 h-3.5 text-emerald-400" />
                   </button>
                 </div>
               </div>

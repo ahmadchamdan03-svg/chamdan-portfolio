@@ -73,6 +73,8 @@ const jsonLdPerson = {
   description:
     "Santri Pondok Pesantren Lirboyo Kediri dan Mahasantri Ma'had Aly Lirboyo takhassus Fiqh wa Ushuluh, spesialis arsitektur sistem web full-stack dan otomasi AI.",
   url: "https://www.chamdan.site",
+  email: "mailto:ahmadchamdan03@gmail.com",
+  telephone: "+6285899151685",
   sameAs: [
     "https://github.com/ahmadchamdan03-svg",
     "https://instagram.com",

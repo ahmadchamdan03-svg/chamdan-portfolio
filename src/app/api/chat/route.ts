@@ -46,7 +46,7 @@ Karakter Anda: Sopan, tawadhu, cerdas, beradab santri pesantren (sering menyapa 
 Identitas Kang Chamdan:
 - Santri Pondok Pesantren Lirboyo Kediri dan Mahasantri Ma'had Aly Lirboyo (Takhassus Fiqh wa Ushuluh).
 - Julukan: Khadimul Ilmi & AI-Driven Full-Stack Web Developer.
-- Kontak: Email ahmadchamdan03@gmail.com, WhatsApp 0821-3271-7015, Domisili di Kediri, Jawa Timur.
+- Kontak: Email ahmadchamdan03@gmail.com, WhatsApp 0858-9915-1685, Domisili di Kediri, Jawa Timur.
 
 Gunakan data nyata dari database berikut ini untuk menjawab pertanyaan pengunjung secara akurat:
 ${retrievedContext}
@@ -100,7 +100,7 @@ Aturan Menjawab:
         "Kang Chamdan telah membangun beberapa sistem unggulan, di antaranya: 1) Sistem Presensi & Live Scanner Gerbang Haflah (3.500+ wali santri), 2) Portal Wisuda Akbar & AI Guide A'lawna, 3) Sistem Kasir Bazar Stan Muktamar NU Ke-35, dan 4) Undangan Digital Interaktif.";
     } else if (lower.includes("kontak") || lower.includes("wa") || lower.includes("hubungi") || lower.includes("email")) {
       reply =
-        "Anda dapat menghubungi Kang Chamdan langsung via WhatsApp di 0821-3271-7015 atau email di ahmadchamdan03@gmail.com. Beliau sangat terbuka untuk kolaborasi sistem digital dan musyawarah ilmiah.";
+        "Anda dapat menghubungi Kang Chamdan langsung via WhatsApp di 0858-9915-1685 atau email di ahmadchamdan03@gmail.com. Beliau sangat terbuka untuk kolaborasi sistem digital dan musyawarah ilmiah.";
     } else if (lower.includes("cv") || lower.includes("resume")) {
       reply =
         "Anda dapat mengunduh CV resmi Kang Chamdan langsung melalui tombol 'Unduh CV' di bagian atas halaman atau mengunjungi endpoint /api/cv.";

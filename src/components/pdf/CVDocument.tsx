@@ -152,6 +152,7 @@ export default function CVDocument({
           <View style={styles.contactRow}>
             <Text>Kediri, Jawa Timur, Indonesia</Text>
             <Text>Email: ahmadchamdan03@gmail.com</Text>
+            <Text>WhatsApp: 0858-9915-1685</Text>
             <Text>Website: https://www.chamdan.site</Text>
             <Text>GitHub: @ahmadchamdan03-svg</Text>
           </View>

@@ -176,7 +176,7 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
   const handleSendBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    const phone = "62895325608400";
+    const phone = "6285899151685";
     const greeting =
       lang === "ID"
         ? `Halo Mas Chamdan, saya tertarik untuk mendiskusikan *${bookingTopic}*.\n\nNama: ${consultName}\nEmail: ${consultEmail}\nRencana Waktu: ${consultDate || "Fleksibel"}\nCatatan: ${consultNotes || "-"}`
