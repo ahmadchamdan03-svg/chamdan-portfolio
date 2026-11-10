@@ -18,6 +18,7 @@ export interface Education {
 export interface Experience {
   id: string;
   organization: string;
+  period: string;
   roles: string[];
   created_at: string;
 }

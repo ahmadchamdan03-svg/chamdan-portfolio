@@ -20,6 +20,7 @@ export default function Navbar({ currentLang = "ID", onToggleLang }: NavbarProps
     { id: "skills", labelID: "Keahlian", labelEN: "Skills" },
     { id: "projects", labelID: "Proyek", labelEN: "Projects" },
     { id: "experience", labelID: "Pengalaman", labelEN: "Experience" },
+    { id: "education", labelID: "Pendidikan", labelEN: "Education" },
   ];
 
   useEffect(() => {

@@ -6,6 +6,8 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
+import EducationSection from "@/components/sections/EducationSection";
 import { Mail, ArrowUp } from "lucide-react";
 
 export default function Home() {
@@ -41,6 +43,12 @@ export default function Home() {
 
         {/* 4. Projects Section (Featured Case Studies from Supabase) */}
         <ProjectsSection lang={lang} />
+
+        {/* 5. Experience Section (Dark Background, Glowing Timeline from Supabase) */}
+        <ExperienceSection lang={lang} />
+
+        {/* 6. Education Section (Light Background, Sanad & Academic Grid from Supabase) */}
+        <EducationSection lang={lang} />
       </main>
 
       {/* Contact & Footer Section */}
@@ -100,6 +108,8 @@ export default function Home() {
                 <li><a href="#about" className="hover:text-emerald-400 transition-colors">Profil (About)</a></li>
                 <li><a href="#skills" className="hover:text-emerald-400 transition-colors">Keahlian (Skills)</a></li>
                 <li><a href="#projects" className="hover:text-emerald-400 transition-colors">Karya &amp; Proyek</a></li>
+                <li><a href="#experience" className="hover:text-emerald-400 transition-colors">Pengalaman (Experience)</a></li>
+                <li><a href="#education" className="hover:text-emerald-400 transition-colors">Pendidikan &amp; Sanad</a></li>
                 <li><a href="#contact" className="hover:text-emerald-400 transition-colors">Kontak</a></li>
               </ul>
             </div>
