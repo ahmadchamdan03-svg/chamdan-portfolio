@@ -10,6 +10,28 @@ interface ProjectsSectionProps {
   lang?: "ID" | "EN";
 }
 
+function parseTechStack(techStack: unknown): string[] {
+  if (!techStack) return [];
+  if (Array.isArray(techStack)) {
+    return techStack
+      .flatMap((item) => {
+        if (typeof item === "string") {
+          return item.includes(",") ? item.split(",").map((s) => s.trim()) : [item.trim()];
+        }
+        return [String(item)];
+      })
+      .filter(Boolean);
+  }
+  if (typeof techStack === "string") {
+    const cleaned = techStack.replace(/^\{|\}$/g, "");
+    return cleaned
+      .split(",")
+      .map((item) => item.replace(/^"|"$/g, "").trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
 export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -132,21 +154,16 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between">
                   <div>
-                    {/* Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {item.tech_stack?.slice(0, 5).map((tech, tIdx) => (
+                    {/* Tech Stack Badges wrapped in individual pills */}
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      {parseTechStack(item.tech_stack).map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 rounded-md bg-stone-100 text-stone-700 text-[11px] font-medium"
+                          className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-800 border border-emerald-600/20 shadow-xs"
                         >
                           {tech}
                         </span>
                       ))}
-                      {item.tech_stack && item.tech_stack.length > 5 && (
-                        <span className="px-2 py-1 rounded-md bg-stone-100 text-stone-500 text-[11px]">
-                          +{item.tech_stack.length - 5}
-                        </span>
-                      )}
                     </div>
 
                     {/* Title */}
@@ -163,9 +180,10 @@ export default function ProjectsSection({ lang = "ID" }: ProjectsSectionProps) {
                   {/* Footer link */}
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-[#064e3b]">
                     <span>Studi Kasus Lengkap</span>
-                    <span className="w-8 h-8 rounded-full bg-emerald-50 group-hover:bg-[#064e3b] group-hover:text-white flex items-center justify-center transition-all">
+                    <div className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      <span>Detail</span>
                       <ArrowUpRight className="w-4 h-4" />
-                    </span>
+                    </div>
                   </div>
                 </div>
               </article>

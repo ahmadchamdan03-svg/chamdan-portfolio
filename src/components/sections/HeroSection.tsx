@@ -10,7 +10,6 @@ interface HeroSectionProps {
 
 export default function HeroSection({
   name = "CHAMDAN",
-  tagline = "Santri Lirboyo, Khadimul Ilmi dan AI-Driven Web Developer",
   lang = "ID",
 }: HeroSectionProps) {
   return (
@@ -23,9 +22,9 @@ export default function HeroSection({
       <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header Row: Left Tagline & Right Arabic Vertical Text */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-12 gap-4 items-start">
+      <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-6 md:gap-8">
         {/* Left Column: Authentic Tagline */}
-        <div className="col-span-8 sm:col-span-6 md:col-span-4 text-left">
+        <div className="w-full md:max-w-md text-left">
           <div className="w-10 h-0.5 bg-[#064e3b] mb-4" />
           <h1 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-stone-900 leading-snug">
             <span className="font-serif font-bold text-[#064e3b]">
@@ -53,35 +52,41 @@ export default function HeroSection({
           </p>
         </div>
 
-        {/* Center Space reserved for Photo */}
-        <div className="hidden md:block col-span-4" />
+        {/* Center Space reserved for Photo on desktop */}
+        <div className="hidden md:block flex-1" />
 
-        {/* Right Column: Authentic Arabic Calligraphy "خادم العلم" */}
-        <div className="col-span-4 sm:col-span-6 md:col-span-4 flex flex-col items-end">
-          <div className="flex items-center gap-3">
-            <div className="flex flex-col items-center">
-              <span className="w-0.5 h-8 bg-amber-600/40 mb-2" />
-              {/* Vertical Arabic Text */}
-              <div
-                lang="ar"
-                dir="rtl"
-                className="font-arabic text-2xl sm:text-3xl md:text-4xl font-bold text-[#064e3b] tracking-wider select-none leading-loose [writing-mode:vertical-rl] drop-shadow-sm"
-              >
-                خادم العلم
-              </div>
-              <span className="w-0.5 h-8 bg-amber-600/40 mt-2" />
+        {/* Right Column: Authentic Arabic Calligraphy "خادم العلم" & 3-Word Stack */}
+        <div className="flex items-center gap-3 sm:gap-4 self-end md:self-start shrink-0">
+          <div className="flex flex-col items-center">
+            <span className="w-0.5 h-6 sm:h-8 bg-amber-600/40 mb-2" />
+            {/* Vertical Arabic Text */}
+            <div
+              lang="ar"
+              dir="rtl"
+              className="font-arabic text-2xl sm:text-3xl md:text-4xl font-bold text-[#064e3b] tracking-wider select-none leading-loose [writing-mode:vertical-rl] drop-shadow-sm"
+            >
+              خادم العلم
             </div>
-            <div className="hidden sm:flex flex-col text-right text-[11px] font-serif text-stone-500 tracking-widest uppercase">
-              <span>Khadim</span>
-              <span>Al-Ilmi</span>
-              <span className="text-amber-600 font-semibold mt-1">Lirboyo</span>
-            </div>
+            <span className="w-0.5 h-6 sm:h-8 bg-amber-600/40 mt-2" />
+          </div>
+
+          {/* 3 Distinct Words Stacked Vertically with clean spacing */}
+          <div className="flex flex-col text-right font-serif tracking-widest uppercase text-stone-600">
+            <span className="block text-xs sm:text-sm font-medium leading-tight">
+              Khadim
+            </span>
+            <span className="block text-xs sm:text-sm font-semibold text-stone-800 leading-tight mt-1">
+              Al-Ilmi
+            </span>
+            <span className="block text-xs sm:text-sm font-bold text-amber-600 leading-tight mt-1.5">
+              Lirboyo
+            </span>
           </div>
         </div>
       </div>
 
       {/* Center Layer: Interactive Pixel Reveal Photo */}
-      <div className="relative z-20 w-full flex justify-center items-center my-[-2rem] sm:my-[-3rem] md:my-[-4rem]">
+      <div className="relative z-10 w-full flex justify-center items-center mt-4 sm:mt-2 md:mt-0 mb-[-2rem] sm:mb-[-3rem] md:mb-[-4rem]">
         <PixelReveal
           jacketSrc="/images/hero/jacket.png"
           blueshirtSrc="/images/hero/blueshirt.png"
