@@ -19,7 +19,6 @@ import CursorTrail from "@/components/ui/CursorTrail";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import IntroLoader from "@/components/ui/IntroLoader";
 import EasterEgg from "@/components/ui/EasterEgg";
-import LeadMagnetModal from "@/components/ui/LeadMagnetModal";
 import CookieBanner from "@/components/ui/CookieBanner";
 
 // Lazy load below-the-fold and heavy interactive components
@@ -47,7 +46,6 @@ const CommandPalette = dynamic(() => import("@/components/ui/CommandPalette"), {
 export default function Home() {
   const [lang, setLang] = useState<"ID" | "EN" | "AR">("ID");
   const [searchOpen, setSearchOpen] = useState(false);
-  const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
 
   const toggleLang = () => {
     setLang((prev) => (prev === "ID" ? "EN" : prev === "EN" ? "AR" : "ID"));
@@ -73,13 +71,6 @@ export default function Home() {
       {/* Secret Developer Easter Egg (Konami Code) */}
       <EasterEgg />
 
-      {/* Lead Magnet E-Book Download Modal */}
-      <LeadMagnetModal
-        isOpen={leadMagnetOpen}
-        onClose={() => setLeadMagnetOpen(false)}
-        lang={lang}
-      />
-
       {/* Fixed Navbar with Glassmorphism */}
       <Navbar
         currentLang={lang}
@@ -95,7 +86,6 @@ export default function Home() {
           name="CHAMDAN"
           tagline="Seorang Santri, Khadimul Ilmi yang merajut khazanah dari turats hingga rekayasa AI-Driven Web."
           lang={lang}
-          onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         />
 
         {/* 2. About Section (Dark Background, Narrative & Info Card) */}

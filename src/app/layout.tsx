@@ -55,13 +55,8 @@ export const metadata: Metadata = {
     "Portofolio resmi Ahmad Chamdan Yuwafin (Chamdan). Seorang Santri, Khadimul Ilmi, dan AI-Driven Full-Stack Web Developer. Jembatan antara tradisi turats kitab salaf dan rekayasa teknologi modern.",
   manifest: "/manifest.json",
   icons: {
-    icon: [
-      { url: "/icon.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: [
-      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
-    ],
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
   openGraph: {
     title: "Ahmad Chamdan Yuwafin : Khadimul Ilmi & AI-Driven Web Developer",

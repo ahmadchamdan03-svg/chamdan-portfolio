@@ -7,7 +7,6 @@ import {
   ArrowUpRight,
   Menu,
   X,
-  Globe,
   Search,
   Sun,
   Moon,
@@ -15,7 +14,9 @@ import {
   Lock,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import AmbientAudio from "@/components/ui/AmbientAudio";
+import { triggerHaptic } from "@/components/providers/PWAProvider";
 
 interface NavbarProps {
   currentLang?: "ID" | "EN" | "AR";
@@ -33,10 +34,27 @@ export default function Navbar({
   const [activeSection, setActiveSection] = useState<string>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // --- Smart Hide-on-Scroll with Framer Motion (Fase 89) ---
+  const { scrollY } = useScroll();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest <= 50) {
+      setIsVisible(true);
+    } else if (latest > lastScrollY && latest > 100) {
+      setIsVisible(false);
+      setSettingsOpen(false);
+      setMobileMenuOpen(false);
+    } else if (latest < lastScrollY) {
+      setIsVisible(true);
+    }
+    setLastScrollY(latest);
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -61,16 +79,14 @@ export default function Navbar({
     { id: "home", labelID: "Beranda", labelEN: "Home", labelAR: "الرئيسية" },
     { id: "about", labelID: "Profil", labelEN: "About", labelAR: "نبذة" },
     { id: "skills", labelID: "Keahlian", labelEN: "Skills", labelAR: "المهارات" },
-    { id: "projects", labelID: "Proyek", labelEN: "Projects", labelAR: "الأعمال" },
-    { id: "services", labelID: "Layanan", labelEN: "Services", labelAR: "الخدمات" },
-    { id: "schedule", labelID: "Jadwal", labelEN: "Schedule", labelAR: "الجدول" },
+    { id: "projects", labelID: "Karya", labelEN: "Projects", labelAR: "الأعمال" },
     { id: "education", labelID: "Sanad", labelEN: "Sanad", labelAR: "السند" },
+    { id: "schedule", labelID: "Jadwal", labelEN: "Schedule", labelAR: "الجدول" },
+    { id: "services", labelID: "Layanan", labelEN: "Services", labelAR: "الخدمات" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-
       const sections = navItems.map((item) => document.getElementById(item.id));
       const scrollPos = window.scrollY + 200;
 
@@ -89,6 +105,7 @@ export default function Navbar({
   }, []);
 
   const triggerSearch = () => {
+    triggerHaptic(15);
     setSettingsOpen(false);
     if (onOpenSearch) {
       onOpenSearch();
@@ -103,10 +120,12 @@ export default function Navbar({
   };
 
   const toggleTheme = () => {
+    triggerHaptic(15);
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const handleLangSelect = (newLang: "ID" | "EN" | "AR") => {
+    triggerHaptic(15);
     if (onSelectLang) {
       onSelectLang(newLang);
     } else if (onToggleLang) {
@@ -130,12 +149,22 @@ export default function Navbar({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 pt-4 sm:pt-6 pointer-events-none transition-all duration-300">
-      <div className="w-full max-w-5xl flex items-center justify-between pointer-events-auto">
+    <>
+      {/* Unified Floating Glassmorphism Pill Navbar (Fase 86 & 89) */}
+      <motion.nav
+        animate={isVisible ? "visible" : "hidden"}
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: "-150%", opacity: 0 },
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed top-4 inset-x-4 md:max-w-6xl mx-auto rounded-full backdrop-blur-xl bg-white/70 dark:bg-black/50 border border-white/20 dark:border-white/10 shadow-lg px-4 md:px-6 py-2.5 flex items-center justify-between z-[100]"
+        aria-label="Navigasi Utama Portofolio"
+      >
         {/* Left: Brand Logo Emblem */}
         <Link
           href="#home"
-          className="group flex items-center justify-center w-11 h-11 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-all duration-200 border-2 border-emerald-600/50 bg-stone-900 shrink-0"
+          className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-105 transition-all duration-200 border border-emerald-600/40 bg-stone-900"
           aria-label="Ahmad Chamdan Yuwafin : Kembali ke Beranda"
         >
           <Image
@@ -148,35 +177,32 @@ export default function Navbar({
           />
         </Link>
 
-        {/* Center: Desktop Navigation Pills */}
-        <nav
-          className="hidden md:flex items-center gap-1 p-1.5 rounded-full bg-stone-900/95 text-stone-300 backdrop-blur-md border border-white/15 shadow-2xl"
-          aria-label="Navigasi Utama"
-        >
+        {/* Center: Desktop Navigation Menu (Transparent flexbox, active pill) */}
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                className={`transition-all duration-200 ${
                   isActive
-                    ? "bg-white text-stone-950 font-semibold shadow-sm"
-                    : "hover:text-white hover:bg-white/10"
+                    ? "bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white px-4 py-1.5 rounded-full font-semibold shadow-sm"
+                    : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white"
                 }`}
               >
                 {getLabel(item)}
               </a>
             );
           })}
-        </nav>
+        </div>
 
-        {/* Right: Consolidated Settings Menu Dropdown & Contact CTA */}
-        <div className="relative flex items-center gap-2" ref={dropdownRef}>
+        {/* Right: Consolidated Cluster (Contact CTA, Settings Dropdown, Mobile Menu Toggle) */}
+        <div className="flex items-center gap-3 shrink-0" ref={dropdownRef}>
           {/* Contact Me CTA */}
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#064e3b] text-[#fef3c7] hover:bg-[#022c22] text-xs sm:text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl border border-emerald-600/40"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#064e3b] hover:bg-[#022c22] text-[#fef3c7] text-xs font-semibold transition-all duration-200 shadow-md border border-emerald-600/40"
           >
             <span>
               {currentLang === "AR"
@@ -185,14 +211,14 @@ export default function Navbar({
                 ? "Contact Me"
                 : "Hubungi Saya"}
             </span>
-            <ArrowUpRight className="w-4 h-4 text-[#fbbf24]" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#fbbf24]" />
           </a>
 
           {/* Consolidated Settings Dropdown Trigger */}
           <button
             type="button"
             onClick={() => setSettingsOpen(!settingsOpen)}
-            className={`flex items-center justify-center w-9 h-9 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border transition-all duration-200 shadow-md cursor-pointer ${
+            className={`flex items-center justify-center w-9 h-9 rounded-full bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border transition-all duration-200 shadow-sm cursor-pointer ${
               settingsOpen
                 ? "border-emerald-500 text-emerald-600 dark:text-emerald-400 ring-2 ring-emerald-500/30"
                 : "border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-emerald-600"
@@ -201,6 +227,16 @@ export default function Navbar({
             title="Pengaturan & Preferensi"
           >
             <Settings className="w-4 h-4" />
+          </button>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-full bg-white/80 dark:bg-stone-900/80 text-stone-800 dark:text-white border border-stone-300 dark:border-stone-700 shadow-sm cursor-pointer"
+            aria-label={mobileMenuOpen ? "Tutup Menu Navigasi" : "Buka Menu Navigasi"}
+          >
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
 
           {/* Dropdown Popover */}
@@ -284,22 +320,12 @@ export default function Navbar({
               </Link>
             </div>
           )}
-
-          {/* Mobile Hamburger Toggle */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-stone-900/95 text-white backdrop-blur-md border border-white/15 shadow-lg cursor-pointer"
-            aria-label={mobileMenuOpen ? "Tutup Menu Navigasi" : "Buka Menu Navigasi"}
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Appears below floating pill) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-4 top-20 z-[100] bg-stone-900/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-2xl flex flex-col gap-2 pointer-events-auto md:hidden">
+        <div className="fixed inset-x-4 top-20 z-[100] bg-stone-900/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-2xl flex flex-col gap-2 pointer-events-auto md:hidden animate-in fade-in slide-in-from-top-2 duration-150">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -330,6 +356,6 @@ export default function Navbar({
           </a>
         </div>
       )}
-    </header>
+    </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Bot, X, Send, Loader2, Mic, MicOff } from "lucide-react";
+import { triggerHaptic } from "@/components/providers/PWAProvider";
 
 interface Message {
   role: "user" | "assistant";
@@ -15,7 +16,7 @@ export default function AIChatWidget() {
     {
       role: "assistant",
       content:
-        "Assalamu'alaikum! Saya Khadim AI. Ingin tahu lebih banyak mengenai karya Kang Chamdan, sanad keilmuan Lirboyo, atau rencana kolaborasi sistem?",
+        "Assalamu'alaikum! Saya Usth. Halwaa (Khadim AI). Ingin tahu lebih banyak mengenai karya Kang Chamdan, sanad keilmuan Lirboyo, atau rencana kolaborasi sistem?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -103,24 +104,35 @@ export default function AIChatWidget() {
 
   return (
     <>
-      {/* Floating Trigger Button (Bottom-Left) */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 z-40 group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-stone-900 shadow-2xl shadow-stone-950/60 transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-emerald-500 hover:border-amber-400 cursor-pointer overflow-hidden p-0.5"
-        aria-label="Tanya Khadim AI"
-        title="Tanya Khadim AI"
-      >
-        <div className="relative w-full h-full rounded-full overflow-hidden">
-          <Image
-            src="/images/avatar.png"
-            alt="Khadim AI - Ahmad Chamdan Yuwafin"
-            fill
-            sizes="64px"
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-          <span className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-stone-900" />
+      {/* Floating Trigger Button (Bottom-Left) - Redesigned to Usth. Halwaa (Fase 90) */}
+      <div className="fixed bottom-6 left-6 z-40 group flex items-center">
+        <button
+          onClick={() => {
+            triggerHaptic(20);
+            setOpen(!open);
+          }}
+          className="relative flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-stone-900/90 shadow-2xl shadow-stone-950/70 transition-all duration-300 hover:scale-105 active:scale-95 border border-amber-400/50 hover:border-amber-300 cursor-pointer overflow-hidden p-1 backdrop-blur-md"
+          aria-label="Tanya Usth. Halwaa"
+          title="Tanya Usth. Halwaa"
+        >
+          <div className="relative w-full h-full rounded-xl overflow-hidden bg-stone-800/50">
+            <Image
+              src="/images/halwaa.png"
+              alt="Usth. Halwaa"
+              fill
+              sizes="72px"
+              className="object-cover object-top group-hover:scale-110 transition-transform duration-300"
+              priority
+            />
+            <span className="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-stone-900 shadow-sm animate-pulse" />
+          </div>
+        </button>
+
+        {/* Hover Tooltip (Hidden on Mobile) */}
+        <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 text-white text-sm px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none hidden md:block border border-white/10 shadow-lg font-sans">
+          Usth. Halwaa
         </div>
-      </button>
+      </div>
 
       {/* Chat Window Dialog */}
       {open && (
@@ -128,17 +140,17 @@ export default function AIChatWidget() {
           {/* Header */}
           <div className="p-4 bg-emerald-950/90 border-b border-emerald-500/20 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-emerald-500/40">
+              <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-amber-400/40 bg-stone-900/60 shadow-inner">
                 <Image
-                  src="/images/avatar.png"
-                  alt="Khadim AI Avatar"
+                  src="/images/halwaa.png"
+                  alt="Usth. Halwaa Avatar"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div>
                 <div className="font-serif font-bold text-white text-xs sm:text-sm">
-                  Khadim AI
+                  Usth. Halwaa (Khadim AI)
                 </div>
                 <div className="text-[10px] text-emerald-400 flex items-center gap-1 font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

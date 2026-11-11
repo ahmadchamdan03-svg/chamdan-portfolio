@@ -231,6 +231,12 @@ export default function PixelReveal({
         className="absolute inset-0 w-full h-full pointer-events-auto"
         style={{ touchAction: "none" }}
       />
+
+      {/* Bottom Edge Fade Mask: Eliminates hard image boundary and 1px anti-aliasing artifact */}
+      <div
+        className="absolute -bottom-1 left-0 right-0 h-28 bg-gradient-to-t from-[#fafaf9] via-[#fafaf9]/80 to-transparent dark:from-stone-950 dark:via-stone-950/80 pointer-events-none z-30 translate-y-[1px]"
+        aria-hidden="true"
+      />
     </div>
   );
 }
