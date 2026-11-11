@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, ArrowUp, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
+import { Mail, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 interface ContactSectionProps {
@@ -18,10 +18,6 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,15 +77,6 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
             {/* Inner Accent Line */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
-            {/* Status Indicator */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-medium mb-8">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-              </span>
-              <span>Open for projects &amp; academic discussions</span>
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Left Column: Headline & Direct Contact */}
               <div className="lg:col-span-6 space-y-6">
@@ -109,7 +96,7 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
 
                 <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-lg">
                   {lang === "ID"
-                    ? "Terbuka untuk kolaborasi digitalisasi pesantren, arsitektur web modern, integrasi AI, maupun riset ilmiah seputar turats Islam."
+                    ? "Terbuka untuk kolaborasi digitalisasi pesantren, arsitektur web modern, integrasi AI, maupun riset ilmiah seputar kitab turats."
                     : "Available for institutional pesantren digitalization, full-stack web applications, AI automation, or academic research."}
                 </p>
 
@@ -133,16 +120,6 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                     <MessageCircle className="w-4 h-4 text-white" />
                     <span>WhatsApp: 0858-9915-1685</span>
                   </a>
-
-                  <button
-                    type="button"
-                    onClick={scrollToTop}
-                    aria-label={lang === "ID" ? "Kembali ke atas halaman" : "Back to top of page"}
-                    className="inline-flex items-center gap-1.5 px-4 py-3 rounded-full bg-stone-800/80 hover:bg-stone-700 text-stone-200 text-xs sm:text-sm font-medium border border-stone-700 hover:border-emerald-500/50 transition-all shadow-md cursor-pointer"
-                  >
-                    <span>{lang === "ID" ? "Ke Atas" : "Back to top"}</span>
-                    <ArrowUp className="w-3.5 h-3.5 text-emerald-400" />
-                  </button>
                 </div>
               </div>
 
@@ -199,10 +176,9 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                       id="contact-name"
                       type="text"
                       required
-                      placeholder="Contoh: Gus Hilmy / John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                   </div>
 
@@ -217,10 +193,9 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                       id="contact-email"
                       type="email"
                       required
-                      placeholder="nama@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors"
                     />
                   </div>
 
@@ -235,10 +210,9 @@ export default function ContactSection({ lang = "ID" }: ContactSectionProps) {
                       id="contact-message"
                       required
                       rows={4}
-                      placeholder="Tuliskan ide, kebutuhan teknis, atau pertanyaan Anda di sini..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-stone-900/90 border border-stone-800 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors resize-none"
                     />
                   </div>
 

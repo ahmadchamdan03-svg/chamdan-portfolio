@@ -155,7 +155,7 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
                       FOCUS
                     </dt>
                     <dd className="font-medium text-[#fbbf24] text-right">
-                      Web &amp; AI Automation
+                      Kitab Salaf &amp; Web AI Automation
                     </dd>
                   </div>
                 </dl>

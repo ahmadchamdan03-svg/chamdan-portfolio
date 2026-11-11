@@ -10,6 +10,12 @@ import {
   BookOpen,
   Image as ImageIcon,
   MessageSquareQuote,
+  Briefcase,
+  GraduationCap,
+  Calendar,
+  Share2,
+  CalendarDays,
+  Settings,
   Users,
   BarChart3,
   LogOut,
@@ -25,6 +31,12 @@ const NAV_ITEMS = [
   { href: "/admin/writings", label: "Karya Tulis", icon: BookOpen },
   { href: "/admin/gallery", label: "Galeri 3D", icon: ImageIcon },
   { href: "/admin/testimonials", label: "Testimoni", icon: MessageSquareQuote },
+  { href: "/admin/experience", label: "Pengalaman", icon: Briefcase },
+  { href: "/admin/education", label: "Pendidikan", icon: GraduationCap },
+  { href: "/admin/schedules", label: "Jadwal Kajian", icon: Calendar },
+  { href: "/admin/social-links", label: "Akun Digital", icon: Share2 },
+  { href: "/admin/calendar", label: "Kalender", icon: CalendarDays },
+  { href: "/admin/settings", label: "Pengaturan Situs", icon: Settings },
   { href: "/admin/subscribers", label: "Subscribers", icon: Users },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ];
@@ -95,6 +107,7 @@ export default function AdminLayout({
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={true}
                   onClick={() => setMobileOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                     isActive
@@ -115,6 +128,7 @@ export default function AdminLayout({
           <Link
             href="/"
             target="_blank"
+            prefetch={true}
             className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs text-stone-400 hover:text-stone-200 hover:bg-stone-800/40 transition-colors"
           >
             <span>Lihat Website</span>

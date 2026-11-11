@@ -3,7 +3,6 @@ const OFFLINE_URLS = [
   "/",
   "/privacy",
   "/terms",
-  "/verify-sanad",
   "/favicon.ico",
   "/manifest.json",
 ];

@@ -88,3 +88,53 @@ export interface Subscriber {
   email: string;
   created_at: string;
 }
+
+export interface Schedule {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  time: string;
+  location: string;
+  speaker: string;
+  description?: string | null;
+  created_at: string;
+}
+
+export interface SocialLink {
+  id: string;
+  platform: string;
+  url: string;
+  icon: string;
+  sort_order?: number;
+  created_at?: string;
+}
+
+export interface SiteConfig {
+  id: string;
+  logo_url?: string | null;
+  affiliation_arabic?: string;
+  affiliation_text?: string;
+  full_name?: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+  next_ping_date?: string | null;
+  created_at?: string;
+}
+
+export interface CalendarNote {
+  id: string;
+  title: string;
+  description?: string | null;
+  date: string;
+  created_at: string;
+}
+
+export interface PingHistory {
+  id: string;
+  pinged_at: string;
+  type: "auto" | "manual";
+  status: string;
+  created_at: string;
+}

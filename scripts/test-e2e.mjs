@@ -90,14 +90,14 @@ console.log("\n4. Memeriksa Ketersediaan Halaman Statis & Aksesibilitas Footer:"
 const privacyExists = fs.existsSync(path.resolve("src/app/privacy/page.tsx"));
 const termsExists = fs.existsSync(path.resolve("src/app/terms/page.tsx"));
 const faraidhExists = fs.existsSync(path.resolve("src/app/tools/faraidh/page.tsx"));
-const verifySanadExists = fs.existsSync(path.resolve("src/app/verify-sanad/page.tsx"));
+const verifySanadExists = !fs.existsSync(path.resolve("src/app/verify-sanad/page.tsx"));
 const notFoundExists = fs.existsSync(path.resolve("src/app/not-found.tsx"));
 const footerContent = fs.readFileSync(path.resolve("src/components/layout/Footer.tsx"), "utf-8");
 
 assert(privacyExists, "Rute Kebijakan Privasi (/privacy) terdefinisi");
 assert(termsExists, "Rute Syarat & Ketentuan (/terms) terdefinisi");
 assert(faraidhExists, "Rute Utilitas Syariah Kalkulator Faraidh & Zakat (/tools/faraidh) terdefinisi");
-assert(verifySanadExists, "Rute Verifikasi Kriptografis Sanad (/verify-sanad) terdefinisi");
+assert(verifySanadExists, "Rute Sanad (/verify-sanad) berhasil dipensiunkan/dihapus total");
 assert(notFoundExists, "Rute 404 Kustom (Santri Jump Mini-Game) terdefinisi");
 assert(
   footerContent.includes("/privacy") && footerContent.includes("/terms") && footerContent.includes("/tools/faraidh"),

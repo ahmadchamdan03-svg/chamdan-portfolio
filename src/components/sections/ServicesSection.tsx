@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { triggerHaptic } from "@/components/providers/PWAProvider";
+import PaymentModal from "@/components/ui/PaymentModal";
 
 interface ServicesSectionProps {
   lang?: "ID" | "EN" | "AR";
@@ -37,6 +38,8 @@ interface ServicePackage {
 export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
   const [selectedService, setSelectedService] = useState<ServicePackage | null>(null);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [paymentItem, setPaymentItem] = useState({ name: "", price: "" });
   const [bookingTopic, setBookingTopic] = useState("");
   const [consultName, setConsultName] = useState("");
   const [consultEmail, setConsultEmail] = useState("");
@@ -182,15 +185,18 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
   const handleOpenBooking = (pkg?: ServicePackage) => {
     if (pkg) {
-      setSelectedService(pkg);
-      setBookingTopic(lang === "ID" ? pkg.titleID : pkg.titleEN);
+      setPaymentItem({
+        name: `Paket ${pkg.titleID}`,
+        price: pkg.priceRangeID,
+      });
+      setPaymentModalOpen(true);
     } else {
       setBookingTopic(
         lang === "ID" ? "Konsultasi Umum Digitalisasi" : "General Tech Consultation"
       );
+      setBookingModalOpen(true);
+      setConsultSuccess(false);
     }
-    setBookingModalOpen(true);
-    setConsultSuccess(false);
   };
 
   const handleSendBooking = (e: React.FormEvent) => {
@@ -469,6 +475,13 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
           </div>
         </div>
       )}
+      {/* Payment Confirmation Modal */}
+      <PaymentModal
+        isOpen={paymentModalOpen}
+        onClose={() => setPaymentModalOpen(false)}
+        itemName={paymentItem.name}
+        itemPrice={paymentItem.price}
+      />
     </section>
   );
 }

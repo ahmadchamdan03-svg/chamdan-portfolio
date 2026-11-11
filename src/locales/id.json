@@ -50,9 +50,9 @@
     "subtitle": "Dedikasi khidmah santri dalam tata kelola pondok pesantren, kepanitiaan akbar, dan rekayasa otomatisasi operasional."
   },
   "education": {
-    "badge": "Sanad & Akademis",
-    "title": "Pendidikan & Sanad Ilmiah",
-    "subtitle": "Fondasi keilmuan Islam klasik (Turats) yang muttashil, dipadukan dengan ijazah sanad resmi Al-Qur'an dan kitab salaf."
+    "badge": "Kesarjanaan & Riwayat",
+    "title": "Pendidikan & Kesarjanaan",
+    "subtitle": ""
   },
   "writings": {
     "badge": "Karya Tulis & Risalah",
@@ -69,7 +69,6 @@
     "title1": "Ada rencana proyek?",
     "title2": "Mari berdiskusi.",
     "desc": "Terbuka untuk kolaborasi digitalisasi pesantren, pembuatan sistem full-stack, otomasi AI, maupun konsultasi proyek teknologi.",
-    "backToTop": "Ke Atas",
     "formTitle": "Kirim Pesan Langsung",
     "namePlaceholder": "Nama Anda",
     "emailPlaceholder": "Alamat Email",

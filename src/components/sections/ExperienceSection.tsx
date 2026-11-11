@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { Experience } from "@/types/database";
-import { Calendar, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Calendar, AlertCircle, Loader2 } from "lucide-react";
 
 interface ExperienceSectionProps {
   lang?: "ID" | "EN" | "AR";
@@ -12,56 +12,33 @@ interface ExperienceSectionProps {
 
 function TimelineCard({
   item,
-  index,
-  total,
 }: {
   item: Experience;
-  index: number;
-  total: number;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0.35, y: 30 }}
+      initial={{ opacity: 0.35, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.4 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative flex items-start gap-4 sm:gap-8 group"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="relative flex items-center gap-4 sm:gap-6 group"
     >
       {/* Node / Marker on the Timeline */}
-      <div className="relative z-10 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-stone-900 border-2 border-emerald-500/60 shadow-[0_0_20px_rgba(16,185,129,0.35)] shrink-0 group-hover:border-[#fbbf24] group-hover:scale-110 transition-all duration-300">
-        <span className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-emerald-400 group-hover:bg-[#fbbf24] transition-colors" />
+      <div className="relative z-10 flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-stone-900 border-2 border-emerald-500/60 shadow-[0_0_20px_rgba(16,185,129,0.35)] shrink-0 group-hover:border-[#fbbf24] group-hover:scale-110 transition-all duration-300">
+        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-400 group-hover:bg-[#fbbf24] transition-colors" />
       </div>
 
       {/* Card Content with Glassmorphism */}
-      <div className="flex-1 rounded-3xl bg-stone-900/80 backdrop-blur-xl border border-emerald-900/40 p-6 sm:p-8 shadow-xl hover:border-emerald-500/40 hover:shadow-[0_10px_35px_rgba(16,185,129,0.15)] transition-all duration-300">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-4 border-b border-stone-800">
-          {/* Organization Name */}
-          <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-white group-hover:text-emerald-300 transition-colors">
-            {item.organization}
-          </h3>
+      <div className="flex-1 rounded-2xl bg-stone-900/80 backdrop-blur-xl border border-emerald-900/40 px-5 py-4 sm:px-6 sm:py-5 shadow-lg hover:border-emerald-500/40 hover:shadow-[0_10px_30px_rgba(16,185,129,0.12)] transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        {/* Organization Name */}
+        <h3 className="text-base sm:text-lg md:text-xl font-serif font-bold text-white group-hover:text-emerald-300 transition-colors">
+          {item.organization}
+        </h3>
 
-          {/* Period Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/40 text-emerald-300 text-xs font-mono font-medium self-start sm:self-auto shrink-0">
-            <Calendar className="w-3.5 h-3.5 text-amber-400" />
-            <span>{item.period}</span>
-          </div>
-        </div>
-
-        {/* Roles / Responsibilities as styled bullet points */}
-        <ul className="space-y-3">
-          {item.roles.map((role, rIdx) => (
-            <li key={rIdx} className="flex items-start gap-3 text-stone-300 text-sm leading-relaxed">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-              <span>{role}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Step indicator */}
-        <div className="mt-5 pt-3 flex items-center justify-end text-[11px] font-mono text-stone-500">
-          <span>
-            FASE 0{index + 1} / 0{total}
-          </span>
+        {/* Period Badge */}
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/40 text-emerald-300 text-xs font-mono font-medium self-start sm:self-auto shrink-0 shadow-xs">
+          <Calendar className="w-3.5 h-3.5 text-amber-400" />
+          <span>{item.period}</span>
         </div>
       </div>
     </motion.div>
@@ -195,13 +172,11 @@ export default function ExperienceSection({ lang = "ID" }: ExperienceSectionProp
             />
 
             {/* 3. Timeline Items */}
-            <div className="space-y-10 sm:space-y-12">
-              {experiences.map((item, idx) => (
+            <div className="space-y-6 sm:space-y-8">
+              {experiences.map((item) => (
                 <TimelineCard
                   key={item.id}
                   item={item}
-                  index={idx}
-                  total={experiences.length}
                 />
               ))}
             </div>

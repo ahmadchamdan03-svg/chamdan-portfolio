@@ -50,9 +50,9 @@
     "subtitle": "Santri leadership track in pesantrens, major event committees, and operational workflow automation."
   },
   "education": {
-    "badge": "Sanad & Academic Credentials",
-    "title": "Education & Scientific Sanad",
-    "subtitle": "Continuous classical Islamic scholarship (Turats), coupled with verified sanad credentials in Quranic recitation and jurisprudence."
+    "badge": "Academic Credentials",
+    "title": "Education & Scholarship",
+    "subtitle": ""
   },
   "writings": {
     "badge": "Writings & Treatises",
@@ -69,7 +69,6 @@
     "title1": "Have a project in mind?",
     "title2": "Let's talk.",
     "desc": "Available for pesantren institutional digitalization, full-stack web applications, AI automation, or custom tech inquiries.",
-    "backToTop": "Back to top",
     "formTitle": "Send a Direct Message",
     "namePlaceholder": "Your Name",
     "emailPlaceholder": "Your Email",

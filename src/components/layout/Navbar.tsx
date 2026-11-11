@@ -80,7 +80,6 @@ export default function Navbar({
     { id: "about", labelID: "Profil", labelEN: "About", labelAR: "نبذة" },
     { id: "skills", labelID: "Keahlian", labelEN: "Skills", labelAR: "المهارات" },
     { id: "projects", labelID: "Karya", labelEN: "Projects", labelAR: "الأعمال" },
-    { id: "education", labelID: "Sanad", labelEN: "Sanad", labelAR: "السند" },
     { id: "schedule", labelID: "Jadwal", labelEN: "Schedule", labelAR: "الجدول" },
     { id: "services", labelID: "Layanan", labelEN: "Services", labelAR: "الخدمات" },
   ];
