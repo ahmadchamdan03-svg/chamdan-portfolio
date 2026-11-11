@@ -42,9 +42,7 @@
   },
   "gallery": {
     "badge": "Dokumentasi Visual 3D",
-    "title": "Galeri Lengkung Interaktif",
-    "subtitle": "Geser atau gulir untuk memutar dokumentasi kegiatan, wisuda akbar, dan majelis ilmiah santri.",
-    "dragHint": "Drag atau sentuh layar untuk memutar silinder galeri 3D"
+    "title": "Galeri Lengkung Interaktif"
   },
   "experience": {
     "badge": "Jejak Rekam & Kepemimpinan",
@@ -111,5 +109,44 @@
     "publishedOn": "Diterbitkan pada",
     "readTime": "menit baca",
     "shareTreatise": "Bagikan Risalah Ini"
+  },
+  "pricing": {
+    "title": "Struktur Paket Konsultasi dan Solusi Digital",
+    "taaruf": {
+      "title": "Ta'aruf Dasar",
+      "badge": "Pengenalan dan Audit Awal",
+      "price": "Rp 250.000",
+      "period": "45 Menit",
+      "desc": "Sesi pengenalan dan evaluasi awal untuk memetakan alur kerja sistem atau lembaga Anda."
+    },
+    "tafaqquh": {
+      "title": "Tafaqquh Madya",
+      "badge": "Pendalaman Alur dan Otomasi",
+      "price": "Rp 1.000.000",
+      "period": "90 Menit",
+      "desc": "Analisis mendalam untuk merancang roadmap otomasi dan efisiensi anggaran server."
+    },
+    "itqan": {
+      "title": "Itqan Arsitektur",
+      "badge": "Desain Sistem Presisi",
+      "highlight": "Paling Populer",
+      "price": "Rp 2.500.000",
+      "period": "2 Sesi (2x90 Menit)",
+      "desc": "Desain arsitektur sistem yang presisi, lengkap dengan blueprint database dan panduan implementasi."
+    },
+    "tatbiq": {
+      "title": "Tatbiq Intensif",
+      "badge": "Implementasi dan Pendampingan",
+      "price": "Rp 5.000.000",
+      "period": "Kustom (Bulanan)",
+      "desc": "Pendampingan teknis intensif untuk implementasi sistem end-to-end beserta garansi pemeliharaan."
+    },
+    "syamil": {
+      "title": "Syamil Enterprise",
+      "badge": "Solusi Menyeluruh dan Retainer",
+      "price": "Rp 10.000.000",
+      "period": "Kemitraan Kustom",
+      "desc": "Kemitraan strategis jangka panjang untuk membangun dan memelihara ekosistem digital enterprise dari nol."
+    }
   }
 }

@@ -125,13 +125,13 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/images/hero/jacket.png"
+          href="/images/hero/anime-front.png"
           type="image/png"
         />
         <link
           rel="preload"
           as="image"
-          href="/images/hero/blueshirt.png"
+          href="/images/hero/real-back.png"
           type="image/png"
         />
         <script

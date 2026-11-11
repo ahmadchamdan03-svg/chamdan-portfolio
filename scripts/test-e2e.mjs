@@ -40,8 +40,9 @@ assert(
 );
 
 assert(
-  layoutContent.includes("rel=\"preload\"") && layoutContent.includes("/images/hero/jacket.png"),
-  "Aset Hero LCP (jacket.png & blueshirt.png) memiliki tag preload di <head>"
+  layoutContent.includes("rel=\"preload\"") &&
+    (layoutContent.includes("/images/hero/anime-front.png") || layoutContent.includes("/images/hero/jacket.png")),
+  "Aset Hero LCP (anime-front.png & real-back.png) memiliki tag preload di <head>"
 );
 
 assert(

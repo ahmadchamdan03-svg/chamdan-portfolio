@@ -125,11 +125,6 @@ export default function GallerySection({ lang = "ID" }: GallerySectionProps) {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
               {lang === "ID" ? "Jejak Rekam & Arsip Visual" : "Visual Archive & Milestones"}
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-stone-300">
-              {lang === "ID"
-                ? "Putar dan geser silinder foto untuk menjelajahi dokumentasi proyek, santri, dan pengabdian."
-                : "Rotate and swipe the photo cylinder to explore project records, pesantren life, and dedication."}
-            </p>
           </div>
         </Reveal>
 

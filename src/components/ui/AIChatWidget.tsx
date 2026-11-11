@@ -104,14 +104,14 @@ export default function AIChatWidget() {
 
   return (
     <>
-      {/* Floating Trigger Button (Bottom-Left) - Redesigned to Usth. Halwaa (Fase 90) */}
+      {/* Floating Trigger Button (Bottom-Left) - Compact Size (Fase 98) */}
       <div className="fixed bottom-6 left-6 z-40 group flex items-center">
         <button
           onClick={() => {
             triggerHaptic(20);
             setOpen(!open);
           }}
-          className="relative flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-stone-900/90 shadow-2xl shadow-stone-950/70 transition-all duration-300 hover:scale-105 active:scale-95 border border-amber-400/50 hover:border-amber-300 cursor-pointer overflow-hidden p-1 backdrop-blur-md"
+          className="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-stone-900/90 shadow-2xl shadow-stone-950/70 transition-all duration-300 hover:scale-105 active:scale-95 border border-amber-400/50 hover:border-amber-300 cursor-pointer overflow-hidden p-1 backdrop-blur-md"
           aria-label="Tanya Usth. Halwaa"
           title="Tanya Usth. Halwaa"
         >
@@ -120,7 +120,7 @@ export default function AIChatWidget() {
               src="/images/halwaa.png"
               alt="Usth. Halwaa"
               fill
-              sizes="72px"
+              sizes="56px"
               className="object-cover object-top group-hover:scale-110 transition-transform duration-300"
               priority
             />
@@ -134,119 +134,141 @@ export default function AIChatWidget() {
         </div>
       </div>
 
-      {/* Chat Window Dialog */}
+      {/* Centered Chat Modal Dialog (Fase 98) */}
       {open && (
-        <div className="fixed bottom-24 left-4 sm:left-6 z-50 w-[92vw] sm:w-96 rounded-3xl bg-stone-900/95 border border-emerald-500/30 shadow-2xl backdrop-blur-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
-          {/* Header */}
-          <div className="p-4 bg-emerald-950/90 border-b border-emerald-500/20 flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-amber-400/40 bg-stone-900/60 shadow-inner">
-                <Image
-                  src="/images/halwaa.png"
-                  alt="Usth. Halwaa Avatar"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-              <div>
-                <div className="font-serif font-bold text-white text-xs sm:text-sm">
-                  Usth. Halwaa (Khadim AI)
+        <div
+          className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-0 md:p-4 animate-in fade-in duration-200"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setOpen(false);
+          }}
+        >
+          <div className="w-full h-[100dvh] md:h-[600px] md:max-w-2xl bg-zinc-900 border-0 md:border md:border-zinc-800 md:rounded-2xl shadow-2xl flex flex-col overflow-hidden relative">
+            {/* Header */}
+            <div className="p-4 md:px-6 bg-zinc-950/90 border-b border-zinc-800 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-amber-400/40 bg-zinc-900 shadow-inner">
+                  <Image
+                    src="/images/halwaa.png"
+                    alt="Usth. Halwaa Avatar"
+                    fill
+                    className="object-cover object-top"
+                  />
                 </div>
-                <div className="text-[10px] text-emerald-400 flex items-center gap-1 font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Online &bull; Powered by Gemini</span>
+                <div>
+                  <div className="font-serif font-bold text-white text-sm sm:text-base">
+                    Usth. Halwaa (Khadim AI)
+                  </div>
+                  <div className="text-[11px] text-emerald-400 flex items-center gap-1.5 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Online &bull; Powered by Gemini</span>
+                  </div>
                 </div>
               </div>
+
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Tutup dialog Khadim AI"
+                className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Tutup dialog Khadim AI"
-              className="p-1.5 rounded-lg text-stone-400 hover:text-white hover:bg-emerald-900/40 transition-colors"
+            {/* Messages List */}
+            <div
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 text-xs sm:text-sm"
             >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Messages List */}
-          <div ref={scrollRef} className="p-4 space-y-3 h-80 overflow-y-auto text-xs">
-            {messages.map((m, idx) => (
-              <div
-                key={idx}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-              >
+              {messages.map((m, idx) => (
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 leading-relaxed ${
-                    m.role === "user"
-                      ? "bg-emerald-600 text-white rounded-br-none"
-                      : "bg-stone-800 text-stone-200 rounded-bl-none border border-stone-700/80"
-                  }`}
+                  key={idx}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  {m.content}
+                  <div
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed ${
+                      m.role === "user"
+                        ? "bg-emerald-600 text-white rounded-br-none shadow-md shadow-emerald-950/30"
+                        : "bg-zinc-800 text-zinc-100 rounded-bl-none border border-zinc-700/80 shadow-md"
+                    }`}
+                  >
+                    {m.content}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
-            {loading && (
-              <div className="flex justify-start">
-                <div className="bg-stone-800 rounded-2xl px-3.5 py-2.5 rounded-bl-none border border-stone-700 flex items-center gap-2 text-stone-400 text-xs">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-400" />
-                  <span>Khadim AI sedang mengetik...</span>
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="bg-zinc-800 rounded-2xl px-4 py-3 rounded-bl-none border border-zinc-700 flex items-center gap-2.5 text-zinc-400 text-xs sm:text-sm">
+                    <Loader2 className="w-4 h-4 animate-spin text-emerald-400" />
+                    <span>Khadim AI sedang mengetik...</span>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* Quick Suggestions */}
-          <div className="px-3 py-2 bg-stone-950/60 border-t border-stone-800/80 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-            {quickQuestions.map((q, i) => (
+            {/* Quick Suggestions */}
+            <div className="px-4 md:px-6 py-2.5 bg-zinc-950/70 border-t border-zinc-800/80 flex items-center gap-2 overflow-x-auto no-scrollbar">
+              {quickQuestions.map((q, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleSend(q)}
+                  className="whitespace-nowrap px-3 py-1.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-xs text-zinc-300 border border-zinc-700 transition-colors shrink-0"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+
+            {/* Input Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
+              }}
+              className="w-full p-4 md:px-6 border-t border-zinc-800 bg-zinc-900 flex items-center gap-2.5"
+            >
+              <input
+                type="text"
+                aria-label="Tulis pertanyaan untuk asisten AI"
+                placeholder={
+                  isListening
+                    ? "Mendengarkan suara Anda..."
+                    : "Tanyakan seputar Kang Chamdan, karya, atau sanad..."
+                }
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="flex-grow px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
+              />
               <button
-                key={i}
-                onClick={() => handleSend(q)}
-                className="whitespace-nowrap px-2.5 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-[10px] text-stone-300 border border-stone-700 transition-colors shrink-0"
+                type="button"
+                onClick={startVoiceInput}
+                aria-label={
+                  isListening
+                    ? "Sedang mendengarkan suara"
+                    : "Gunakan input suara mikrofon"
+                }
+                className={`p-2.5 rounded-xl transition-colors shrink-0 ${
+                  isListening
+                    ? "bg-red-600 text-white animate-pulse"
+                    : "bg-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-700"
+                }`}
               >
-                {q}
+                {isListening ? (
+                  <MicOff className="w-4 h-4" />
+                ) : (
+                  <Mic className="w-4 h-4" />
+                )}
               </button>
-            ))}
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                aria-label="Kirim pesan pertanyaan ke asisten AI"
+                className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white transition-colors shrink-0"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
           </div>
-
-          {/* Input Form */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-            className="p-3 bg-stone-900 border-t border-stone-800 flex items-center gap-2"
-          >
-            <input
-              type="text"
-              aria-label="Tulis pertanyaan untuk asisten AI"
-              placeholder={isListening ? "Mendengarkan suara Anda..." : "Tanyakan sesuatu..."}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="flex-grow px-3.5 py-2 rounded-xl bg-stone-950 border border-stone-800 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500"
-            />
-            <button
-              type="button"
-              onClick={startVoiceInput}
-              aria-label={isListening ? "Sedang mendengarkan suara" : "Gunakan input suara mikrofon"}
-              className={`p-2 rounded-xl transition-colors shrink-0 ${
-                isListening
-                  ? "bg-red-600 text-white animate-pulse"
-                  : "bg-stone-800 text-stone-300 hover:text-white hover:bg-stone-700"
-              }`}
-            >
-              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-            </button>
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              aria-label="Kirim pesan pertanyaan ke asisten AI"
-              className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white transition-colors shrink-0"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
         </div>
       )}
     </>

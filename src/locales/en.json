@@ -42,9 +42,7 @@
   },
   "gallery": {
     "badge": "3D Visual Documentation",
-    "title": "Interactive Curved Gallery",
-    "subtitle": "Drag or scroll to rotate documented activities, grand graduation ceremonies, and scholarly majlis.",
-    "dragHint": "Drag or touch to rotate the 3D cylinder gallery"
+    "title": "Interactive Curved Gallery"
   },
   "experience": {
     "badge": "Career & Leadership Journey",
@@ -111,5 +109,44 @@
     "publishedOn": "Published on",
     "readTime": "min read",
     "shareTreatise": "Share This Treatise"
+  },
+  "pricing": {
+    "title": "Consulting and Digital Solutions Packages",
+    "taaruf": {
+      "title": "Taaruf Foundation",
+      "badge": "Introduction and Preliminary Audit",
+      "price": "$20",
+      "period": "45 Minutes",
+      "desc": "Introductory session and initial evaluation mapping workflow for your institution or system."
+    },
+    "tafaqquh": {
+      "title": "Tafaqquh Intermediate",
+      "badge": "Workflow and Automation Deep Dive",
+      "price": "$70",
+      "period": "90 Minutes",
+      "desc": "In-depth analysis designing automation roadmaps and server cost efficiency."
+    },
+    "itqan": {
+      "title": "Itqan Architecture",
+      "badge": "Precision System Design",
+      "highlight": "Most Popular",
+      "price": "$175",
+      "period": "2 Sessions (2x90 Min)",
+      "desc": "Precision system architecture design with database blueprint and implementation roadmap."
+    },
+    "tatbiq": {
+      "title": "Tatbiq Intensive",
+      "badge": "Implementation and Pair Support",
+      "price": "$350",
+      "period": "Custom (Monthly)",
+      "desc": "Intensive end-to-end technical assistance with maintenance warranty."
+    },
+    "syamil": {
+      "title": "Syamil Enterprise",
+      "badge": "Comprehensive Retainer Solution",
+      "price": "$700",
+      "period": "Custom Retainer",
+      "desc": "Strategic long-term partnership building and maintaining digital enterprise ecosystems from scratch."
+    }
   }
 }

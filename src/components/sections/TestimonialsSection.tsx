@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import { Testimonial } from "@/types/database";
-import { Quote, ShieldCheck } from "lucide-react";
+import { Quote, Code2 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Skeleton from "@/components/ui/Skeleton";
 
@@ -12,22 +12,53 @@ interface TestimonialsSectionProps {
   lang?: "ID" | "EN" | "AR";
 }
 
-const TRUST_PARTNERS = [
-  "Pondok Pesantren Lirboyo Kediri",
-  "Ma'had Aly Lirboyo (Takhassus Fiqh)",
-  "Lembaga Ittihadul Mutakharrijin",
-  "Dzaween Press Muktamar NU Ke-35",
-  "Kepanitiaan Haflah Akhirussanah",
-  "Komunitas Santri Developer Indonesia",
+const FALLBACK_SKILLS = [
+  "Next.js 15",
+  "React 19",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "Python",
+  "Supabase & PostgreSQL",
+  "Fikih & Ushul Fikih",
+  "Turats Syafi'iyyah",
+  "Khadimul Ilmi",
+  "Docker & Linux",
+  "AI Engineering & LLM Integration",
+  "Vercel Deployment",
+  "Git & CI/CD",
+  "Desain Grafis & Kaligrafi Arab",
+  "Canva & CorelDRAW",
 ];
 
 export default function TestimonialsSection({
   lang = "ID",
 }: TestimonialsSectionProps) {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [skillsList, setSkillsList] = useState<string[]>(FALLBACK_SKILLS);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function fetchSkills() {
+      try {
+        const { data } = await supabase
+          .from("skills")
+          .select("items")
+          .order("created_at", { ascending: true });
+
+        if (data && data.length > 0) {
+          const flattened = data.flatMap(
+            (cat: { items?: string[] }) => cat.items || []
+          );
+          if (flattened.length > 0) {
+            setSkillsList(flattened);
+          }
+        }
+      } catch (err) {
+        console.error("Skills marquee fetch error:", err);
+      }
+    }
+
     async function fetchTestimonials() {
       try {
         const { data, error } = await supabase
@@ -78,21 +109,23 @@ export default function TestimonialsSection({
         setLoading(false);
       }
     }
+
+    fetchSkills();
     fetchTestimonials();
   }, []);
 
   return (
     <section id="testimonials" className="py-24 sm:py-32 bg-[#fafaf9] dark:bg-stone-950 text-stone-900 dark:text-stone-100 relative overflow-hidden transition-colors">
-      {/* Trust Signals Marquee Banner */}
+      {/* Dynamic Skills Marquee Banner */}
       <div className="mb-20 border-y border-stone-200 dark:border-stone-800 bg-stone-100/60 dark:bg-stone-900/60 py-4 backdrop-blur-sm overflow-hidden">
         <div className="flex items-center gap-8 whitespace-nowrap animate-marquee">
-          {[...TRUST_PARTNERS, ...TRUST_PARTNERS].map((partner, i) => (
+          {[...skillsList, ...skillsList].map((skill, i) => (
             <div
               key={i}
-              className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-wider text-stone-600 dark:text-stone-400 uppercase"
+              className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-wider text-stone-600 dark:text-stone-400 uppercase font-mono"
             >
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>{partner}</span>
+              <Code2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span>{skill}</span>
               <span className="text-stone-400 dark:text-stone-600 mx-3">&bull;</span>
             </div>
           ))}

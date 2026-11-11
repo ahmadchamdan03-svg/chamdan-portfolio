@@ -6,9 +6,7 @@ import {
   Calendar,
   ArrowRight,
   MessageSquare,
-  Clock,
   ShieldCheck,
-  Zap,
   HelpCircle,
   CalendarPlus,
 } from "lucide-react";
@@ -49,131 +47,135 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
   const packages: ServicePackage[] = [
     {
-      id: "paket-menengah",
-      titleID: "Paket Menengah",
-      titleEN: "Moderate Advisory",
-      badge: "Sesi 1-on-1",
+      id: "taaruf-dasar",
+      titleID: "Ta'aruf Dasar",
+      titleEN: "Ta'aruf Foundation",
+      badge: "Pengenalan & Audit Awal",
       badgeColor: "bg-stone-800/80 text-stone-300 border-stone-700/60",
       priceRangeID: "Rp 250.000",
       priceRangeEN: "$20",
       periodID: "45 Menit",
       periodEN: "45 Minutes",
       descID:
-        "Sesi evaluasi teknis dasar untuk meninjau sistem atau alur kerja operasional lembaga Anda.",
+        "Sesi pengenalan dan evaluasi awal untuk memetakan alur kerja sistem atau lembaga Anda.",
       descEN:
-        "Basic technical evaluation session reviewing institutional workflow and systems.",
+        "Introductory session and initial evaluation mapping workflow for your institution or system.",
       featuresID: [
-        "Audit alur data & persuratan",
-        "Rekomendasi tech stack dasar",
+        "Audit awal alur data & persuratan",
+        "Rekomendasi dasar tech stack",
         "Dokumen ringkasan rekomendasi",
       ],
       featuresEN: [
-        "Audit alur data & persuratan",
-        "Rekomendasi tech stack dasar",
+        "Audit awal alur data & persuratan",
+        "Rekomendasi dasar tech stack",
         "Dokumen ringkasan rekomendasi",
       ],
     },
     {
-      id: "paket-agak-mahal",
-      titleID: "Paket Agak Mahal",
-      titleEN: "Strategic Advisory",
-      badge: "Skala Menengah",
+      id: "tafaqquh-madya",
+      titleID: "Tafaqquh Madya",
+      titleEN: "Tafaqquh Intermediate",
+      badge: "Pendalaman Alur & Otomasi",
       badgeColor: "bg-stone-800/80 text-stone-300 border-stone-700/60",
-      priceRangeID: "Rp 500.000",
-      priceRangeEN: "$35",
-      periodID: "60 Menit",
-      periodEN: "60 Minutes",
-      descID:
-        "Analisis komprehensif alur kerja dengan fokus efisiensi otomasi dan estimasi anggaran server.",
-      descEN:
-        "Comprehensive workflow analysis focusing on automation efficiency and server budget.",
-      featuresID: [
-        "Semua di Paket Menengah",
-        "Analisis roadmap otomasi",
-        "Estimasi anggaran server",
-      ],
-      featuresEN: [
-        "Semua di Paket Menengah",
-        "Analisis roadmap otomasi",
-        "Estimasi anggaran server",
-      ],
-    },
-    {
-      id: "paket-lumayan-mahal",
-      titleID: "Paket Lumayan Mahal",
-      titleEN: "Architecture & Automation",
-      badge: "Paling Populer",
-      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
-      highlight: true,
       priceRangeID: "Rp 1.000.000",
       priceRangeEN: "$70",
       periodID: "90 Menit",
       periodEN: "90 Minutes",
       descID:
-        "Sesi arsitektur mendalam dengan desain basis data relasional dan panduan integrasi Fonnte / AI.",
+        "Analisis mendalam untuk merancang roadmap otomasi dan efisiensi anggaran server.",
       descEN:
-        "Deep architecture session with relational database design and Fonnte / AI integration roadmap.",
+        "In-depth analysis designing automation roadmaps and server cost efficiency.",
       featuresID: [
-        "Semua di Paket Agak Mahal",
-        "Desain arsitektur database (ERD)",
-        "Panduan implementasi Fonnte/AI",
+        "Semua di Ta'aruf Dasar",
+        "Analisis & desain roadmap otomasi",
+        "Desain alur integrasi (Fonnte/AI)",
       ],
       featuresEN: [
-        "Semua di Paket Agak Mahal",
-        "Desain arsitektur database (ERD)",
-        "Panduan implementasi Fonnte/AI",
+        "Semua di Ta'aruf Dasar",
+        "Analisis & desain roadmap otomasi",
+        "Desain alur integrasi (Fonnte/AI)",
       ],
     },
     {
-      id: "paket-mahal",
-      titleID: "Paket Mahal",
-      titleEN: "Intensive Pair Setup",
-      badge: "Hands-on Setup",
-      badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+      id: "itqan-arsitektur",
+      titleID: "Itqan Arsitektur",
+      titleEN: "Itqan Architecture",
+      badge: "Desain Sistem Presisi",
+      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+      highlight: true,
       priceRangeID: "Rp 2.500.000",
       priceRangeEN: "$175",
       periodID: "2 Sesi (2x90 Menit)",
       periodEN: "2 Sessions (2x90 Min)",
       descID:
-        "Pendampingan langsung setup server cloud production dan evaluasi menyeluruh terhadap kode aplikasi.",
+        "Desain arsitektur sistem yang presisi, lengkap dengan blueprint database dan panduan implementasi.",
       descEN:
-        "Direct production cloud setup assistance and comprehensive codebase review.",
+        "Precision system architecture design with database blueprint and implementation roadmap.",
       featuresID: [
-        "Semua di Paket Lumayan Mahal",
-        "Pendampingan setup server Vercel/Supabase",
+        "Semua di Tafaqquh Madya",
+        "Desain arsitektur database (ERD)",
+        "Panduan setup server & deployment",
         "Review kode (Code Review)",
       ],
       featuresEN: [
-        "Semua di Paket Lumayan Mahal",
-        "Pendampingan setup server Vercel/Supabase",
+        "Semua di Tafaqquh Madya",
+        "Desain arsitektur database (ERD)",
+        "Panduan setup server & deployment",
         "Review kode (Code Review)",
       ],
     },
     {
-      id: "paket-sangat-mahal",
-      titleID: "Paket Sangat Mahal",
-      titleEN: "Dedicated System Build",
-      badge: "Enterprise Kustom",
-      badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
-      priceRangeID: "Rp 5.000.000+",
-      priceRangeEN: "$350+",
+      id: "tatbiq-intensif",
+      titleID: "Tatbiq Intensif",
+      titleEN: "Tatbiq Intensive",
+      badge: "Implementasi & Pendampingan",
+      badgeColor: "bg-stone-800/80 text-stone-300 border-stone-700/60",
+      priceRangeID: "Rp 5.000.000",
+      priceRangeEN: "$350",
       periodID: "Kustom (Bulanan)",
       periodEN: "Custom (Monthly)",
       descID:
-        "Kemitraan teknis intensif sebulan penuh membangun sistem enterprise dari nol dengan garansi pemeliharaan.",
+        "Pendampingan teknis intensif untuk implementasi sistem end-to-end beserta garansi pemeliharaan.",
       descEN:
-        "Full-month intensive technical partnership building enterprise systems from scratch with maintenance warranty.",
+        "Intensive end-to-end technical assistance with maintenance warranty.",
       featuresID: [
-        "Konsultasi intensif 1 bulan",
+        "Semua di Itqan Arsitektur",
+        "Implementasi setup server production",
         "Akses prioritas via WhatsApp",
-        "Membangun sistem dari nol (End-to-End)",
         "Garansi maintenance 1 bulan",
       ],
       featuresEN: [
-        "Konsultasi intensif 1 bulan",
+        "Semua di Itqan Arsitektur",
+        "Implementasi setup server production",
         "Akses prioritas via WhatsApp",
-        "Membangun sistem dari nol (End-to-End)",
         "Garansi maintenance 1 bulan",
+      ],
+    },
+    {
+      id: "syamil-enterprise",
+      titleID: "Syamil Enterprise",
+      titleEN: "Syamil Enterprise",
+      badge: "Solusi Menyeluruh & Retainer",
+      badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+      priceRangeID: "Rp 10.000.000",
+      priceRangeEN: "$700",
+      periodID: "Kemitraan Kustom",
+      periodEN: "Custom Retainer",
+      descID:
+        "Kemitraan strategis jangka panjang untuk membangun dan memelihara ekosistem digital enterprise dari nol.",
+      descEN:
+        "Strategic long-term partnership building and maintaining digital enterprise ecosystems from scratch.",
+      featuresID: [
+        "Semua di Tatbiq Intensif",
+        "Konsultasi intensif 1 bulan penuh",
+        "Akses prioritas 24/7",
+        "Maintenance & Support jangka panjang",
+      ],
+      featuresEN: [
+        "Semua di Tatbiq Intensif",
+        "Konsultasi intensif 1 bulan penuh",
+        "Akses prioritas 24/7",
+        "Maintenance & Support jangka panjang",
       ],
     },
   ];
@@ -234,14 +236,14 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
           </Reveal>
         </div>
 
-        {/* Pricing & Services Grid (1 col mobile, 2 col tablet, 3 col desktop) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Pricing & Services Grid (1 col mobile, 2 col tablet, 3 col desktop, 5 col XL) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
           {packages.map((pkg, idx) => (
             <Reveal key={pkg.id} delay={idx * 100}>
               <div
                 className={`relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 h-full ${
                   pkg.highlight
-                    ? "bg-stone-950/90 border-2 border-emerald-500/80 shadow-2xl shadow-emerald-950/50 ring-1 ring-emerald-500/30"
+                    ? "bg-gradient-to-b from-stone-900 via-stone-950 to-stone-900 border-2 border-emerald-400/90 shadow-2xl shadow-emerald-500/25 ring-1 ring-emerald-400/40"
                     : "bg-stone-950/70 backdrop-blur-xl border border-stone-800 hover:border-stone-700"
                 }`}
               >
@@ -318,25 +320,13 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
         {/* Bottom Trust Guarantee Strip */}
         <Reveal delay={400}>
-          <div className="mt-12 p-6 rounded-2xl bg-stone-950/60 border border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-            <div className="flex items-center gap-3">
-              <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
-              <span>
-                {lang === "ID"
-                  ? "Garansi bug-free & pendampingan teknis gratis 30 hari pasca serah terima proyek."
-                  : "30-day bug-free warranty and complimentary post-launch technical assistance."}
-              </span>
-            </div>
-            <div className="flex items-center gap-4 text-stone-400 shrink-0">
-              <div className="flex items-center gap-1.5">
-                <Zap className="w-4 h-4 text-amber-400" />
-                <span>Next.js 16</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-sky-400" />
-                <span>SLA Cepat</span>
-              </div>
-            </div>
+          <div className="mt-12 p-6 rounded-2xl bg-stone-950/60 border border-stone-800/80 flex items-center justify-start gap-4 text-xs text-stone-400">
+            <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
+            <span>
+              {lang === "ID"
+                ? "Garansi bug-free & pendampingan teknis gratis 30 hari pasca serah terima proyek."
+                : "30-day bug-free warranty and complimentary post-launch technical assistance."}
+            </span>
           </div>
         </Reveal>
       </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Profile } from "@/types/database";
-import { ArrowUpRight, ArrowDownRight, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface AboutSectionProps {
   lang?: "ID" | "EN" | "AR";
@@ -98,25 +98,6 @@ export default function AboutSection({ lang = "ID" }: AboutSectionProps) {
                   ? "Menghadirkan solusi digital yang tidak hanya mutakhir secara teknis, namun berakar pada integritas, adab, dan standar pesantren."
                   : "Delivering digital solutions that are technically cutting-edge, yet firmly grounded in ethics, integrity, and pesantren tradition."}
               </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-stone-950 hover:bg-[#fbbf24] font-semibold text-sm transition-all duration-200 shadow-xl hover:shadow-2xl"
-                >
-                  <span>{lang === "ID" ? "Lihat Portofolio Proyek" : "View Projects"}</span>
-                  <ArrowDownRight className="w-4 h-4 text-emerald-900" />
-                </a>
-
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-stone-900/80 hover:bg-stone-800 text-stone-200 hover:text-white border border-stone-700/80 font-medium text-sm transition-all duration-200"
-                >
-                  <span>{lang === "ID" ? "Hubungi Saya" : "Contact Me"}</span>
-                  <ArrowUpRight className="w-4 h-4 text-stone-400" />
-                </a>
-              </div>
             </div>
 
             {/* Right Column: Glassmorphism Info Table Card */}

@@ -81,8 +81,8 @@ export default function HeroSection({
       {/* Center Layer: Interactive Pixel Reveal Photo with Bottom Gradient Fade */}
       <div className="relative z-10 w-full flex justify-center items-center mt-4 sm:mt-2 md:mt-0 mb-[-2rem] sm:mb-[-3rem] md:mb-[-4rem]">
         <PixelReveal
-          jacketSrc="/images/hero/jacket.png"
-          blueshirtSrc="/images/hero/blueshirt.png"
+          jacketSrc="/images/hero/anime-front.png"
+          blueshirtSrc="/images/hero/real-back.png"
           alt="Ahmad Chamdan Yuwafin"
         />
         {/* Soft gradient fade at bottom to blend with background seamlessly without hard lines */}

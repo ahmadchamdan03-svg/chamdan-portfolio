@@ -10,8 +10,8 @@ interface PixelRevealProps {
 }
 
 export default function PixelReveal({
-  jacketSrc = "/images/hero/jacket.png",
-  blueshirtSrc = "/images/hero/blueshirt.png",
+  jacketSrc = "/images/hero/anime-front.png",
+  blueshirtSrc = "/images/hero/real-back.png",
   alt = "Ahmad Chamdan Yuwafin",
 }: PixelRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -196,11 +196,11 @@ export default function PixelReveal({
       onTouchEnd={handleTouchEnd}
       className="relative w-full max-w-[480px] sm:max-w-[540px] md:max-w-[600px] aspect-[800/1050] mx-auto select-none cursor-crosshair overflow-visible"
     >
-      {/* Layer 1 (Bottom): Blue Shirt Photo (Revealed Layer) */}
-      <div className="absolute inset-0 pointer-events-none translate-y-[15px]">
+      {/* Layer 1 (Bottom): Real Photo (Revealed Layer) */}
+      <div className="absolute inset-0 pointer-events-none scale-[1.03] origin-bottom">
         <Image
           src={blueshirtSrc}
-          alt={`${alt} : Potret santri Khadimul Ilmi berbusana kemeja biru Lirboyo`}
+          alt={`${alt} : Potret santri Khadimul Ilmi resmi`}
           fill
           priority
           sizes="(max-width: 768px) 100vw, 600px"
@@ -208,7 +208,7 @@ export default function PixelReveal({
         />
       </div>
 
-      {/* Immediate LCP Base Layer (Jacket Photo): Ensures 0 CLS and immediate LCP before canvas is ready */}
+      {/* Immediate LCP Base Layer (Anime Front): Ensures 0 CLS and immediate LCP before canvas is ready */}
       <div
         className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${
           isReady ? "opacity-0" : "opacity-100"
@@ -216,7 +216,7 @@ export default function PixelReveal({
       >
         <Image
           src={jacketSrc}
-          alt={`${alt} : Potret santri Khadimul Ilmi berbusana jas almamater resmi`}
+          alt={`${alt} : Ilustrasi santri Khadimul Ilmi bergaya anime`}
           fill
           priority
           sizes="(max-width: 768px) 100vw, 600px"
