@@ -20,6 +20,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import IntroLoader from "@/components/ui/IntroLoader";
 import EasterEgg from "@/components/ui/EasterEgg";
 import LeadMagnetModal from "@/components/ui/LeadMagnetModal";
+import CookieBanner from "@/components/ui/CookieBanner";
 
 // Lazy load below-the-fold and heavy interactive components
 const GallerySection = dynamic(
@@ -130,6 +131,9 @@ export default function Home() {
         {/* 12. Contact Section (Dark Glassmorphism, Interactive Form & Socials) */}
         <ContactSection lang={lang} />
       </main>
+
+      {/* Cookie & Privacy Compliance Banner */}
+      <CookieBanner />
 
       {/* Footer with Newsletter Strip, 3-Column Grid & Massive Typography */}
       <Footer lang={lang} />

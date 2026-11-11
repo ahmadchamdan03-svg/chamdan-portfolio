@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { Suspense } from "react";
 import Skeleton from "@/components/ui/Skeleton";
 import VoiceReader from "@/components/ui/VoiceReader";
+import ArticleInteractions from "@/components/ui/ArticleInteractions";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -49,15 +50,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function WritingContent({ slug }: { slug: string }) {
-  const { data: writing, error } = await supabase
-    .from("writings")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  const [writingRes, relatedRes] = await Promise.all([
+    supabase.from("writings").select("*").eq("slug", slug).single(),
+    supabase
+      .from("writings")
+      .select("title, slug, category, date, description")
+      .neq("slug", slug)
+      .limit(2),
+  ]);
 
-  if (error || !writing) {
+  const writing = writingRes.data;
+  if (writingRes.error || !writing) {
     notFound();
   }
+  const relatedWritings = relatedRes.data || [];
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -86,7 +92,14 @@ async function WritingContent({ slug }: { slug: string }) {
             </span>
           </div>
 
-          <VoiceReader text={writing.content} title={writing.title} />
+          <div className="flex items-center gap-2">
+            <ArticleInteractions
+              title={writing.title}
+              description={writing.description}
+              text={writing.content}
+            />
+            <VoiceReader text={writing.content} title={writing.title} />
+          </div>
         </div>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-stone-950 dark:text-stone-50 tracking-tight leading-tight mb-6">
@@ -105,7 +118,7 @@ async function WritingContent({ slug }: { slug: string }) {
             <span>&bull;</span>
             <span>Ma&apos;had Aly Lirboyo</span>
           </div>
-          <div className="font-serif text-emerald-700 dark:text-emerald-400">
+          <div className="font-arabic text-sm text-emerald-700 dark:text-emerald-400" dir="rtl">
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
           </div>
         </div>
@@ -117,6 +130,39 @@ async function WritingContent({ slug }: { slug: string }) {
           {writing.content || "Konten risalah sedang disempurnakan."}
         </ReactMarkdown>
       </div>
+
+      {/* Related Writings Section */}
+      {relatedWritings.length > 0 && (
+        <section className="mt-16 pt-10 border-t border-stone-200 dark:border-stone-800">
+          <h2 className="text-xl font-serif font-bold text-stone-900 dark:text-stone-100 mb-6">
+            Risalah Ilmiah Lainnya
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {relatedWritings.map((rel) => (
+              <Link
+                key={rel.slug}
+                href={`/writings/${rel.slug}`}
+                className="group p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-emerald-500/50 transition-all shadow-sm flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[11px] font-mono font-semibold text-emerald-700 dark:text-emerald-400">
+                    {rel.category}
+                  </span>
+                  <h3 className="text-sm font-serif font-bold text-stone-900 dark:text-stone-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors mt-1">
+                    {rel.title}
+                  </h3>
+                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 line-clamp-2">
+                    {rel.description}
+                  </p>
+                </div>
+                <span className="mt-4 text-[11px] font-mono text-stone-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Baca Risalah &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Article Footer */}
       <footer className="mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">

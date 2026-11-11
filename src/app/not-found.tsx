@@ -218,8 +218,8 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[#0a100d] text-stone-100 selection:bg-emerald-500 selection:text-black">
       <div className="relative max-w-lg w-full p-6 sm:p-8 rounded-3xl bg-stone-900/90 border border-emerald-500/20 shadow-2xl text-center backdrop-blur-xl space-y-6">
         {/* Arabic Spiritual Wisdom Quote */}
-        <div className="text-emerald-400 font-serif text-lg tracking-wide">
-          أَيْنَ تَذْهَبُونَ
+        <div className="text-emerald-400 font-arabic text-xl tracking-wide" dir="rtl">
+          فَأَيْنَ تَذْهَبُونَ
         </div>
 
         <div>

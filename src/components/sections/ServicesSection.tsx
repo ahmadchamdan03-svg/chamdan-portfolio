@@ -10,8 +10,10 @@ import {
   ShieldCheck,
   Zap,
   HelpCircle,
+  CalendarPlus,
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import { triggerHaptic } from "@/components/providers/PWAProvider";
 
 interface ServicesSectionProps {
   lang?: "ID" | "EN" | "AR";
@@ -42,6 +44,7 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
   const [consultEmail, setConsultEmail] = useState("");
   const [consultNotes, setConsultNotes] = useState("");
   const [consultDate, setConsultDate] = useState("");
+  const [consultTimeSlot, setConsultTimeSlot] = useState("Pagi (09:00 - 10:30 WIB)");
   const [consultSuccess, setConsultSuccess] = useState(false);
 
   const packages: ServicePackage[] = [
@@ -190,11 +193,12 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
 
   const handleSendBooking = (e: React.FormEvent) => {
     e.preventDefault();
+    triggerHaptic([25, 45, 25]);
     const phone = "6285899151685";
     const greeting =
       lang === "ID"
-        ? `Halo Mas Chamdan, saya tertarik untuk mendiskusikan *${bookingTopic}*.\n\nNama: ${consultName}\nEmail: ${consultEmail}\nRencana Waktu: ${consultDate || "Fleksibel"}\nCatatan: ${consultNotes || "-"}`
-        : `Hello Chamdan, I would like to schedule a session regarding *${bookingTopic}*.\n\nName: ${consultName}\nEmail: ${consultEmail}\nTarget Date: ${consultDate || "Flexible"}\nNotes: ${consultNotes || "-"}`;
+        ? `Halo Mas Chamdan, saya tertarik untuk mendiskusikan *${bookingTopic}*.\n\nNama: ${consultName}\nEmail: ${consultEmail}\nRencana Tanggal: ${consultDate || "Fleksibel"}\nPilihan Waktu: ${consultTimeSlot}\nCatatan: ${consultNotes || "-"}`
+        : `Hello Chamdan, I would like to schedule a session regarding *${bookingTopic}*.\n\nName: ${consultName}\nEmail: ${consultEmail}\nTarget Date: ${consultDate || "Flexible"}\nTime Slot: ${consultTimeSlot}\nNotes: ${consultNotes || "-"}`;
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(greeting)}`;
     window.open(url, "_blank");
@@ -372,12 +376,23 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
                 <p className="text-xs text-stone-300">
                   Pesan pemesanan Anda telah disiapkan di WhatsApp. Silakan tekan kirim pada aplikasi WhatsApp Anda untuk memulai perbincangan.
                 </p>
-                <button
-                  onClick={() => setBookingModalOpen(false)}
-                  className="mt-3 px-4 py-2 rounded-xl bg-stone-800 text-xs text-stone-200 hover:bg-stone-700"
-                >
-                  Tutup Jendela
-                </button>
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2">
+                  <a
+                    href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`Konsultasi: ${bookingTopic}`)}&details=${encodeURIComponent(`Sesi diskusi teknis bersama Ahmad Chamdan Yuwafin (${bookingTopic})\nSlot: ${consultTimeSlot}\nCatatan: ${consultNotes || "-"}`)}&location=${encodeURIComponent("Google Meet / WhatsApp Call")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white shadow-md transition-all"
+                  >
+                    <CalendarPlus className="w-3.5 h-3.5" />
+                    <span>Simpan ke Google Calendar</span>
+                  </a>
+                  <button
+                    onClick={() => setBookingModalOpen(false)}
+                    className="px-4 py-2 rounded-xl bg-stone-800 text-xs text-stone-200 hover:bg-stone-700 transition-colors"
+                  >
+                    Tutup Jendela
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSendBooking} className="space-y-4">
@@ -409,16 +424,32 @@ export default function ServicesSection({ lang = "ID" }: ServicesSectionProps) {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-mono text-stone-400 mb-1.5">
-                    Rencana Waktu / Tanggal Sesi
-                  </label>
-                  <input
-                    type="date"
-                    value={consultDate}
-                    onChange={(e) => setConsultDate(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-stone-900 border border-stone-800 focus:border-emerald-500 text-xs text-stone-200 focus:outline-none"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-mono text-stone-400 mb-1.5">
+                      Rencana Tanggal Sesi
+                    </label>
+                    <input
+                      type="date"
+                      value={consultDate}
+                      onChange={(e) => setConsultDate(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-stone-900 border border-stone-800 focus:border-emerald-500 text-xs text-stone-200 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono text-stone-400 mb-1.5">
+                      Pilihan Slot Waktu
+                    </label>
+                    <select
+                      value={consultTimeSlot}
+                      onChange={(e) => setConsultTimeSlot(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-800 focus:border-emerald-500 text-xs text-stone-200 focus:outline-none"
+                    >
+                      <option value="Pagi (09:00 - 10:30 WIB)">Pagi (09:00 - 10:30 WIB)</option>
+                      <option value="Siang (13:30 - 15:00 WIB)">Siang (13:30 - 15:00 WIB)</option>
+                      <option value="Malam (20:00 - 21:30 WIB)">Malam (20:00 - 21:30 WIB)</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>

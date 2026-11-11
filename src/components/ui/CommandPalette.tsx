@@ -16,6 +16,8 @@ import {
   Mail,
   ExternalLink,
   BookOpen,
+  Calculator,
+  ShieldCheck,
 } from "lucide-react";
 
 interface SearchItem {
@@ -178,6 +180,20 @@ export default function CommandPalette({
               >
                 <Mail className="w-4 h-4 text-emerald-600" />
                 <span>Kontak & Kolaborasi</span>
+              </Command.Item>
+              <Command.Item
+                onSelect={() => navigateTo("/tools/faraidh")}
+                className="flex items-center gap-3 px-3 py-2 text-sm text-stone-800 dark:text-stone-200 rounded-lg cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
+              >
+                <Calculator className="w-4 h-4 text-emerald-600" />
+                <span>Kalkulator Faraidh & Zakat (Utilitas Syariah)</span>
+              </Command.Item>
+              <Command.Item
+                onSelect={() => navigateTo("/verify-sanad")}
+                className="flex items-center gap-3 px-3 py-2 text-sm text-stone-800 dark:text-stone-200 rounded-lg cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Verifikasi Sanad Ilmiah (Kriptografis SHA-256)</span>
               </Command.Item>
             </Command.Group>
 

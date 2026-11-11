@@ -12,7 +12,10 @@ import {
   BookOpen,
   Lock,
   ExternalLink,
+  Share2,
+  Printer,
 } from "lucide-react";
+import { triggerHaptic } from "@/components/providers/PWAProvider";
 
 interface SanadRecord {
   id: string;
@@ -114,9 +117,28 @@ export default function VerifySanadPage() {
   });
 
   const handleCopy = (text: string) => {
+    triggerHaptic(15);
     navigator.clipboard.writeText(text);
     setCopiedHash(text);
     setTimeout(() => setCopiedHash(null), 2500);
+  };
+
+  const handleShare = async (item: SanadRecord) => {
+    triggerHaptic(20);
+    const shareText = `*Verifikasi Sanad Ilmiah Terotentikasi*\nJudul: ${item.title}\nPenerima: ${item.recipient}\nLembaga: ${item.institution}\nSHA-256: ${item.hashSha256}\n\nUji keaslian di: https://www.chamdan.site/verify-sanad`;
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: item.title,
+          text: shareText,
+          url: "https://www.chamdan.site/verify-sanad",
+        });
+      } catch {
+        // User cancelled
+      }
+    } else {
+      handleCopy(shareText);
+    }
   };
 
   return (
@@ -294,13 +316,22 @@ export default function VerifySanadPage() {
                   </div>
                   <div className="flex items-center justify-between p-2.5 rounded-xl bg-stone-950 border border-stone-800 text-[11px] font-mono text-stone-400 break-all">
                     <span className="select-all">{item.hashSha256}</span>
-                    <button
-                      onClick={() => handleCopy(item.hashSha256)}
-                      className="ml-3 p-1 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors shrink-0"
-                      title="Salin Hash SHA-256"
-                    >
-                      <Copy className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-1 ml-3 shrink-0">
+                      <button
+                        onClick={() => handleCopy(item.hashSha256)}
+                        className="p-1 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+                        title="Salin Hash SHA-256"
+                      >
+                        <Copy className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => handleShare(item)}
+                        className="p-1 rounded-lg text-stone-400 hover:text-emerald-400 hover:bg-stone-800 transition-colors"
+                        title="Bagikan Bukti Sanad"
+                      >
+                        <Share2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

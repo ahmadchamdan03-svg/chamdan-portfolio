@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import { triggerHaptic } from "@/components/providers/PWAProvider";
 
 export default function AmbientAudio() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -63,6 +64,7 @@ export default function AmbientAudio() {
   };
 
   const toggle = () => {
+    triggerHaptic(20);
     if (isPlaying) {
       stopAmbient();
     } else {

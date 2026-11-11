@@ -187,6 +187,11 @@ export default function Footer({ lang = "ID" }: FooterProps) {
                   {lang === "ID" ? "Verifikasi Sanad (SHA-256) 🛡️" : "Verify Sanad (SHA-256) 🛡️"}
                 </Link>
               </li>
+              <li>
+                <Link href="/tools/faraidh" className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+                  {lang === "ID" ? "Kalkulator Faraidh & Zakat ⚖️" : "Faraidh & Zakat Calculator ⚖️"}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -313,9 +318,13 @@ export default function Footer({ lang = "ID" }: FooterProps) {
               </a>
             </div>
           </div>
-          <p className="font-mono text-stone-500">
-            Next.js 16 &bull; Supabase &bull; Tailwind CSS &bull; Vercel
-          </p>
+          <div className="flex items-center gap-3 font-mono text-stone-500">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-[11px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Sistem Aktif &bull; Live Presence</span>
+            </span>
+            <span>Next.js 16 &bull; Supabase &bull; Vercel</span>
+          </div>
         </div>
 
         {/* Giant Outro Typography: CHAMDAN */}
